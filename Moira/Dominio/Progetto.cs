@@ -15,6 +15,7 @@ namespace Moira.Dominio
 
         private HashSet<Cliente> clienti;
         private List<UserStory> backlog;
+        private UserStory corrente;
 
         public Progetto(string nome, string descrizione)
         {
@@ -30,6 +31,19 @@ namespace Moira.Dominio
         public void SetCliente(Cliente cliente)
         {
             clienti.Add(cliente);
+        }
+
+        public string InserisciUserStory(string nome, string descrizione)
+        {
+            corrente = new UserStory(nome, descrizione);
+
+            return corrente.CodiceIdentificativo;
+            
+        }
+
+        public string InserisciNuovoTask(string nome, string descrizione)
+        {
+           return corrente.InserisciNuovoTask(nome, descrizione);
         }
     }
 }

@@ -62,5 +62,9 @@ namespace Moira.Dominio
             progetti.Add(nome, corrente);
         }
 
+        public void InserisciNuovaUserStory(string nome, string descrizione) {
+            corrente.InserisciUserStory(nome, descrizione);
+        }
+
     }
 }
