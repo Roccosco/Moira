@@ -26,7 +26,7 @@ namespace Moira.Dominio
             backlog = new List<UserStory>();
         }
 
-        public string Nome { get => nome;  set => nome = value; }
+        public string Nome { get => nome; set => nome = value; }
 
         public void SetCliente(Cliente cliente)
         {
@@ -38,12 +38,25 @@ namespace Moira.Dominio
             corrente = new UserStory(nome, descrizione);
 
             return corrente.CodiceIdentificativo;
-            
+
         }
 
         public string InserisciNuovoTask(string nome, string descrizione)
         {
-           return corrente.InserisciNuovoTask(nome, descrizione);
+            return corrente.InserisciNuovoTask(nome, descrizione);
+        }
+
+        public void SetPosizioneNuovaUserStory(int posizione)
+        {
+            if (CheckPosizionePossibile(posizione))
+                posNuovaUserStory = posizione;
+        }
+
+        public bool CheckPosizionePossibile(int posizione) => posizione >= 0 && posizione < backlog.Count;
+
+        public void ConfermaInserimentoUserStory()
+        {
+            backlog.Insert(posNuovaUserStory, corrente);
         }
     }
 }

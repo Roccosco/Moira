@@ -62,8 +62,35 @@ namespace Moira.Dominio
             progetti.Add(nome, corrente);
         }
 
-        public void InserisciNuovaUserStory(string nome, string descrizione) {
+        public void SelezionaProgetto(string nome)
+        {
+            try
+            {
+                corrente = progetti[nome];
+            }
+            catch (KeyNotFoundException)
+            {
+            }
+        }
+
+        public void InserisciNuovaUserStory(string nome, string descrizione)
+        {
             corrente.InserisciUserStory(nome, descrizione);
+        }
+
+        public void InserisciNuovoTask(string nome, string descrizione)
+        {
+            corrente.InserisciNuovoTask(nome, descrizione);
+        }
+
+        public void InserisciPosizioneUserStory(int posizione)
+        {
+            corrente.SetPosizioneNuovaUserStory(posizione);
+        }
+
+        public void ConfermaInserimentoUserStory()
+        {
+            corrente.ConfermaInserimentoUserStory();
         }
 
     }
