@@ -2,7 +2,20 @@
 {
     public class Team
     {
+        private static int codiceProgressivo = 0;
+
+        private string codiceUnivoco;
         private Progetto progetto;
+
+        public Team()
+        {
+            codiceUnivoco = (codiceProgressivo++).ToString();
+        }
+
+        public string CodiceUnivoco
+        {
+            get => codiceUnivoco;
+        }
 
         public Progetto Progetto
         {

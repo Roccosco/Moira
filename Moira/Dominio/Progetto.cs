@@ -50,9 +50,11 @@ namespace Moira.Dominio
         {
             if (CheckPosizionePossibile(posizione))
                 posNuovaUserStory = posizione;
+            else
+                throw new Exception("Posizione non valida!");
         }
 
-        public bool CheckPosizionePossibile(int posizione) => posizione >= 0 && posizione < backlog.Count;
+        public bool CheckPosizionePossibile(int posizione) => posizione >= 0 && posizione <= backlog.Count;
 
         public void ConfermaInserimentoUserStory()
         {

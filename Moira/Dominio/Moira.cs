@@ -6,8 +6,20 @@ using System.Threading.Tasks;
 
 namespace Moira.Dominio
 {
-    public class Moira
+    public class MoiraClass
     {
+
+        private static MoiraClass instance;
+
+        public static MoiraClass Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new MoiraClass();
+                return instance;
+            }
+        }
 
         private Dictionary<string, Progetto> progetti;
         private Dictionary<string, Cliente> clienti;
@@ -15,16 +27,28 @@ namespace Moira.Dominio
 
         private Progetto corrente;
 
-        public Moira()
+        private MoiraClass()
         {
             progetti = new Dictionary<string, Progetto>();
             clienti = new Dictionary<string, Cliente>();
             teams = new Dictionary<string, Team>();
+
+            Avviamento();
+        }
+
+        private void Avviamento()
+        {
+            Team team = new Team();
+            teams.Add(team.CodiceUnivoco, team);
+
         }
 
         public void InserisciNuovoProgetto(string nome, string descrizione)
         {
-            corrente = new Progetto(nome, descrizione);
+            if (!progetti.TryGetValue(nome, out _))
+                corrente = new Progetto(nome, descrizione);
+            else
+                throw new Exception("Esiste già un progetto con questo nome.");
         }
 
         public void AssociaTeamAProgetto(string codiceUnivoco)
@@ -34,25 +58,22 @@ namespace Moira.Dominio
                 Team tm = teams[codiceUnivoco];
                 tm.Progetto = corrente;
             }
-            catch (KeyNotFoundException)
-            {
-                //messaggio di errore: team non esistente
-            }
             catch (Exception e)
             {
-                //messaggio di errore nel messaggio di e
+                throw e;
             }
         }
 
-        public void AssiciaClienteAProgetto(string codiceUnivoco)
+        public void AssociaClienteAProgetto(string codiceUnivoco)
         {
             try
             {
                 Cliente cl = clienti[codiceUnivoco];
                 corrente.SetCliente(cl);
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException e)
             {
+                throw e;
             }
         }
 
@@ -68,20 +89,15 @@ namespace Moira.Dominio
             {
                 corrente = progetti[nome];
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException e)
             {
+                throw e;
             }
         }
 
-        public void InserisciNuovaUserStory(string nome, string descrizione)
-        {
-            corrente.InserisciUserStory(nome, descrizione);
-        }
+        public string InserisciNuovaUserStory(string nome, string descrizione) => corrente.InserisciUserStory(nome, descrizione);
 
-        public void InserisciNuovoTask(string nome, string descrizione)
-        {
-            corrente.InserisciNuovoTask(nome, descrizione);
-        }
+        public string InserisciNuovoTask(string nome, string descrizione) => corrente.InserisciNuovoTask(nome, descrizione);
 
         public void InserisciPosizioneUserStory(int posizione)
         {
