@@ -27,7 +27,7 @@ namespace Moira.Dominio
         }
 
         public string Nome { get => nome; set => nome = value; }
-
+        
         public void SetCliente(Cliente cliente)
         {
             clienti.Add(cliente);
@@ -59,6 +59,14 @@ namespace Moira.Dominio
         public void ConfermaInserimentoUserStory()
         {
             backlog.Insert(posNuovaUserStory, corrente);
+        }
+
+        //vado a verificare se il cliente che viene passato è presente nella hashset
+        //restituisce vero se il cliente è presente (quindi interessato al progetto in questione)
+        public bool IsClienteInterested(Cliente cl)
+        {
+            return clienti.Contains(cl);
+
         }
     }
 }

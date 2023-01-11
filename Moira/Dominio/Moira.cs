@@ -109,7 +109,19 @@ namespace Moira.Dominio
             corrente.ConfermaInserimentoUserStory();
         }
 
-        public Progetto Project { get => corrente; }
+        public Progetto Corrente { get => corrente; }
+
+        //metodo public per ottenere un team dal dizionario tramite suo codiceUnivoco
+        public Team TeamSpecifico(string codiceUnivoco)
+        {
+            return teams[codiceUnivoco];
+        }
+
+        //con questa funzione aggiungiamo un cliente nel dizionario
+        public void NuovoCliente(Cliente cl)
+        {
+            clienti.Add(cl.CodiceUnivoco,cl);
+        }
 
     }
 }
