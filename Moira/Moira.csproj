@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Test\" />
+    <PackageReference Include="xunit.assert" Version="2.4.2" />
   </ItemGroup>
 
 </Project>

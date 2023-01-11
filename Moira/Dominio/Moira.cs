@@ -109,5 +109,7 @@ namespace Moira.Dominio
             corrente.ConfermaInserimentoUserStory();
         }
 
+        public Progetto Project { get => corrente; }
+
     }
 }

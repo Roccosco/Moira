@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moira", "Moira\Moira.csproj", "{D928FD42-790D-48CF-82EE-2DA2CA00F181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moira", "Moira\Moira.csproj", "{D928FD42-790D-48CF-82EE-2DA2CA00F181}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoiraTests1", "MoiraTests1\MoiraTests1.csproj", "{20CBE95C-DA93-404D-8B6C-763BD17352E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D928FD42-790D-48CF-82EE-2DA2CA00F181}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D928FD42-790D-48CF-82EE-2DA2CA00F181}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D928FD42-790D-48CF-82EE-2DA2CA00F181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20CBE95C-DA93-404D-8B6C-763BD17352E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20CBE95C-DA93-404D-8B6C-763BD17352E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20CBE95C-DA93-404D-8B6C-763BD17352E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20CBE95C-DA93-404D-8B6C-763BD17352E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
