@@ -68,5 +68,9 @@ namespace Moira.Dominio
             return clienti.Contains(cl);
 
         }
+
+        public int PosizioneUserStory { get => posNuovaUserStory; }
+
+        public UserStory Corrente { get => corrente; }
     }
 }

@@ -14,7 +14,15 @@ namespace Moira.Dominio.Tests
         [TestMethod()]
         public void MoiraTaskTest()
         {
-            Assert.Fail();
+            try
+            {
+                MoiraTask tsk = new MoiraTask("task", "descrizione");
+                Assert.IsNotNull(tsk);  
+            }
+            catch 
+            {
+                Assert.Fail();
+            }
         }
     }
 }

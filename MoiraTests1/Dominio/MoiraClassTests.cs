@@ -121,7 +121,8 @@ namespace Moira.Dominio.Tests
         {
             try
             {
-
+                m.InserisciNuovoProgetto("banana", "descrizione");
+                Assert.IsNotNull(m.InserisciNuovaUserStory("story", "laPrima"));
             }
             catch
             {
@@ -133,8 +134,11 @@ namespace Moira.Dominio.Tests
         public void InserisciNuovoTaskTest()
         {
             try
-            {
-
+            {   
+                //non funziona
+                UserStory u = new UserStory("story", "LaPrima");
+                m.InserisciNuovoProgetto("banana", "descrizione");
+                Assert.AreEqual("1", m.InserisciNuovoTask("task", "primo"));
             }
             catch
             {
@@ -147,7 +151,9 @@ namespace Moira.Dominio.Tests
         {
             try
             {
-
+                m.InserisciNuovoProgetto("banana", "descrizione");
+                m.InserisciPosizioneUserStory(0);
+                Assert.AreEqual(0, m.Corrente.PosizioneUserStory);
             }
             catch
             {
@@ -160,6 +166,10 @@ namespace Moira.Dominio.Tests
         {
             try
             {
+                UserStory u = new UserStory("story", "LaPrima");  
+                m.InserisciNuovoProgetto("banana", "descrizione");
+                m.ConfermaInserimentoUserStory();
+                Assert.AreEqual("story", u.NomeUserStory);
 
             }
             catch

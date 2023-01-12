@@ -38,5 +38,7 @@
 
             return id;
         }
+
+        public string NomeUserStory { get => nome; }
     }
 }

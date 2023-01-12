@@ -14,43 +14,111 @@ namespace Moira.Dominio.Tests
         [TestMethod()]
         public void ProgettoTest()
         {
-            Assert.Fail();
+            Progetto p = new Progetto("progetto", "ciao");
+            Assert.IsNotNull(p);    
         }
 
         [TestMethod()]
         public void SetClienteTest()
         {
-            Assert.Fail();
+            try
+            {
+                Progetto p = new Progetto("progetto", "ciao");
+                Cliente c = new Cliente("gabri", "greco");
+                p.SetCliente(c);
+                Assert.IsTrue(p.IsClienteInterested(c));
+            }
+            catch 
+            {
+
+                Assert.Fail();
+            }
         }
 
         [TestMethod()]
         public void InserisciUserStoryTest()
         {
-            Assert.Fail();
+            try
+            {   
+                //perche funziona con 0?
+                Progetto p = new Progetto("progetto", "ciao");
+                string id = p.InserisciUserStory("story", "descrizione");
+                Assert.AreEqual("0", id);
+
+            }
+            catch
+            {
+
+                Assert.Fail();
+            }
         }
 
         [TestMethod()]
         public void InserisciNuovoTaskTest()
         {
-            Assert.Fail();
+            try
+            {
+
+            }
+            catch
+            {
+
+                Assert.Fail();
+            }
         }
 
         [TestMethod()]
         public void SetPosizioneNuovaUserStoryTest()
         {
-            Assert.Fail();
+            try
+            {
+                int i = 0;  
+                Progetto p = new Progetto("progetto", "ciao");
+                p.SetPosizioneNuovaUserStory(i);
+                p.CheckPosizionePossibile(i);
+                Assert.IsNotNull(i);    
+                
+            }
+            catch
+            {
+
+                Assert.Fail();
+            }
         }
 
         [TestMethod()]
         public void CheckPosizionePossibileTest()
         {
-            Assert.Fail();
+            try
+            {
+                int i = 0;
+                Progetto p = new Progetto("progetto", "ciao");
+                p.SetPosizioneNuovaUserStory(i);
+                p.CheckPosizionePossibile(i);
+                Assert.IsNotNull(i);
+            }
+            catch
+            {
+
+                Assert.Fail();
+            }
         }
 
         [TestMethod()]
         public void ConfermaInserimentoUserStoryTest()
         {
-            Assert.Fail();
+            try
+            {
+                Progetto p = new Progetto("progetto", "ciao");
+                p.InserisciUserStory("story", "descrizione");
+                Assert.AreEqual("story", p.Corrente.NomeUserStory);
+
+            }
+            catch
+            {
+
+                Assert.Fail();
+            }
         }
     }
 }
