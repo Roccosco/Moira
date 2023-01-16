@@ -14,13 +14,35 @@ namespace Moira.Dominio.Tests
         [TestMethod()]
         public void UserStoryTest()
         {
-            Assert.Fail();
+            try
+            {
+                //verifichiamo che l'istanza creata non è nulla
+                UserStory u = new UserStory("story", "descrizione");
+                Assert.IsNotNull(u);
+            }
+            catch
+            {
+                Assert.Fail();
+            }
         }
 
         [TestMethod()]
         public void InserisciNuovoTaskTest()
         {
-            Assert.Fail();
+            try
+            {   
+                //verifichiamo inserimento primo task
+                UserStory u = new UserStory("story", "descrizione");
+                Assert.AreEqual("0", u.InserisciNuovoTask("task", "descrizione"));
+
+                //verifichiamo inserimento primo task
+                Assert.AreEqual("1", u.InserisciNuovoTask("task", "descrizione"));
+
+            }
+            catch
+            {
+                Assert.Fail();
+            }
         }
     }
 }

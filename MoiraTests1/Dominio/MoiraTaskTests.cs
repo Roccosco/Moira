@@ -16,6 +16,7 @@ namespace Moira.Dominio.Tests
         {
             try
             {
+                //verifichiamo che l'istanza creata non è nulla
                 MoiraTask tsk = new MoiraTask("task", "descrizione");
                 Assert.IsNotNull(tsk);  
             }

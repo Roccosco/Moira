@@ -14,7 +14,17 @@ namespace Moira.Dominio.Tests
         [TestMethod()]
         public void TeamTest()
         {
-            Assert.Fail();
+            try
+            {
+               //verifichiamo che l'istanza creata non è nulla
+               Team tm = new Team();
+               Assert.IsNotNull(tm);
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+
         }
     }
 }
