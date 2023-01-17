@@ -15,7 +15,7 @@ namespace Moira.Dominio
 
         private HashSet<Cliente> clienti;
         private List<UserStory> backlog;
-        private UserStory corrente;
+        private UserStory userStoryCorrente;
 
         public Progetto(string nome, string descrizione)
         {
@@ -27,7 +27,7 @@ namespace Moira.Dominio
         }
 
         public string Nome { get => nome; set => nome = value; }
-        
+
         public void SetCliente(Cliente cliente)
         {
             clienti.Add(cliente);
@@ -35,15 +35,15 @@ namespace Moira.Dominio
 
         public string InserisciUserStory(string nome, string descrizione)
         {
-            corrente = new UserStory(nome, descrizione);
+            userStoryCorrente = new UserStory(nome, descrizione);
 
-            return corrente.CodiceIdentificativo;
+            return userStoryCorrente.CodiceIdentificativo;
 
         }
 
         public string InserisciNuovoTask(string nome, string descrizione)
         {
-            return corrente.InserisciNuovoTask(nome, descrizione);
+            return userStoryCorrente.InserisciNuovoTask(nome, descrizione);
         }
 
         public void SetPosizioneNuovaUserStory(int posizione)
@@ -58,7 +58,7 @@ namespace Moira.Dominio
 
         public void ConfermaInserimentoUserStory()
         {
-            backlog.Insert(posNuovaUserStory, corrente);
+            backlog.Insert(posNuovaUserStory, userStoryCorrente);
         }
 
         //vado a verificare se il cliente che viene passato è presente nella hashset
@@ -69,8 +69,13 @@ namespace Moira.Dominio
 
         }
 
+        public bool IsClienteInterested(string codiceUnivocoCliente)
+        {
+            return clienti.Any(x => x.CodiceUnivoco == codiceUnivocoCliente);
+        }
+
         public int PosizioneUserStory { get => posNuovaUserStory; }
 
-        public UserStory Corrente { get => corrente; }
+        public UserStory Corrente { get => userStoryCorrente; }
     }
 }
