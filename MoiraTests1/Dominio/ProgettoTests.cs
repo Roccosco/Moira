@@ -85,25 +85,30 @@ namespace Moira.Dominio.Tests
         {
             try
             {
-                //vale sia la posizione 0 che la posizione 1 perche la posizione è >=0 e <= alla grandezza del backlog
+                //creo un nuovo progetto in cui inserisco due UserStory
                 int i = 0;
                 Progetto p = new Progetto("progetto", "ciao");
                 
-                //creiamo piu user story per aumentare la grandezza del backlog (in questo caso 0 e 1, due posti nel backlog)
+                //creiamo piu user story per aumentare la grandezza del backlog 
                 p.InserisciUserStory("story", "descrizione");
                 p.ConfermaInserimentoUserStory();
 
                 p.InserisciUserStory("story2", "descrizione2");
                 p.ConfermaInserimentoUserStory();
+                
+                //le due stories possono essere selezionate passando come parametro 0 per
+                //la prima e 1 per la seconda
+                //il test va a buon fine se possiamo accedere ad entrambe le stories
                 p.SetPosizioneNuovaUserStory(i);
-                
+                Assert.AreEqual(i,p.PosizioneUserStory);
 
-                Assert.IsNotNull(i);    
-                
+                i = i + 1;
+                p.SetPosizioneNuovaUserStory(i);
+                Assert.AreEqual(i, p.PosizioneUserStory);
+
             }
             catch
             {
-
                 Assert.Fail();
             }
         }
@@ -113,13 +118,14 @@ namespace Moira.Dominio.Tests
         {
             try
             {
-
                 int i = 0;
                 //serve un'istanza di progetto
                 Progetto p = new Progetto("progetto", "ciao");
+                //di default ho solo una userstory e si trova in posizione 0
                 p.SetPosizioneNuovaUserStory(i);
-                p.CheckPosizionePossibile(i);
-                Assert.IsNotNull(i);
+
+                Assert.IsTrue(p.CheckPosizionePossibile(i));
+                Assert.IsFalse(p.CheckPosizionePossibile(i + 1));
             }
             catch
             {
@@ -137,7 +143,6 @@ namespace Moira.Dominio.Tests
                 Progetto p = new Progetto("progetto", "ciao");
                 p.InserisciUserStory("story", "descrizione");
                 Assert.AreEqual("story", p.Corrente.NomeUserStory);
-
             }
             catch
             {

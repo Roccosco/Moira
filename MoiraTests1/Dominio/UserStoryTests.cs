@@ -35,8 +35,8 @@ namespace Moira.Dominio.Tests
                 UserStory u = new UserStory("story", "descrizione");
                 Assert.AreEqual("0", u.InserisciNuovoTask("task", "descrizione"));
 
-                //verifichiamo inserimento primo task
-                Assert.AreEqual("1", u.InserisciNuovoTask("task", "descrizione"));
+                //verifichiamo inserimento secondo task
+                Assert.AreEqual("1", u.InserisciNuovoTask("descrizione", "task"));
 
             }
             catch

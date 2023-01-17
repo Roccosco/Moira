@@ -49,7 +49,8 @@ namespace Moira.Dominio.Tests
             {
                 m.InserisciNuovoProgetto("progetto", "descrizione");
 
-                // a primo avviamento viene creato di default un team con codice univoco 0
+                //a primo avviamento viene creato di default un team con codice univoco 0
+                //verifico che esista
                 m.AssociaTeamAProgetto("0");
                 Assert.IsNotNull(m.TeamSpecifico("0"));
             }
@@ -86,11 +87,11 @@ namespace Moira.Dominio.Tests
             }
         }
 
-        //ConfermaInserimentoProgetto e SelezionaProgetto vengono verificati con la stessa procedura
+        //ConfermaInserimentoProgetto e SelezionaProgetto vengono verificati secondo la stessa metodologia
         //creo un nuovo progetto con "InserisciNuovoProgetto" e questo viene inserito automaticamente in "corrente"
         //successivamente faccio "ConfermaInserimentoProgetto" per farlo aggiungere al dizionario dei progetti di Moira
-        //per verificare che corrente si aggiorni con il progetto dal dizionario, inserisco ciarpame in "corrente" e poi
-        //aggiorno quest'ultimo con il progetto precedente ["progetto"]
+        //per verificare che "corrente" si aggiorni con il progetto dal dizionario, richiamo "InserisciNuovoProgetto" con altri
+        //dati per modificare "corrente" e chiamo "SelezionaProgetto" passando il nome di quello che ho creato all'inizio
         [TestMethod()]
         public void ConfermaInserimentoProgettoTest()
         {
@@ -133,7 +134,7 @@ namespace Moira.Dominio.Tests
                 //progetto corrente
                 m.InserisciNuovoProgetto("banana", "descrizione");
 
-                //verifihiamo il corretto inserimento della user story
+                //verifichiamo il corretto inserimento della user story
                 Assert.IsNotNull(m.InserisciNuovaUserStory("story", "laPrima"));
             }
             catch
@@ -192,8 +193,8 @@ namespace Moira.Dominio.Tests
                 m.ConfermaInserimentoUserStory();
 
                 //verichiamo la user story è inserita correttamente
+                //confrontando i nomi
                 Assert.AreEqual("story", u.NomeUserStory);
-
             }
             catch
             {

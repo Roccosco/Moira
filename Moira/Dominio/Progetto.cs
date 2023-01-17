@@ -54,6 +54,8 @@ namespace Moira.Dominio
                 throw new Exception("Posizione non valida!");
         }
 
+        //serve per verificare che esiste un test con quella posizione. In un backlog con 8
+        //elementi restituisce vero se passiamo un intero compreso tra 0 e 7 (estremi inclusi)
         public bool CheckPosizionePossibile(int posizione) => posizione >= 0 && posizione <= backlog.Count;
 
         public void ConfermaInserimentoUserStory()
@@ -66,7 +68,6 @@ namespace Moira.Dominio
         public bool IsClienteInterested(Cliente cl)
         {
             return clienti.Contains(cl);
-
         }
 
         public int PosizioneUserStory { get => posNuovaUserStory; }
