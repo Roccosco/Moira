@@ -25,7 +25,7 @@ namespace Moira.Dominio
         private Dictionary<string, Cliente> clienti;
         private Dictionary<string, Team> teams;
 
-        private Progetto corrente;
+        private Progetto progettoCorrente;
 
         private MoiraClass()
         {
@@ -41,12 +41,14 @@ namespace Moira.Dominio
             Team team = new Team();
             teams.Add(team.CodiceUnivoco, team);
 
+            Cliente cliente = new Cliente("peppino", "impanato");
+            clienti.Add(cliente.CodiceUnivoco, cliente);
         }
 
         public void InserisciNuovoProgetto(string nome, string descrizione)
         {
             if (!progetti.TryGetValue(nome, out _))
-                corrente = new Progetto(nome, descrizione);
+                progettoCorrente = new Progetto(nome, descrizione);
             else
                 throw new Exception("Esiste già un progetto con questo nome.");
         }
@@ -56,7 +58,7 @@ namespace Moira.Dominio
             try
             {
                 Team tm = teams[codiceUnivoco];
-                tm.Progetto = corrente;
+                tm.Progetto = progettoCorrente;
             }
             catch (Exception e)
             {
@@ -69,7 +71,7 @@ namespace Moira.Dominio
             try
             {
                 Cliente cl = clienti[codiceUnivoco];
-                corrente.SetCliente(cl);
+                progettoCorrente.SetCliente(cl);
             }
             catch (KeyNotFoundException e)
             {
@@ -79,15 +81,15 @@ namespace Moira.Dominio
 
         public void ConfermaInserimentoProgetto()
         {
-            string nome = corrente.Nome;
-            progetti.Add(nome, corrente);
+            string nome = progettoCorrente.Nome;
+            progetti.Add(nome, progettoCorrente);
         }
 
         public void SelezionaProgetto(string nome)
         {
             try
             {
-                corrente = progetti[nome];
+                progettoCorrente = progetti[nome];
             }
             catch (KeyNotFoundException e)
             {
@@ -95,21 +97,21 @@ namespace Moira.Dominio
             }
         }
 
-        public string InserisciNuovaUserStory(string nome, string descrizione) => corrente.InserisciUserStory(nome, descrizione);
+        public string InserisciNuovaUserStory(string nome, string descrizione) => progettoCorrente.InserisciUserStory(nome, descrizione);
 
-        public string InserisciNuovoTask(string nome, string descrizione) => corrente.InserisciNuovoTask(nome, descrizione);
+        public string InserisciNuovoTask(string nome, string descrizione) => progettoCorrente.InserisciNuovoTask(nome, descrizione);
 
         public void InserisciPosizioneUserStory(int posizione)
         {
-            corrente.SetPosizioneNuovaUserStory(posizione);
+            progettoCorrente.SetPosizioneNuovaUserStory(posizione);
         }
 
         public void ConfermaInserimentoUserStory()
         {
-            corrente.ConfermaInserimentoUserStory();
+            progettoCorrente.ConfermaInserimentoUserStory();
         }
 
-        public Progetto Corrente { get => corrente; }
+        public Progetto Corrente { get => progettoCorrente; }
 
         //metodo public per ottenere un team dal dizionario tramite suo codiceUnivoco
         public Team TeamSpecifico(string codiceUnivoco)
@@ -117,10 +119,9 @@ namespace Moira.Dominio
             return teams[codiceUnivoco];
         }
 
-        //con questa funzione aggiungiamo un cliente nel dizionario
-        public void NuovoCliente(Cliente cl)
+        public Cliente ClienteSpecifico(string codiceUnivoco)
         {
-            clienti.Add(cl.CodiceUnivoco,cl);
+            return clienti[codiceUnivoco];
         }
 
     }

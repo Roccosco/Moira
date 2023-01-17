@@ -49,8 +49,7 @@ namespace Moira.Dominio.Tests
             {
                 m.InserisciNuovoProgetto("progetto", "descrizione");
 
-                //a primo avviamento viene creato di default un team con codice univoco 0
-                //verifico che esista
+                // con il caso d'uso d'avviamento viene creato di default un team con codice univoco 0
                 m.AssociaTeamAProgetto("0");
                 Assert.IsNotNull(m.TeamSpecifico("0"));
             }
@@ -68,18 +67,13 @@ namespace Moira.Dominio.Tests
         {
             try
             {   
-                //creiamo un istanza di cliente
-                Cliente c = new Cliente("peppino", "impanato");
-
                 //inseriamo progetto
                 m.InserisciNuovoProgetto("progetto", "descrizione");
 
-                //aggiungiamo il nuovo cliente
-                m.NuovoCliente(c);
-                m.AssociaClienteAProgetto(c.CodiceUnivoco);
-
+                // con il caso d'uso d'avviamento viene creato di default un cliente con codice univoco 0
+                m.AssociaClienteAProgetto("0");
                 //verifichiamo che il cliente è inserito nel dizionario
-                Assert.IsTrue(m.Corrente.IsClienteInterested(c));
+                Assert.IsTrue(m.Corrente.IsClienteInterested("0"));
             }
             catch
             {
@@ -135,7 +129,7 @@ namespace Moira.Dominio.Tests
                 m.InserisciNuovoProgetto("banana", "descrizione");
 
                 //verifichiamo il corretto inserimento della user story
-                Assert.IsNotNull(m.InserisciNuovaUserStory("story", "laPrima"));
+                Assert.IsNotNull(m.InserisciNuovaUserStory("story", "la prima"));
             }
             catch
             {
@@ -152,7 +146,7 @@ namespace Moira.Dominio.Tests
                 m.InserisciNuovoProgetto("banana", "descrizione");
 
                 //user story corrente
-                m.InserisciNuovaUserStory("story", "LaPrima");
+                m.InserisciNuovaUserStory("story", "la prima");
 
                 //verifica inserimento primo task
                 Assert.AreEqual("0", m.InserisciNuovoTask("task", "primo"));
