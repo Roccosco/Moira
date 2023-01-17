@@ -31,11 +31,11 @@ namespace Moira.Dominio.Tests
         {
             try
             {   
-                //verifichiamo inserimento primo task
+                //verifichiamo inserendo il primo task
                 UserStory u = new UserStory("story", "descrizione");
                 Assert.AreEqual("0", u.InserisciNuovoTask("task", "descrizione"));
 
-                //verifichiamo inserimento secondo task
+                //verifichiamo inserendo il secondo task
                 Assert.AreEqual("1", u.InserisciNuovoTask("descrizione", "task"));
 
             }

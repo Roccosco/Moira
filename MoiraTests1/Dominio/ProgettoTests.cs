@@ -32,7 +32,6 @@ namespace Moira.Dominio.Tests
             }
             catch 
             {
-
                 Assert.Fail();
             }
         }
@@ -46,17 +45,16 @@ namespace Moira.Dominio.Tests
                 Progetto p = new Progetto("progetto", "ciao");
 
                 //verifichiamo id prima user story
-                string id = p.InserisciUserStory("story", "descrizione");
+                string id = p.InserisciNuovaUserStory("story", "descrizione");
                 Assert.AreEqual("0", id);
 
                 //verifichiamo id seconda user story
-                string id2 = p.InserisciUserStory("story2", "descrizione2");
+                string id2 = p.InserisciNuovaUserStory("story2", "descrizione2");
                 Assert.AreEqual("1", id2);
 
             }
             catch
             {
-
                 Assert.Fail();
             }
         }
@@ -69,13 +67,12 @@ namespace Moira.Dominio.Tests
                 //progetto corrente associato alla user story
                 Progetto p = new Progetto("progetto", "descrizione");
 
-                p.InserisciUserStory("story", "LaPrima");
+                p.InserisciNuovaUserStory("story", "LaPrima");
                 //abbiamo verificato che si tratta del primo task
                 Assert.AreEqual("0", p.InserisciNuovoTask("task", "primo"));
             }
             catch
             {
-
                 Assert.Fail();
             }
         }
@@ -90,10 +87,10 @@ namespace Moira.Dominio.Tests
                 Progetto p = new Progetto("progetto", "ciao");
                 
                 //creiamo piu user story per aumentare la grandezza del backlog 
-                p.InserisciUserStory("story", "descrizione");
+                p.InserisciNuovaUserStory("story", "descrizione");
                 p.ConfermaInserimentoUserStory();
 
-                p.InserisciUserStory("story2", "descrizione2");
+                p.InserisciNuovaUserStory("story2", "descrizione2");
                 p.ConfermaInserimentoUserStory();
                 
                 //le due stories possono essere selezionate passando come parametro 0 per
@@ -129,7 +126,6 @@ namespace Moira.Dominio.Tests
             }
             catch
             {
-
                 Assert.Fail();
             }
         }
@@ -141,12 +137,12 @@ namespace Moira.Dominio.Tests
             {
                 //la user story inserita è uguale alla user story corrente
                 Progetto p = new Progetto("progetto", "ciao");
-                p.InserisciUserStory("story", "descrizione");
-                Assert.AreEqual("story", p.Corrente.NomeUserStory);
+                p.InserisciNuovaUserStory("story", "descrizione");
+                p.ConfermaInserimentoUserStory();
+                Assert.IsTrue(p.CheckPosizionePossibile(0));
             }
             catch
             {
-
                 Assert.Fail();
             }
         }

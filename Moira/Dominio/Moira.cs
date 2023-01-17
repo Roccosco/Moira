@@ -97,7 +97,7 @@ namespace Moira.Dominio
             }
         }
 
-        public string InserisciNuovaUserStory(string nome, string descrizione) => progettoCorrente.InserisciUserStory(nome, descrizione);
+        public string InserisciNuovaUserStory(string nome, string descrizione) => progettoCorrente.InserisciNuovaUserStory(nome, descrizione);
 
         public string InserisciNuovoTask(string nome, string descrizione) => progettoCorrente.InserisciNuovoTask(nome, descrizione);
 

@@ -33,7 +33,7 @@ namespace Moira.Dominio
             clienti.Add(cliente);
         }
 
-        public string InserisciUserStory(string nome, string descrizione)
+        public string InserisciNuovaUserStory(string nome, string descrizione)
         {
             userStoryCorrente = new UserStory(nome, descrizione);
 
