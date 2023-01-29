@@ -124,5 +124,6 @@ namespace Moira.Dominio
             return clienti[codiceUnivoco];
         }
 
+        public Team getTeam(string codiceTeam) => teams[codiceTeam];
     }
 }
