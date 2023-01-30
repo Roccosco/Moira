@@ -34,12 +34,12 @@
             this.textBoxCognome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.labelPartitaIva = new System.Windows.Forms.Label();
+            this.textBoxPartitaIva = new System.Windows.Forms.TextBox();
+            this.labelTelefono = new System.Windows.Forms.Label();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
+            this.LabelIndirizzo = new System.Windows.Forms.Label();
+            this.textBoxIndirizzo = new System.Windows.Forms.TextBox();
             this.buttonInserisci = new System.Windows.Forms.Button();
             this.textBoxCodiceUnivoco = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -96,53 +96,53 @@
             this.textBoxEmail.Size = new System.Drawing.Size(264, 27);
             this.textBoxEmail.TabIndex = 4;
             // 
-            // label4
+            // labelPartitaIva
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(129, 246);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 20);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "label4";
+            this.labelPartitaIva.AutoSize = true;
+            this.labelPartitaIva.Location = new System.Drawing.Point(129, 246);
+            this.labelPartitaIva.Name = "labelPartitaIva";
+            this.labelPartitaIva.Size = new System.Drawing.Size(74, 20);
+            this.labelPartitaIva.TabIndex = 7;
+            this.labelPartitaIva.Text = "Partita Iva";
             // 
-            // textBox4
+            // textBoxPartitaIva
             // 
-            this.textBox4.Location = new System.Drawing.Point(129, 269);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(264, 27);
-            this.textBox4.TabIndex = 6;
+            this.textBoxPartitaIva.Location = new System.Drawing.Point(129, 269);
+            this.textBoxPartitaIva.Name = "textBoxPartitaIva";
+            this.textBoxPartitaIva.Size = new System.Drawing.Size(264, 27);
+            this.textBoxPartitaIva.TabIndex = 6;
             // 
-            // label5
+            // labelTelefono
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(129, 307);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "label5";
+            this.labelTelefono.AutoSize = true;
+            this.labelTelefono.Location = new System.Drawing.Point(129, 307);
+            this.labelTelefono.Name = "labelTelefono";
+            this.labelTelefono.Size = new System.Drawing.Size(67, 20);
+            this.labelTelefono.TabIndex = 9;
+            this.labelTelefono.Text = "Telefono";
             // 
-            // textBox5
+            // textBoxTelefono
             // 
-            this.textBox5.Location = new System.Drawing.Point(129, 330);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(264, 27);
-            this.textBox5.TabIndex = 8;
+            this.textBoxTelefono.Location = new System.Drawing.Point(129, 330);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.Size = new System.Drawing.Size(264, 27);
+            this.textBoxTelefono.TabIndex = 8;
             // 
-            // label6
+            // LabelIndirizzo
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(129, 367);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 20);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "label6";
+            this.LabelIndirizzo.AutoSize = true;
+            this.LabelIndirizzo.Location = new System.Drawing.Point(129, 367);
+            this.LabelIndirizzo.Name = "LabelIndirizzo";
+            this.LabelIndirizzo.Size = new System.Drawing.Size(66, 20);
+            this.LabelIndirizzo.TabIndex = 11;
+            this.LabelIndirizzo.Text = "Indirizzo";
             // 
-            // textBox6
+            // textBoxIndirizzo
             // 
-            this.textBox6.Location = new System.Drawing.Point(129, 390);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(264, 27);
-            this.textBox6.TabIndex = 10;
+            this.textBoxIndirizzo.Location = new System.Drawing.Point(129, 390);
+            this.textBoxIndirizzo.Name = "textBoxIndirizzo";
+            this.textBoxIndirizzo.Size = new System.Drawing.Size(264, 27);
+            this.textBoxIndirizzo.TabIndex = 10;
             // 
             // buttonInserisci
             // 
@@ -156,7 +156,7 @@
             // 
             // textBoxCodiceUnivoco
             // 
-            this.textBoxCodiceUnivoco.Location = new System.Drawing.Point(509, 200);
+            this.textBoxCodiceUnivoco.Location = new System.Drawing.Point(509, 93);
             this.textBoxCodiceUnivoco.Name = "textBoxCodiceUnivoco";
             this.textBoxCodiceUnivoco.Size = new System.Drawing.Size(264, 27);
             this.textBoxCodiceUnivoco.TabIndex = 13;
@@ -164,7 +164,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(509, 177);
+            this.label7.Location = new System.Drawing.Point(509, 70);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(111, 20);
             this.label7.TabIndex = 14;
@@ -172,7 +172,7 @@
             // 
             // buttonTrova
             // 
-            this.buttonTrova.Location = new System.Drawing.Point(779, 198);
+            this.buttonTrova.Location = new System.Drawing.Point(809, 91);
             this.buttonTrova.Name = "buttonTrova";
             this.buttonTrova.Size = new System.Drawing.Size(94, 29);
             this.buttonTrova.TabIndex = 15;
@@ -183,7 +183,7 @@
             // buttonModifica
             // 
             this.buttonModifica.Enabled = false;
-            this.buttonModifica.Location = new System.Drawing.Point(509, 300);
+            this.buttonModifica.Location = new System.Drawing.Point(509, 147);
             this.buttonModifica.Name = "buttonModifica";
             this.buttonModifica.Size = new System.Drawing.Size(364, 34);
             this.buttonModifica.TabIndex = 16;
@@ -194,7 +194,7 @@
             // buttonElimina
             // 
             this.buttonElimina.Enabled = false;
-            this.buttonElimina.Location = new System.Drawing.Point(509, 353);
+            this.buttonElimina.Location = new System.Drawing.Point(509, 200);
             this.buttonElimina.Name = "buttonElimina";
             this.buttonElimina.Size = new System.Drawing.Size(364, 34);
             this.buttonElimina.TabIndex = 17;
@@ -213,12 +213,12 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxCodiceUnivoco);
             this.Controls.Add(this.buttonInserisci);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.LabelIndirizzo);
+            this.Controls.Add(this.textBoxIndirizzo);
+            this.Controls.Add(this.labelTelefono);
+            this.Controls.Add(this.textBoxTelefono);
+            this.Controls.Add(this.labelPartitaIva);
+            this.Controls.Add(this.textBoxPartitaIva);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.label2);
@@ -227,6 +227,7 @@
             this.Controls.Add(this.textBoxNome);
             this.Name = "GestisciClienteForm";
             this.Text = "GestisciClienteForm";
+            this.Load += new System.EventHandler(this.GestisciClienteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,12 +241,12 @@
         private TextBox textBoxCognome;
         private Label label3;
         private TextBox textBoxEmail;
-        private Label label4;
-        private TextBox textBox4;
-        private Label label5;
-        private TextBox textBox5;
-        private Label label6;
-        private TextBox textBox6;
+        private Label labelPartitaIva;
+        private TextBox textBoxPartitaIva;
+        private Label labelTelefono;
+        private TextBox textBoxTelefono;
+        private Label LabelIndirizzo;
+        private TextBox textBoxIndirizzo;
         private Button buttonInserisci;
         private TextBox textBoxCodiceUnivoco;
         private Label label7;

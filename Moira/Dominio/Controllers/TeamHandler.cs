@@ -17,6 +17,8 @@ namespace Moira.Dominio.Controllers
             moira = MoiraClass.Instance;
         }
 
+        public Impiegato ImpiegatoCorrente { get => impiegatoCorrente; }
+
         public void CreaImpiegato(string nome,string cognome, string email,string numeroTelefono, string indirizzo) => moira.addImpiegato(new Impiegato(nome, cognome, email, numeroTelefono, indirizzo));
 
         public void SelezionaImpiegatoCorrente(string codiceImpiegato)
@@ -30,6 +32,8 @@ namespace Moira.Dominio.Controllers
                 throw e;
             }
         }
+
+        public void ConfermaCreaImpiegato() => moira.addImpiegato(impiegatoCorrente);
 
         public void ResetInfoImpiegato(string email, string numeroTelefono, string indirizzo)
         {

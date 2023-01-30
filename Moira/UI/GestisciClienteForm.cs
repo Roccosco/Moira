@@ -23,7 +23,7 @@ namespace Moira.UI
 
         private void buttonInserisci_Click(object sender, EventArgs e)
         {
-
+            controller.ConfermaCreaCliente();
         }
 
         private void buttonTrova_Click(object sender, EventArgs e)
@@ -35,6 +35,9 @@ namespace Moira.UI
                 textBoxNome.Enabled = false;
                 textBoxCognome.Enabled = false;
                 textBoxEmail.Text = controller.ClienteCorrente.Email;
+                textBoxPartitaIva.Text = controller.ClienteCorrente.PartitaIVA;
+                textBoxTelefono.Text = controller.ClienteCorrente.Telefono;
+                textBoxIndirizzo.Text = controller.ClienteCorrente.Indirizzo;
             }
             catch (KeyNotFoundException ex)
             {
@@ -46,9 +49,14 @@ namespace Moira.UI
         {
             //check campi
             string email = textBoxEmail.Text;
+            string partitaIVA = textBoxPartitaIva.Text;
+            string telefono = textBoxTelefono.Text;
+            string indirizzo = textBoxIndirizzo.Text;
 
-            //controller.ResetInfoCliente(email, );
+            controller.ResetInfoCliente(email, partitaIVA, telefono, indirizzo);
+
             //apro la form con Disassocia/Associa a progetto
+            new ModificaClienteForm().Show();
 
         }
 
@@ -66,6 +74,11 @@ namespace Moira.UI
             {
                 MessageBox.Show("Il cliente con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
             }
+        }
+
+        private void GestisciClienteForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
