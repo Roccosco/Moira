@@ -1,4 +1,5 @@
 ﻿using Moira.Dominio;
+using Moira.Dominio.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,11 @@ namespace Moira.UI
 {
     public partial class InserisciNuovoProgetto : Form
     {
-        private MoiraClass moira;
+        private ProgettoHandler controller;
 
         public InserisciNuovoProgetto()
         {
-            moira = MoiraClass.Instance;
+            controller = new ProgettoHandler();
 
             InitializeComponent();
         }
@@ -38,7 +39,7 @@ namespace Moira.UI
 
             try
             {
-                moira.InserisciNuovoProgetto(nome, descrizione);
+                controller.InserisciNuovoProgetto(nome, descrizione);
             }
             catch(Exception ex)
             {
@@ -67,7 +68,7 @@ namespace Moira.UI
 
             try
             {
-                moira.AssociaTeamAProgetto(codiceUnivoco);
+                controller.AssociaTeamAProgetto(codiceUnivoco);
                 textBoxCodiceTeam.Text = "";
                 buttonFineTeam.Enabled = true;
             }
@@ -83,7 +84,7 @@ namespace Moira.UI
 
         private void buttonFineClienti_Click(object sender, EventArgs e)
         {
-            moira.ConfermaInserimentoProgetto();
+            controller.ConfermaInserimentoProgetto();
 
             MessageBox.Show("Progetto inserito con successo!", "Successo");
 
@@ -102,7 +103,7 @@ namespace Moira.UI
 
             try
             {
-                moira.AssociaClienteAProgetto(codiceUnivoco);
+                controller.AssociaClienteAProgetto(codiceUnivoco);
                 textBoxCodiceCliente.Text = "";
             }
             catch (KeyNotFoundException)

@@ -22,7 +22,8 @@ namespace Moira.UI
 
         private void buttonInserisci_Click(object sender, EventArgs e)
         {
-            controller.ConfermaCreaTeam();
+            //controller.CreaTeam();
+            buttonAggiungi.Enabled = true;
         }
 
         private void buttonAggiungi_Click(object sender, EventArgs e)
@@ -35,7 +36,8 @@ namespace Moira.UI
                 controller.AggiungiImpiegatoATeam(codiceUnivoco);
 
                 MessageBox.Show("l'impiegato è stato aggiunto correttamente");
-                Dispose();
+
+                buttonConferma.Enabled = true;
             }
             catch (KeyNotFoundException ex)
             {
@@ -65,6 +67,11 @@ namespace Moira.UI
             {
                 MessageBox.Show("il team con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
             }
+        }
+
+        private void buttonConferma_Click(object sender, EventArgs e)
+        {
+            controller.ConfermaCreaTeam();
         }
     }
 }

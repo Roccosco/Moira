@@ -32,6 +32,8 @@
             this.buttonInserisciProgetti = new System.Windows.Forms.Button();
             this.buttonGestisciBacklog = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonGestisciImpiegato = new System.Windows.Forms.Button();
+            this.buttonGestisciTeam = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -74,11 +76,33 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonGestisciClienti_Click);
             // 
+            // buttonGestisciImpiegato
+            // 
+            this.buttonGestisciImpiegato.Location = new System.Drawing.Point(333, 368);
+            this.buttonGestisciImpiegato.Name = "buttonGestisciImpiegato";
+            this.buttonGestisciImpiegato.Size = new System.Drawing.Size(212, 44);
+            this.buttonGestisciImpiegato.TabIndex = 4;
+            this.buttonGestisciImpiegato.Text = "Gestisci impiegato";
+            this.buttonGestisciImpiegato.UseVisualStyleBackColor = true;
+            this.buttonGestisciImpiegato.Click += new System.EventHandler(this.buttonGestisciImpiegato_Click);
+            // 
+            // buttonGestisciTeam
+            // 
+            this.buttonGestisciTeam.Location = new System.Drawing.Point(333, 438);
+            this.buttonGestisciTeam.Name = "buttonGestisciTeam";
+            this.buttonGestisciTeam.Size = new System.Drawing.Size(212, 44);
+            this.buttonGestisciTeam.TabIndex = 5;
+            this.buttonGestisciTeam.Text = "Gestisci team";
+            this.buttonGestisciTeam.UseVisualStyleBackColor = true;
+            this.buttonGestisciTeam.Click += new System.EventHandler(this.buttonGestisciTeam_Click);
+            // 
             // MoiraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 638);
+            this.Controls.Add(this.buttonGestisciTeam);
+            this.Controls.Add(this.buttonGestisciImpiegato);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonGestisciBacklog);
             this.Controls.Add(this.buttonInserisciProgetti);
@@ -96,5 +120,7 @@
         private Button buttonInserisciProgetti;
         private Button buttonGestisciBacklog;
         private Button button1;
+        private Button buttonGestisciImpiegato;
+        private Button buttonGestisciTeam;
     }
 }

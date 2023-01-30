@@ -23,6 +23,7 @@ namespace Moira.UI
 
         private void buttonInserisci_Click(object sender, EventArgs e)
         {
+            //controller.CreaImpiegato();
             controller.ConfermaCreaImpiegato();
         }
 
@@ -37,6 +38,10 @@ namespace Moira.UI
                 textBoxEmail.Text = controller.ImpiegatoCorrente.Email;
                 textBoxTelefono.Text = controller.ImpiegatoCorrente.Telefono;
                 textBoxIndirizzo.Text = controller.ImpiegatoCorrente.Indirizzo;
+
+                //buttonModifica.Enabled = true;
+                buttonElimina.Enabled = true;
+                buttonInserisci.Enabled = false;
             }
             catch (KeyNotFoundException ex)
             {

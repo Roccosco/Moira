@@ -1,4 +1,5 @@
 ﻿using Moira.Dominio;
+using Moira.Dominio.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,11 @@ namespace Moira.UI
 {
     public partial class InserisciNuovoTask : Form
     {
-        private MoiraClass moira;
+        private ProgettoHandler controller;
 
         public InserisciNuovoTask()
         {
-            moira = MoiraClass.Instance;
+            controller = new ProgettoHandler();
             InitializeComponent();
         }
 
@@ -34,7 +35,7 @@ namespace Moira.UI
             }
             //controllare che non ci sia già un progetto con lo stesso nome
 
-            moira.InserisciNuovoTask(nome, descrizione);
+            controller.InserisciNuovoTask(nome, descrizione);
 
             MessageBox.Show("Task aggiunto con successo!", "Successo");
             Dispose();

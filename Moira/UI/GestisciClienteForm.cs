@@ -23,7 +23,23 @@ namespace Moira.UI
 
         private void buttonInserisci_Click(object sender, EventArgs e)
         {
-            controller.ConfermaCreaCliente();
+            string nome = textBoxNome.Text;
+            string cognome = textBoxCognome.Text;
+            string email = textBoxEmail.Text;
+            string partitaIVA = textBoxPartitaIva.Text;
+            string numeroTelefono = textBoxTelefono.Text;
+            string indirizzo = textBoxIndirizzo.Text;
+
+            //check campi vuoti
+            if(string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(cognome) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(numeroTelefono) || string.IsNullOrEmpty(indirizzo))
+            {
+                MessageBox.Show("Alcuni campi obbligatori sono vuoti!");
+                return;
+            }
+
+            controller.CreaCliente(nome, cognome, email, partitaIVA, numeroTelefono, indirizzo);
+            
+            //aprire form per associare il cliente a un progetto
         }
 
         private void buttonTrova_Click(object sender, EventArgs e)
@@ -34,10 +50,16 @@ namespace Moira.UI
                 controller.SelezionaClienteCorrente(codiceUnivoco);
                 textBoxNome.Enabled = false;
                 textBoxCognome.Enabled = false;
+                textBoxNome.Text = controller.ClienteCorrente.Nome;
+                textBoxCognome.Text = controller.ClienteCorrente.Cognome;
                 textBoxEmail.Text = controller.ClienteCorrente.Email;
                 textBoxPartitaIva.Text = controller.ClienteCorrente.PartitaIVA;
                 textBoxTelefono.Text = controller.ClienteCorrente.Telefono;
                 textBoxIndirizzo.Text = controller.ClienteCorrente.Indirizzo;
+
+                buttonModifica.Enabled = true;
+                buttonElimina.Enabled = true;
+                buttonInserisci.Enabled = false;
             }
             catch (KeyNotFoundException ex)
             {
@@ -66,7 +88,7 @@ namespace Moira.UI
             try
             {
                 controller.EliminaCliente(codiceUnivoco);
-                
+
                 MessageBox.Show("Il cliente è stato eliminato");
                 Dispose();
             }

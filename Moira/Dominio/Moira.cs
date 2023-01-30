@@ -8,7 +8,7 @@ using Moira.Dominio.Controllers;
 
 namespace Moira.Dominio
 {
-    public class MoiraClass : ProgettoHandler
+    public class MoiraClass
     {
 
         private static MoiraClass instance;
@@ -33,6 +33,7 @@ namespace Moira.Dominio
             progetti = new Dictionary<string, Progetto>();
             clienti = new Dictionary<string, Cliente>();
             teams = new Dictionary<string, Team>();
+            impiegati = new Dictionary<string, Impiegato>();
 
             Avviamento();
         }

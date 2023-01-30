@@ -31,5 +31,15 @@ namespace Moira.UI
         {
             new GestisciClienteForm().Show();
         }
+
+        private void buttonGestisciTeam_Click(object sender, EventArgs e)
+        {
+            new GestisciTeamForm().Show();
+        }
+
+        private void buttonGestisciImpiegato_Click(object sender, EventArgs e)
+        {
+            new GestisciImpiegatoForm().Show();
+        }
     }
 }

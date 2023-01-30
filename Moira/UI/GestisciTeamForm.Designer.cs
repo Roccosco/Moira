@@ -32,7 +32,7 @@
             this.LabelTeam = new System.Windows.Forms.Label();
             this.textBoxTeam = new System.Windows.Forms.TextBox();
             this.buttonAggiungi = new System.Windows.Forms.Button();
-            this.buttonFine = new System.Windows.Forms.Button();
+            this.buttonConferma = new System.Windows.Forms.Button();
             this.textBoxCodiceUnivoco = new System.Windows.Forms.TextBox();
             this.labelAggImpiegato = new System.Windows.Forms.Label();
             this.buttonModifica = new System.Windows.Forms.Button();
@@ -71,6 +71,7 @@
             // 
             // buttonAggiungi
             // 
+            this.buttonAggiungi.Enabled = false;
             this.buttonAggiungi.Location = new System.Drawing.Point(99, 330);
             this.buttonAggiungi.Name = "buttonAggiungi";
             this.buttonAggiungi.Size = new System.Drawing.Size(264, 45);
@@ -79,12 +80,15 @@
             this.buttonAggiungi.UseVisualStyleBackColor = true;
             this.buttonAggiungi.Click += new System.EventHandler(this.buttonAggiungi_Click);
             // 
-            // buttonFine
+            // buttonConferma
             // 
-            this.buttonFine.Location = new System.Drawing.Point(0, 0);
-            this.buttonFine.Name = "buttonFine";
-            this.buttonFine.Size = new System.Drawing.Size(75, 23);
-            this.buttonFine.TabIndex = 33;
+            this.buttonConferma.Enabled = false;
+            this.buttonConferma.Location = new System.Drawing.Point(99, 393);
+            this.buttonConferma.Name = "buttonConferma";
+            this.buttonConferma.Size = new System.Drawing.Size(264, 47);
+            this.buttonConferma.TabIndex = 33;
+            this.buttonConferma.Text = "Conferma creazione";
+            this.buttonConferma.Click += new System.EventHandler(this.buttonConferma_Click);
             // 
             // textBoxCodiceUnivoco
             // 
@@ -167,7 +171,7 @@
             this.Controls.Add(this.buttonModifica);
             this.Controls.Add(this.labelAggImpiegato);
             this.Controls.Add(this.textBoxCodiceUnivoco);
-            this.Controls.Add(this.buttonFine);
+            this.Controls.Add(this.buttonConferma);
             this.Controls.Add(this.buttonAggiungi);
             this.Controls.Add(this.buttonInserisci);
             this.Controls.Add(this.LabelTeam);
@@ -185,7 +189,7 @@
         private Label LabelTeam;
         private TextBox textBoxTeam;
         private Button buttonAggiungi;
-        private Button buttonFine;
+        private Button buttonConferma;
         private TextBox textBoxCodiceUnivoco;
         private Label labelAggImpiegato;
         private Button buttonModifica;

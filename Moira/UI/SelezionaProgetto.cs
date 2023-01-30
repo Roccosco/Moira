@@ -1,4 +1,5 @@
 ﻿using Moira.Dominio;
+using Moira.Dominio.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,14 @@ namespace Moira.UI
 {
     public partial class SelezionaProgetto : Form
     {
-        private MoiraClass moira;
+        private ProgettoHandler controller;
 
         private Form form;
 
         public SelezionaProgetto(Form form)
         {
             this.form = form;
-            moira = MoiraClass.Instance;
+            controller = new ProgettoHandler();
             InitializeComponent();
         }
 
@@ -36,7 +37,7 @@ namespace Moira.UI
 
             try
             {
-                moira.SelezionaProgetto(nome);
+                controller.SelezionaProgetto(nome);
                 form.Show();
                 Dispose();
             }

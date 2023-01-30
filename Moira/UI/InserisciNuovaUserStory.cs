@@ -1,4 +1,5 @@
 ﻿using Moira.Dominio;
+using Moira.Dominio.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,11 @@ namespace Moira.UI
 {
     public partial class InserisciNuovaUserStory : Form
     {
-        private MoiraClass moira;
+        private ProgettoHandler controller;
 
         public InserisciNuovaUserStory()
         {
-            moira = MoiraClass.Instance;
+            controller = new ProgettoHandler();
             InitializeComponent();
         }
 
@@ -37,7 +38,7 @@ namespace Moira.UI
 
             try
             {
-                codiceUserStory = moira.InserisciNuovaUserStory(nome, descrizione);
+                codiceUserStory = controller.InserisciNuovaUserStory(nome, descrizione);
 
                 richTextBoxMessaggi.Text += Environment.NewLine + "User story con nome: " + nome + " inserita con successo;";
 
@@ -69,7 +70,7 @@ namespace Moira.UI
 
             try
             {
-                moira.InserisciPosizioneUserStory(posizione);
+                controller.InserisciPosizioneUserStory(posizione);
 
                 richTextBoxMessaggi.Text += Environment.NewLine + "Posizione della user story settata correttamente;";
 
@@ -85,7 +86,7 @@ namespace Moira.UI
 
         private void buttonConferma_Click(object sender, EventArgs e)
         {
-            moira.ConfermaInserimentoUserStory();
+            controller.ConfermaInserimentoUserStory();
 
             MessageBox.Show("Userstory inserita con successo!", "Successo");
 
