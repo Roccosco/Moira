@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonInserisciProgetti = new System.Windows.Forms.Button();
             this.buttonGestisciBacklog = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -63,11 +64,22 @@
             this.buttonGestisciBacklog.UseVisualStyleBackColor = true;
             this.buttonGestisciBacklog.Click += new System.EventHandler(this.buttonGestisciBacklog_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(333, 297);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(212, 44);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Gestisci clienti";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonGestisciClienti_Click);
+            // 
             // MoiraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 638);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonGestisciBacklog);
             this.Controls.Add(this.buttonInserisciProgetti);
             this.Controls.Add(this.label1);
@@ -83,5 +95,6 @@
         private Label label1;
         private Button buttonInserisciProgetti;
         private Button buttonGestisciBacklog;
+        private Button button1;
     }
 }

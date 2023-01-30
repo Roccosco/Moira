@@ -16,6 +16,8 @@ namespace Moira.Dominio.Controllers
             moira = MoiraClass.Instance;
         }
 
+        public Cliente ClienteCorrente { get => clienteCorrente; }
+
         public void CreaCliente(string nome, string cognome, string email, string partitaIVA, string numeroTelefono, string indirizzo) => clienteCorrente = new Cliente(nome, cognome, email, partitaIVA, numeroTelefono, indirizzo);
 
         public void AssociaClienteAProgetto(string nomeProgetto)
@@ -52,6 +54,20 @@ namespace Moira.Dominio.Controllers
             clienteCorrente.Telefono = numeroTelefono;
             clienteCorrente.Indirizzo = indirizzo;
         }
+
+        public void DisassociaClienteAProgetto(string nomeProgetto)
+        {
+            try
+            {
+                Progetto progetto = moira.GetProgettoSpecifico(nomeProgetto);
+                progetto.removeCliente(clienteCorrente);
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
 
         public void EliminaCliente(string codiceClente)
         {

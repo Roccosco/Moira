@@ -26,5 +26,10 @@ namespace Moira.UI
         {
             new SelezionaProgetto(new InserisciNuovaUserStory()).Show();
         }
+
+        private void buttonGestisciClienti_Click(object sender, EventArgs e)
+        {
+            new GestisciClienteForm().Show();
+        }
     }
 }
