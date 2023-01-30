@@ -40,7 +40,7 @@ namespace Moira.UI
             controller.CreaCliente(nome, cognome, email, partitaIVA, numeroTelefono, indirizzo);
             
             //aprire form per associare il cliente a un progetto
-            new AssociaClienteAProgetto().Show();   
+            new AssociaClienteAProgetto(controller).Show();   
         }
 
         private void buttonTrova_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Moira.UI
             controller.ResetInfoCliente(email, partitaIVA, telefono, indirizzo);
 
             //apro la form con Disassocia/Associa a progetto
-            new ModificaClienteForm().Show();
+            new ModificaClienteForm(controller).Show();
 
         }
 

@@ -58,6 +58,7 @@ namespace Moira.Dominio
             return clienti[codiceUnivoco];
         }
         public Progetto GetProgettoSpecifico(string nomeProgetto) => progetti[nomeProgetto];
+        public bool IsProgettoSpecifico(string nomeProgetto) => progetti.ContainsKey(nomeProgetto);
 
         public Impiegato GetImpiegatoSpecifico(string codiceImpiegato) => impiegati[codiceImpiegato];
 

@@ -37,7 +37,9 @@ namespace Moira.UI
             }
 
             controller.CreaImpiegato(nome, cognome, email, numeroTelefono, indirizzo);
-            //controller.ConfermaCreaImpiegato();
+            controller.ConfermaCreaImpiegato();
+
+            MessageBox.Show("Impiegato aggiunto con successo!");
         }
 
 
@@ -50,6 +52,8 @@ namespace Moira.UI
                 controller.SelezionaImpiegatoCorrente(codiceUnivoco);
                 textBoxNome.Enabled = false;
                 textBoxCognome.Enabled = false;
+                textBoxNome.Text = controller.ImpiegatoCorrente.Nome;
+                textBoxCognome.Text = controller.ImpiegatoCorrente.Cognome;
                 textBoxEmail.Text = controller.ImpiegatoCorrente.Email;
                 textBoxTelefono.Text = controller.ImpiegatoCorrente.Telefono;
                 textBoxIndirizzo.Text = controller.ImpiegatoCorrente.Indirizzo;
@@ -88,7 +92,7 @@ namespace Moira.UI
 
             controller.ResetInfoImpiegato(email, telefono, indirizzo);
 
-            new ModificaImpiegato().Show();
+            MessageBox.Show("Informazioni dell'impiegato modificate con successo!");
         }
     }
 }

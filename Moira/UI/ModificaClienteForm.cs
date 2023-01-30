@@ -14,10 +14,10 @@ namespace Moira.UI
     public partial class ModificaClienteForm : Form
     {
         private ClienteHandler controller;
-        public ModificaClienteForm()
+        public ModificaClienteForm(ClienteHandler controller)
         {
             InitializeComponent();
-            controller = new ClienteHandler();  
+            this.controller = controller;
         }
 
         private void buttonAssocia_Click(object sender, EventArgs e)
@@ -29,13 +29,15 @@ namespace Moira.UI
                 controller.AssociaClienteAProgetto(progetto);
 
                 MessageBox.Show("Il cliente è stato associato al progetto");
-                Dispose();
             }
             catch (KeyNotFoundException ex)
             {
                 MessageBox.Show("Il cliente non è stato associato al progetto");
             }
-            
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonDissocia_Click(object sender, EventArgs e)
@@ -46,14 +48,16 @@ namespace Moira.UI
                 controller.DisassociaClienteAProgetto(progetto);
 
                 MessageBox.Show("Il cliente è stato dissociato al progetto");
-                Dispose();
             }
             catch (KeyNotFoundException ex)
             {
                 MessageBox.Show("Il cliente non è stato dissociato al progetto");
             }
-            
+        }
 
+        private void buttonTermina_Click(object sender, EventArgs e)
+        {
+            Dispose();
         }
     }
 }

@@ -40,14 +40,15 @@ namespace Moira.UI
             try
             {
                 controller.InserisciNuovoProgetto(nome, descrizione);
+
+                panelAssociaTeam.Visible = true;
+                panelNome.Visible = false;
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Attenzione");
             }
 
-            panelAssociaTeam.Visible = true;
-            panelNome.Visible = false;
         }
 
         private void buttonFineTeam_Click(object sender, EventArgs e)
@@ -109,6 +110,10 @@ namespace Moira.UI
             catch (KeyNotFoundException)
             {
                 MessageBox.Show("Il cliente con codice univoco " + codiceUnivoco + " non è presente nel sistema", "Attenzione");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

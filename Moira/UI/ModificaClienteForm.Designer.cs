@@ -32,6 +32,7 @@
             this.buttonDissocia = new System.Windows.Forms.Button();
             this.textBoxProgetto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonTermina = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAssocia
@@ -70,16 +71,27 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Inserisci nome progetto";
             // 
-            // AssociaProgettoForm
+            // buttonTermina
+            // 
+            this.buttonTermina.Location = new System.Drawing.Point(336, 399);
+            this.buttonTermina.Name = "buttonTermina";
+            this.buttonTermina.Size = new System.Drawing.Size(324, 44);
+            this.buttonTermina.TabIndex = 4;
+            this.buttonTermina.Text = "Termina";
+            this.buttonTermina.UseVisualStyleBackColor = true;
+            this.buttonTermina.Click += new System.EventHandler(this.buttonTermina_Click);
+            // 
+            // ModificaClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 630);
+            this.Controls.Add(this.buttonTermina);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxProgetto);
             this.Controls.Add(this.buttonDissocia);
             this.Controls.Add(this.buttonAssocia);
-            this.Name = "AssociaProgettoForm";
+            this.Name = "ModificaClienteForm";
             this.Text = "AssociaProgettoForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -92,5 +104,6 @@
         private Button buttonDissocia;
         private TextBox textBoxProgetto;
         private Label label1;
+        private Button buttonTermina;
     }
 }

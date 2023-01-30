@@ -15,10 +15,10 @@ namespace Moira.UI
     {
         private TeamHandler controller;
 
-        public ModificaTeam()
+        public ModificaTeam(TeamHandler controller)
         {
             InitializeComponent();
-            controller = new TeamHandler();
+            this.controller = controller;
         }
 
         private void buttonElimina_Click(object sender, EventArgs e)
@@ -30,7 +30,6 @@ namespace Moira.UI
                 controller.RimuoviImpiegatoDaTeam(codiceUnivoco);
 
                 MessageBox.Show("l'impiegato è stato eliminato correttamente");
-                Dispose();
             }
             catch (KeyNotFoundException ex)
             {
@@ -47,12 +46,20 @@ namespace Moira.UI
                 controller.AggiungiImpiegatoATeam(codiceUnivoco);
 
                 MessageBox.Show("l'impiegato è stato aggiunto correttamente");
-                Dispose();
             }
             catch (KeyNotFoundException ex)
             {
                 MessageBox.Show("l'impiegato con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonTermina_Click(object sender, EventArgs e)
+        {
+            Dispose();
         }
     }
 }

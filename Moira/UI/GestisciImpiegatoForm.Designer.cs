@@ -175,6 +175,7 @@
             // 
             // buttonModifica
             // 
+            this.buttonModifica.Enabled = false;
             this.buttonModifica.Location = new System.Drawing.Point(583, 147);
             this.buttonModifica.Name = "buttonModifica";
             this.buttonModifica.Size = new System.Drawing.Size(364, 38);

@@ -15,29 +15,37 @@ namespace Moira.UI
     {
         private ClienteHandler controller;
 
-        public AssociaClienteAProgetto()
+        public AssociaClienteAProgetto(ClienteHandler controller)
         {
             InitializeComponent();
-            controller = new ClienteHandler();
+            this.controller = controller;
         }
 
         private void buttonAssocia_Click(object sender, EventArgs e)
         {
             string nome = textBoxAssocia.Text; 
             
-            
-
             try
             {
                 controller.AssociaClienteAProgetto(nome);
 
                 MessageBox.Show("Il cliente è stato stato associato al progetto");
-                Dispose();
+
             }
             catch (KeyNotFoundException ex)
             {
                 MessageBox.Show("Il cliente non può essere associato al progetto: " + nome + " perchè già presente!");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonTermina_Click(object sender, EventArgs e)
+        {
+            controller.ConfermaCreaCliente();
+            Dispose();
         }
     }
 }

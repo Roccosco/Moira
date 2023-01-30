@@ -19,7 +19,7 @@ namespace Moira.Dominio.Controllers
 
         public Impiegato ImpiegatoCorrente { get => impiegatoCorrente; }
 
-        public void CreaImpiegato(string nome,string cognome, string email,string numeroTelefono, string indirizzo) => moira.addImpiegato(new Impiegato(nome, cognome, email, numeroTelefono, indirizzo));
+        public void CreaImpiegato(string nome,string cognome, string email,string numeroTelefono, string indirizzo) => impiegatoCorrente = new Impiegato(nome, cognome, email, numeroTelefono, indirizzo);
 
         public void SelezionaImpiegatoCorrente(string codiceImpiegato)
         {

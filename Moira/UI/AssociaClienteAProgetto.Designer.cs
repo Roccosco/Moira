@@ -31,6 +31,7 @@
             this.buttonAssocia = new System.Windows.Forms.Button();
             this.textBoxAssocia = new System.Windows.Forms.TextBox();
             this.labelAssocia = new System.Windows.Forms.Label();
+            this.buttonTermina = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAssocia
@@ -59,11 +60,22 @@
             this.labelAssocia.TabIndex = 2;
             this.labelAssocia.Text = "Inserisci nome progetto a cui associare il cliente";
             // 
+            // buttonTermina
+            // 
+            this.buttonTermina.Location = new System.Drawing.Point(267, 305);
+            this.buttonTermina.Name = "buttonTermina";
+            this.buttonTermina.Size = new System.Drawing.Size(326, 52);
+            this.buttonTermina.TabIndex = 3;
+            this.buttonTermina.Text = "Termina";
+            this.buttonTermina.UseVisualStyleBackColor = true;
+            this.buttonTermina.Click += new System.EventHandler(this.buttonTermina_Click);
+            // 
             // AssociaClienteAProgetto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonTermina);
             this.Controls.Add(this.labelAssocia);
             this.Controls.Add(this.textBoxAssocia);
             this.Controls.Add(this.buttonAssocia);
@@ -79,5 +91,6 @@
         private Button buttonAssocia;
         private TextBox textBoxAssocia;
         private Label labelAssocia;
+        private Button buttonTermina;
     }
 }

@@ -34,6 +34,7 @@
             this.textBoxElimina = new System.Windows.Forms.TextBox();
             this.labelElimina = new System.Windows.Forms.Label();
             this.labelAggiungi = new System.Windows.Forms.Label();
+            this.buttonTermina = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAggiungi
@@ -88,11 +89,22 @@
             this.labelAggiungi.TabIndex = 5;
             this.labelAggiungi.Text = "Aggiungi impiegato";
             // 
+            // buttonTermina
+            // 
+            this.buttonTermina.Location = new System.Drawing.Point(301, 315);
+            this.buttonTermina.Name = "buttonTermina";
+            this.buttonTermina.Size = new System.Drawing.Size(255, 37);
+            this.buttonTermina.TabIndex = 6;
+            this.buttonTermina.Text = "Termina";
+            this.buttonTermina.UseVisualStyleBackColor = true;
+            this.buttonTermina.Click += new System.EventHandler(this.buttonTermina_Click);
+            // 
             // ModificaTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 406);
+            this.Controls.Add(this.buttonTermina);
             this.Controls.Add(this.labelAggiungi);
             this.Controls.Add(this.labelElimina);
             this.Controls.Add(this.textBoxElimina);
@@ -114,5 +126,6 @@
         private TextBox textBoxElimina;
         private Label labelElimina;
         private Label labelAggiungi;
+        private Button buttonTermina;
     }
 }

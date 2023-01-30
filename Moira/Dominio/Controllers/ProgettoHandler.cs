@@ -53,14 +53,10 @@
 
         public void InserisciNuovoProgetto(string nome, string descrizione)
         {
-            try
-            {
-                moira.GetProgettoSpecifico(nome);
-            }
-            catch (Exception)
-            {
-                progettoCorrente = new Progetto(nome, descrizione);
-            }
+            if (moira.IsProgettoSpecifico(nome))
+                throw new Exception("Progetto con nome " + nome + " già presente nel Sistema!");
+
+            progettoCorrente = new Progetto(nome, descrizione);
         }
 
         public string InserisciNuovoTask(string nome, string descrizione) => progettoCorrente.InserisciNuovoTask(nome, descrizione);

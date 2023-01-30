@@ -30,7 +30,8 @@ namespace Moira.Dominio
 
         public void SetCliente(Cliente cliente)
         {
-            clienti.Add(cliente);
+            if(!clienti.Add(cliente))
+                throw new Exception("Cliente già presente");
         }
 
         public bool removeCliente(Cliente cliente) => clienti.Remove(cliente);
