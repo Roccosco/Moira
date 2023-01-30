@@ -22,7 +22,7 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
-                Progetto progetto = moira.getProgetto(nomeProgetto);
+                Progetto progetto = moira.GetProgettoSpecifico(nomeProgetto);
                 progetto.SetCliente(clienteCorrente);
             }
             catch (KeyNotFoundException e)
@@ -37,7 +37,7 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
-                clienteCorrente = moira.getCliente(codiceCliente);
+                clienteCorrente = moira.GetClienteSpecifico(codiceCliente);
             }
             catch (KeyNotFoundException e)
             {

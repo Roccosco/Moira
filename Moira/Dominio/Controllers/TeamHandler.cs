@@ -23,7 +23,7 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
-                impiegatoCorrente = moira.getImpiegato(codiceImpiegato);
+                impiegatoCorrente = moira.GetImpiegatoSpecifico(codiceImpiegato);
             }
             catch (KeyNotFoundException e)
             {
@@ -60,7 +60,7 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
-                Impiegato impiegato = moira.getImpiegato(codiceImpiegato);
+                Impiegato impiegato = moira.GetImpiegatoSpecifico(codiceImpiegato);
                 if (!teamCorrente.addImpiegato(impiegato))
                     throw new Exception("L'impiegato è già presente nel team!");
             }
@@ -77,7 +77,7 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
-                teamCorrente = moira.getTeam(codiceTeam);
+                teamCorrente = moira.GetTeamSpecifico(codiceTeam);
             }
             catch (KeyNotFoundException e)
             {
@@ -89,7 +89,7 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
-                Impiegato impiegato = moira.getImpiegato(codiceImpiegato);
+                Impiegato impiegato = moira.GetImpiegatoSpecifico(codiceImpiegato);
                 if (!teamCorrente.removeImpiegato(impiegato))
                     throw new Exception("L'impiegato non era presente nel team!");
             }
@@ -116,7 +116,7 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
-                teamCorrente = moira.getTeam(codiceTeam);
+                teamCorrente = moira.GetTeamSpecifico(codiceTeam);
                 teamCorrente.creaBoard(nome);
             }
             catch (KeyNotFoundException e)

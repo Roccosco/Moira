@@ -49,7 +49,7 @@ namespace Moira.Dominio.Tests
                 m.InserisciNuovoProgetto("progetto", "descrizione");
                 // con il caso d'uso d'avviamento viene creato di default un team con codice univoco 0
                 m.AssociaTeamAProgetto("0");
-                Assert.IsNotNull(m.TeamSpecifico("0"));
+                Assert.IsNotNull(m.GetTeamSpecifico("0"));
             }
             catch
             {

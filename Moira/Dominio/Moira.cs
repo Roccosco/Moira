@@ -116,19 +116,18 @@ namespace Moira.Dominio
         public Progetto Corrente { get => progettoCorrente; }
 
         //metodo public per ottenere un team dal dizionario tramite suo codiceUnivoco
-        public Team TeamSpecifico(string codiceUnivoco)
+        public Team GetTeamSpecifico(string codiceUnivoco)
         {
             return teams[codiceUnivoco];
         }
 
-        public Cliente ClienteSpecifico(string codiceUnivoco)
+        public Cliente GetClienteSpecifico(string codiceUnivoco)
         {
             return clienti[codiceUnivoco];
         }
+        public Progetto GetProgettoSpecifico(string nomeProgetto) => progetti[nomeProgetto];
 
-        public Team getTeam(string codiceTeam) => teams[codiceTeam];
-
-        public Impiegato getImpiegato(string codiceImpiegato) => impiegati[codiceImpiegato];
+        public Impiegato GetImpiegatoSpecifico(string codiceImpiegato) => impiegati[codiceImpiegato];
 
         public void addTeam(Team teamCorrente) => teams.Add(teamCorrente.CodiceUnivoco, teamCorrente);
 
@@ -154,9 +153,6 @@ namespace Moira.Dominio
 
         public void addCliente(Cliente cliente) => clienti.Add(cliente.CodiceUnivoco, cliente);
 
-        public Progetto getProgetto(string nomeProgetto) => progetti[nomeProgetto];
-
-        public Cliente getCliente(string codiceCliente) => clienti[codiceCliente];
 
         public void deleteCliente(string codiceClente)
         {
