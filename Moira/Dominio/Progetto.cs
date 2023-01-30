@@ -33,6 +33,8 @@ namespace Moira.Dominio
             clienti.Add(cliente);
         }
 
+        public bool removeCliente(Cliente cliente) => clienti.Remove(cliente);
+
         public string InserisciNuovaUserStory(string nome, string descrizione)
         {
             userStoryCorrente = new UserStory(nome, descrizione);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,7 @@ namespace Moira.Dominio
         private Dictionary<string, Progetto> progetti;
         private Dictionary<string, Cliente> clienti;
         private Dictionary<string, Team> teams;
+        private Dictionary<string, Impiegato> impiegati;
 
         private Progetto progettoCorrente;
 
@@ -38,7 +40,7 @@ namespace Moira.Dominio
 
         private void Avviamento()
         {
-            Team team = new Team();
+            Team team = new Team("MoiraTeam");
             teams.Add(team.CodiceUnivoco, team);
 
             Cliente cliente = new Cliente("peppino", "impanato");
@@ -125,5 +127,46 @@ namespace Moira.Dominio
         }
 
         public Team getTeam(string codiceTeam) => teams[codiceTeam];
+
+        public Impiegato getImpiegato(string codiceImpiegato) => impiegati[codiceImpiegato];
+
+        public void addTeam(Team teamCorrente) => teams.Add(teamCorrente.CodiceUnivoco, teamCorrente);
+
+        public void deleteTeam(string codiceTeam)
+        {
+            if (!teams.Remove(codiceTeam))
+                throw new KeyNotFoundException();
+        }
+
+        public void addImpiegato(Impiegato impiegato) => impiegati.Add(impiegato.CodiceUnivoco, impiegato);
+
+        public void deleteImpiegato(string codiceImpiegato)
+        {
+            if (!impiegati.TryGetValue(codiceImpiegato, out Impiegato impiegato))
+                throw new KeyNotFoundException();
+
+            foreach (Team team in teams.Values)
+                team.removeImpiegato(impiegato);
+
+            impiegati.Remove(codiceImpiegato);
+
+        }
+
+        public void addCliente(Cliente cliente) => clienti.Add(cliente.CodiceUnivoco, cliente);
+
+        public Progetto getProgetto(string nomeProgetto) => progetti[nomeProgetto];
+
+        public Cliente getCliente(string codiceCliente) => clienti[codiceCliente];
+
+        public void deleteCliente(string codiceClente)
+        {
+            if (!clienti.TryGetValue(codiceClente, out Cliente cliente))
+                throw new KeyNotFoundException();
+
+            foreach (Progetto progetto in progetti.Values)
+                progetto.removeCliente(cliente);
+
+            clienti.Remove(codiceClente);
+        }
     }
 }

@@ -10,10 +10,106 @@ namespace Moira.Dominio.Controllers
     {
         private MoiraClass moira;
         private Team teamCorrente;
+        private Impiegato impiegatoCorrente;
 
         public TeamHandler()
         {
             moira = MoiraClass.Instance;
+        }
+
+        public void CreaImpiegato(string nome,string cognome, string email,string numeroTelefono, string indirizzo) => moira.addImpiegato(new Impiegato(nome, cognome, email, numeroTelefono, indirizzo));
+
+        public void SelezionaImpiegatoCorrente(string codiceImpiegato)
+        {
+            try
+            {
+                impiegatoCorrente = moira.getImpiegato(codiceImpiegato);
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+        public void ResetInfoImpiegato(string email, string numeroTelefono, string indirizzo)
+        {
+            impiegatoCorrente.Email = email;
+            impiegatoCorrente.Telefono = numeroTelefono;
+            impiegatoCorrente.Indirizzo = indirizzo;
+        }
+
+        public void EliminaImpiegato(string codiceImpiegato)
+        {
+            try
+            {
+                moira.deleteImpiegato(codiceImpiegato);
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+
+        public void CreaTeam(string nome)
+        {
+            teamCorrente = new Team(nome);
+        }
+
+        public void AggiungiImpiegatoATeam(string codiceImpiegato)
+        {
+            try
+            {
+                Impiegato impiegato = moira.getImpiegato(codiceImpiegato);
+                if (!teamCorrente.addImpiegato(impiegato))
+                    throw new Exception("L'impiegato è già presente nel team!");
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+        public void ConfermaCreaTeam() => moira.addTeam(teamCorrente);
+
+        //modifica
+        public void SelezionaTeamCorrente(string codiceTeam)
+        {
+            try
+            {
+                teamCorrente = moira.getTeam(codiceTeam);
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+        public void RimuoviImpiegatoDaTeam(string codiceImpiegato)
+        {
+            try
+            {
+                Impiegato impiegato = moira.getImpiegato(codiceImpiegato);
+                if (!teamCorrente.removeImpiegato(impiegato))
+                    throw new Exception("L'impiegato non era presente nel team!");
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+        //elimina
+        public void EliminaTeam(string codiceTeam)
+        {
+            try
+            {
+                moira.deleteTeam(codiceTeam);
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
         }
 
         public void CreaBoard(string nome, string codiceTeam)

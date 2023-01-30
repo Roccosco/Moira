@@ -5,14 +5,18 @@
         private static int codiceProgressivo = 0;
 
         private string codiceUnivoco;
+        private string nome;
+        private HashSet<Impiegato> impiegati;
         private Progetto progetto;
 
         private Board boardCorrente;
         private Board board;
 
-        public Team()
+        public Team(string nome)
         {
             codiceUnivoco = (codiceProgressivo++).ToString();
+            this.nome = nome;
+            impiegati = new HashSet<Impiegato>();
         }
 
         public string CodiceUnivoco
@@ -51,6 +55,10 @@
         }
 
         private bool isLibero() => progetto == null;
+
+        public bool addImpiegato(Impiegato impiegato) => impiegati.Add(impiegato);
+
+        public bool removeImpiegato(Impiegato impiegato) => impiegati.Remove(impiegato);
 
     }
 }

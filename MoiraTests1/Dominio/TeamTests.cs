@@ -17,7 +17,7 @@ namespace Moira.Dominio.Tests
             try
             {
                //verifichiamo che l'istanza creata non è nulla
-               Team tm = new Team();
+               Team tm = new Team("MoiraTestTeam");
                Assert.IsNotNull(tm);
             }
             catch

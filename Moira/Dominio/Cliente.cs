@@ -1,23 +1,23 @@
 ﻿namespace Moira.Dominio
 {
     //aggiungo giusto due cose per non avere la classe vuota
-    public class Cliente
+    public class Cliente : Persona
     {
-        private string nome;
-        private string cognome;
-        private string codiceUnivoco;
-        private static int codiceProgressivo = 0;
+        private string partitaIVA;
 
-        public Cliente(string nome,string cognome)
+        public Cliente(string nome, string cognome) : base(nome, cognome, "", "", "")
         {
-            this.nome = nome;
-            this.cognome = cognome;
-            codiceUnivoco = (codiceProgressivo++).ToString();
         }
 
-        public string CodiceUnivoco
+        public Cliente(string nome, string cognome, string email, string partitaIVA, string numeroTelefono, string indirizzo) : base(nome, cognome, email, numeroTelefono, indirizzo)
         {
-            get => codiceUnivoco;
+            this.partitaIVA = partitaIVA;
+        }
+
+        public string PartitaIVA
+        {
+            get => partitaIVA;
+            set => partitaIVA = value;
         }
     }
 }
