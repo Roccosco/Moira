@@ -4,10 +4,11 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using Moira.Dominio.Controllers;
 
 namespace Moira.Dominio
 {
-    public class MoiraClass
+    public class MoiraClass : ProgettoHandler
     {
 
         private static MoiraClass instance;
@@ -27,8 +28,6 @@ namespace Moira.Dominio
         private Dictionary<string, Team> teams;
         private Dictionary<string, Impiegato> impiegati;
 
-        private Progetto progettoCorrente;
-
         private MoiraClass()
         {
             progetti = new Dictionary<string, Progetto>();
@@ -46,74 +45,6 @@ namespace Moira.Dominio
             Cliente cliente = new Cliente("peppino", "impanato");
             clienti.Add(cliente.CodiceUnivoco, cliente);
         }
-
-        public void InserisciNuovoProgetto(string nome, string descrizione)
-        {
-            if (!progetti.TryGetValue(nome, out _))
-                progettoCorrente = new Progetto(nome, descrizione);
-            else
-                throw new Exception("Esiste già un progetto con questo nome.");
-        }
-
-        public void AssociaTeamAProgetto(string codiceUnivoco)
-        {
-            try
-            {
-                Team tm = teams[codiceUnivoco];
-                tm.Progetto = progettoCorrente;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AssociaClienteAProgetto(string codiceUnivoco)
-        {
-            try
-            {
-                Cliente cl = clienti[codiceUnivoco];
-                progettoCorrente.SetCliente(cl);
-            }
-            catch (KeyNotFoundException e)
-            {
-                throw e;
-            }
-        }
-
-        public void ConfermaInserimentoProgetto()
-        {
-            string nome = progettoCorrente.Nome;
-            progetti.Add(nome, progettoCorrente);
-        }
-
-        public void SelezionaProgetto(string nome)
-        {
-            try
-            {
-                progettoCorrente = progetti[nome];
-            }
-            catch (KeyNotFoundException e)
-            {
-                throw e;
-            }
-        }
-
-        public string InserisciNuovaUserStory(string nome, string descrizione) => progettoCorrente.InserisciNuovaUserStory(nome, descrizione);
-
-        public string InserisciNuovoTask(string nome, string descrizione) => progettoCorrente.InserisciNuovoTask(nome, descrizione);
-
-        public void InserisciPosizioneUserStory(int posizione)
-        {
-            progettoCorrente.SetPosizioneNuovaUserStory(posizione);
-        }
-
-        public void ConfermaInserimentoUserStory()
-        {
-            progettoCorrente.ConfermaInserimentoUserStory();
-        }
-
-        public Progetto Corrente { get => progettoCorrente; }
 
         //metodo public per ottenere un team dal dizionario tramite suo codiceUnivoco
         public Team GetTeamSpecifico(string codiceUnivoco)
@@ -137,6 +68,7 @@ namespace Moira.Dominio
                 throw new KeyNotFoundException();
         }
 
+        public void addProgetto(Progetto progetto) => progetti.Add(progetto.Nome, progetto);
         public void addImpiegato(Impiegato impiegato) => impiegati.Add(impiegato.CodiceUnivoco, impiegato);
 
         public void deleteImpiegato(string codiceImpiegato)
