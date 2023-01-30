@@ -22,7 +22,15 @@ namespace Moira.UI
 
         private void buttonInserisci_Click(object sender, EventArgs e)
         {
-            //controller.CreaTeam();
+            string nome = textBoxTeam.Text;
+
+            if(string.IsNullOrEmpty(nome) ) 
+            {
+                MessageBox.Show("Inserire il nome del team!");
+                return;
+            }
+
+            controller.CreaTeam(nome);
             buttonAggiungi.Enabled = true;
         }
 
@@ -71,7 +79,19 @@ namespace Moira.UI
 
         private void buttonConferma_Click(object sender, EventArgs e)
         {
-            controller.ConfermaCreaTeam();
+            
+
+            try
+            {
+                controller.ConfermaCreaTeam();
+
+                MessageBox.Show(" team creato correttamente");
+                Dispose();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                MessageBox.Show("il team è già presente nel Sistema!");
+            }
         }
     }
 }

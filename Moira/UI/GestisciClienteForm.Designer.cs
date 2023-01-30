@@ -227,7 +227,7 @@
             this.Controls.Add(this.textBoxNome);
             this.Name = "GestisciClienteForm";
             this.Text = "GestisciClienteForm";
-            this.Load += new System.EventHandler(this.GestisciClienteForm_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

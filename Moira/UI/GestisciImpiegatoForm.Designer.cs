@@ -43,6 +43,7 @@
             this.buttonTrova = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCodiceUnivoco = new System.Windows.Forms.TextBox();
+            this.buttonModifica = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonInserisci
@@ -138,7 +139,7 @@
             // buttonElimina
             // 
             this.buttonElimina.Enabled = false;
-            this.buttonElimina.Location = new System.Drawing.Point(583, 151);
+            this.buttonElimina.Location = new System.Drawing.Point(583, 204);
             this.buttonElimina.Name = "buttonElimina";
             this.buttonElimina.Size = new System.Drawing.Size(364, 34);
             this.buttonElimina.TabIndex = 30;
@@ -172,11 +173,22 @@
             this.textBoxCodiceUnivoco.Size = new System.Drawing.Size(264, 27);
             this.textBoxCodiceUnivoco.TabIndex = 26;
             // 
+            // buttonModifica
+            // 
+            this.buttonModifica.Location = new System.Drawing.Point(583, 147);
+            this.buttonModifica.Name = "buttonModifica";
+            this.buttonModifica.Size = new System.Drawing.Size(364, 38);
+            this.buttonModifica.TabIndex = 31;
+            this.buttonModifica.Text = "Modifica";
+            this.buttonModifica.UseVisualStyleBackColor = true;
+            this.buttonModifica.Click += new System.EventHandler(this.buttonModifica_Click);
+            // 
             // GestisciImpiegatoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 645);
+            this.Controls.Add(this.buttonModifica);
             this.Controls.Add(this.buttonElimina);
             this.Controls.Add(this.buttonTrova);
             this.Controls.Add(this.label7);
@@ -216,5 +228,6 @@
         private Button buttonTrova;
         private Label label7;
         private TextBox textBoxCodiceUnivoco;
+        private Button buttonModifica;
     }
 }

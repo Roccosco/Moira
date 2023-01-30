@@ -40,6 +40,7 @@ namespace Moira.UI
             controller.CreaCliente(nome, cognome, email, partitaIVA, numeroTelefono, indirizzo);
             
             //aprire form per associare il cliente a un progetto
+            new AssociaClienteAProgetto().Show();   
         }
 
         private void buttonTrova_Click(object sender, EventArgs e)
@@ -85,22 +86,9 @@ namespace Moira.UI
         private void buttonElimina_Click(object sender, EventArgs e)
         {
             string codiceUnivoco = textBoxCodiceUnivoco.Text;
-            try
-            {
-                controller.EliminaCliente(codiceUnivoco);
-
-                MessageBox.Show("Il cliente è stato eliminato");
-                Dispose();
-            }
-            catch (KeyNotFoundException ex)
-            {
-                MessageBox.Show("Il cliente con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
-            }
+            controller.EliminaCliente(codiceUnivoco);
         }
 
-        private void GestisciClienteForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -41,5 +41,10 @@ namespace Moira.UI
         {
             new GestisciImpiegatoForm().Show();
         }
+
+        private void buttonCreaBoard_Click(object sender, EventArgs e)
+        {
+            new CreaBoard().Show();
+        }
     }
 }

@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.buttonGestisciImpiegato = new System.Windows.Forms.Button();
             this.buttonGestisciTeam = new System.Windows.Forms.Button();
+            this.buttonCreaBoard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -96,11 +97,22 @@
             this.buttonGestisciTeam.UseVisualStyleBackColor = true;
             this.buttonGestisciTeam.Click += new System.EventHandler(this.buttonGestisciTeam_Click);
             // 
+            // buttonCreaBoard
+            // 
+            this.buttonCreaBoard.Location = new System.Drawing.Point(330, 511);
+            this.buttonCreaBoard.Name = "buttonCreaBoard";
+            this.buttonCreaBoard.Size = new System.Drawing.Size(215, 44);
+            this.buttonCreaBoard.TabIndex = 6;
+            this.buttonCreaBoard.Text = "Crea Board";
+            this.buttonCreaBoard.UseVisualStyleBackColor = true;
+            this.buttonCreaBoard.Click += new System.EventHandler(this.buttonCreaBoard_Click);
+            // 
             // MoiraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 638);
+            this.Controls.Add(this.buttonCreaBoard);
             this.Controls.Add(this.buttonGestisciTeam);
             this.Controls.Add(this.buttonGestisciImpiegato);
             this.Controls.Add(this.button1);
@@ -122,5 +134,6 @@
         private Button button1;
         private Button buttonGestisciImpiegato;
         private Button buttonGestisciTeam;
+        private Button buttonCreaBoard;
     }
 }
