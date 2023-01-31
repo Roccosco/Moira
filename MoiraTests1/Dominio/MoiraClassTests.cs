@@ -78,9 +78,11 @@ namespace Moira.Dominio.Tests
         {
             try
             {
+                //di base esiste un team, quindi se aggiungo un nuovo team dovrei poterlo
+                //visualizzare nella posizione 1
                 Team t = new Team("oceanman");
                 m.addTeam(t);
-                Assert.IsNotNull(m.GetTeamSpecifico("0"));
+                Assert.IsNotNull(m.GetTeamSpecifico("1"));
             }
             catch
             {
@@ -111,12 +113,14 @@ namespace Moira.Dominio.Tests
         }
 
         //????? non ho capito bene come funziona l'inserimento degli impiegati
+        //soprattutto la gestione dei CodiciUnivoci
         [TestMethod()]
         public void addImpiegatoTest()
         {
             try
             {
                 m.addImpiegato(new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso"));
+                //Assert.IsNotNull(m.GetImpiegatoSpecifico("lello"));
                 Assert.IsNotNull(m.GetImpiegatoSpecifico("0"));
             }
             catch
@@ -125,6 +129,7 @@ namespace Moira.Dominio.Tests
             }
         }
 
+        //what? no idea
         [TestMethod()]
         public void GetImpiegatoSpecifico()
         {
@@ -163,6 +168,7 @@ namespace Moira.Dominio.Tests
             }
         }
 
+        //di base c'è un cliente nella lista di moira
         [TestMethod()]
         public void GetClienteSpecificoTest()
         {

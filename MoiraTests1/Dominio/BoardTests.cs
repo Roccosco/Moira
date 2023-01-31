@@ -15,13 +15,22 @@ namespace MoiraTests1.Dominio
         [ClassInitialize]
         public static void AssemblyInit(TestContext context)
         {
-            m = MoiraClass.Instance;
+            //m = MoiraClass.Instance;
         }
 
         [TestMethod()]
         public void creaColonnaTest()
         {
-
+            try
+            {
+                Board board = new Board("kilimangiaro");
+                board.creaColonna("Produzione",false);
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+            
         }
     }
 }
