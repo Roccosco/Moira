@@ -22,77 +22,79 @@ namespace Moira.Dominio.Tests
         }
 
 
-
         [TestMethod()]
-        public void InserisciNuovoProgettoTest()
+        public void addProgettoTest()
         {
-
             try
             {
-                //verifichiamo che il progetto corrente non sia nullo
-                m.InserisciNuovoProgetto("progetto", "descrizione");
-                Assert.IsNotNull(m.Corrente);
+                Progetto p = new Progetto("progetto", "descrizione");
+                m.addProgetto(p);
+                Assert.IsNotNull(m.GetProgettoSpecifico("progetto"));
             }
-            catch 
+            catch
             {
-
                 Assert.Fail();
             }
-            
         }
 
         [TestMethod()]
-        public void AssociaTeamAProgettoTest()
+        public void IsProgettoSpecificoTest()
         {
             try
             {
-                m.InserisciNuovoProgetto("progetto", "descrizione");
-                // con il caso d'uso d'avviamento viene creato di default un team con codice univoco 0
-                m.AssociaTeamAProgetto("0");
+                m.addProgetto(new Progetto("one", "descrizione"));
+                m.addProgetto(new Progetto("two", "descrizione"));
+                m.addProgetto(new Progetto("three", "descrizione"));
+                m.addProgetto(new Progetto("four", "descrizione"));
+                m.addProgetto(new Progetto("canihavealittlemore", "descrizione"));
+                Assert.IsTrue(m.IsProgettoSpecifico("three"));
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod()]
+        public void GetProgettoSpecifico()
+        {
+            try
+            {
+                m.addProgetto(new Progetto("one", "descrizione"));
+                m.addProgetto(new Progetto("two", "descrizione"));
+                m.addProgetto(new Progetto("three", "descrizione"));
+                m.addProgetto(new Progetto("four", "descrizione"));
+                m.addProgetto(new Progetto("canihavealittlemore", "descrizione"));
+                Assert.IsNotNull(m.GetProgettoSpecifico("three"));
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod()]
+        public void addTeamTest()
+        {
+            try
+            {
+                Team t = new Team("oceanman");
+                m.addTeam(t);
                 Assert.IsNotNull(m.GetTeamSpecifico("0"));
             }
             catch
             {
                 Assert.Fail();
             }
-
-
         }
 
+        //di base esiste il "MoiraTeam" nella classe Moira, con codice "0"
         [TestMethod()]
-        public void AssociaClienteAProgettoTest()
-        {
-            try
-            {   
-                //inseriamo progetto
-                m.InserisciNuovoProgetto("progetto", "descrizione");
-
-                // con il caso d'uso d'avviamento viene creato di default un cliente con codice univoco 0
-                m.AssociaClienteAProgetto("0");
-                //verifichiamo che il cliente è inserito nel dizionario
-                Assert.IsTrue(m.Corrente.IsClienteInterested("0"));
-            }
-            catch
-            {
-                Assert.Fail();
-            }
-        }
-
-        //ConfermaInserimentoProgetto e SelezionaProgetto vengono verificati secondo la stessa metodologia
-        //creo un nuovo progetto con "InserisciNuovoProgetto" e questo viene inserito automaticamente in "progettoCorrente"
-        //successivamente faccio "ConfermaInserimentoProgetto" per farlo aggiungere al dizionario dei progetti di Moira
-        //per verificare che "progettoCorrente" si aggiorni con il progetto dal dizionario, richiamo "InserisciNuovoProgetto" con altri
-        //dati per modificare "progettoCorrente" e chiamo "SelezionaProgetto" passando il nome di quello che ho creato all'inizio
-        [TestMethod()]
-        public void ConfermaInserimentoProgettoTest()
+        public void GetTeamSpecificoTest()
         {
             try
             {
-                m.InserisciNuovoProgetto("banana", "descrizione");
-                m.ConfermaInserimentoProgetto();
-                m.InserisciNuovoProgetto("agagagaga", "ciao");
-                m.SelezionaProgetto("banana");
-                Assert.AreEqual("banana", m.Corrente.Nome);
+                Assert.IsNotNull(m.GetTeamSpecifico("0"));
             }
             catch
             {
@@ -101,15 +103,21 @@ namespace Moira.Dominio.Tests
         }
 
         [TestMethod()]
-        public void SelezionaProgettoTest()
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void deleteTeamTest()
+        {
+            m.deleteTeam("0");
+            m.GetTeamSpecifico("0");
+        }
+
+        //????? non ho capito bene come funziona l'inserimento degli impiegati
+        [TestMethod()]
+        public void addImpiegatoTest()
         {
             try
             {
-                m.InserisciNuovoProgetto("banana", "descrizione");
-                m.ConfermaInserimentoProgetto();
-                m.InserisciNuovoProgetto("fdsfdsf", "ciao");
-                m.SelezionaProgetto("banana");
-                Assert.AreEqual("banana", m.Corrente.Nome);
+                m.addImpiegato(new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso"));
+                Assert.IsNotNull(m.GetImpiegatoSpecifico("0"));
             }
             catch
             {
@@ -118,15 +126,12 @@ namespace Moira.Dominio.Tests
         }
 
         [TestMethod()]
-        public void InserisciNuovaUserStoryTest()
+        public void GetImpiegatoSpecifico()
         {
             try
             {
-                //progetto corrente
-                m.InserisciNuovoProgetto("banana", "descrizione");
-
-                //verifichiamo il corretto inserimento della user story
-                Assert.IsNotNull(m.InserisciNuovaUserStory("story", "la prima"));
+                m.addImpiegato(new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso"));
+                Assert.IsNotNull(m.GetImpiegatoSpecifico("0"));
             }
             catch
             {
@@ -135,18 +140,22 @@ namespace Moira.Dominio.Tests
         }
 
         [TestMethod()]
-        public void InserisciNuovoTaskTest()
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void deleteImpiegatoTest()
+        {
+            m.addImpiegato(new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso"));
+            m.deleteImpiegato("0");
+            m.GetImpiegatoSpecifico("0");
+        }
+
+        [TestMethod()]
+        public void addClienteTest()
         {
             try
-            {   
-                //progetto corrente
-                m.InserisciNuovoProgetto("banana", "descrizione");
+            {
+                m.addCliente(new Cliente("pane", "cunzato"));
+                Assert.IsNotNull(m.GetClienteSpecifico("1"));
 
-                //user story corrente
-                m.InserisciNuovaUserStory("story", "la prima");
-
-                //verifica inserimento primo task
-                Assert.AreEqual("0", m.InserisciNuovoTask("task", "primo"));
             }
             catch
             {
@@ -155,18 +164,11 @@ namespace Moira.Dominio.Tests
         }
 
         [TestMethod()]
-        public void InserisciPosizioneUserStoryTest()
+        public void GetClienteSpecificoTest()
         {
             try
-            {   
-                //progetto corrente
-                m.InserisciNuovoProgetto("banana", "descrizione");
-
-                //set posizione
-                m.InserisciPosizioneUserStory(0);
-
-                //verifichiamo che sia la prima user story
-                Assert.AreEqual(0, m.Corrente.PosizioneUserStory);
+            {
+                Assert.IsNotNull(m.GetClienteSpecifico("0"));
             }
             catch
             {
@@ -175,20 +177,11 @@ namespace Moira.Dominio.Tests
         }
 
         [TestMethod()]
-        public void ConfermaInserimentoUserStoryTest()
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void deleteClienteTest()
         {
-            try
-            {
-                m.InserisciNuovoProgetto("banana", "descrizione");
-                m.InserisciNuovaUserStory("story", "la prima");
-                
-                m.ConfermaInserimentoUserStory();
-                Assert.IsTrue(m.Corrente.CheckPosizionePossibile(0));
-            }
-            catch
-            {
-                Assert.Fail();
-            }
+            m.deleteCliente("0");
+            m.GetClienteSpecifico("0");
         }
     }
 }
