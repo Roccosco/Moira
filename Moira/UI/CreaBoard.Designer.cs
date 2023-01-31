@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonNomeBoard = new System.Windows.Forms.Button();
+            this.buttonInserisci = new System.Windows.Forms.Button();
             this.textBoxNomeBoard = new System.Windows.Forms.TextBox();
             this.labelNomeBoard = new System.Windows.Forms.Label();
             this.textBoxTeamBoard = new System.Windows.Forms.TextBox();
             this.labelTeamBoard = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // buttonNomeBoard
+            // buttonInserisci
             // 
-            this.buttonNomeBoard.Location = new System.Drawing.Point(238, 264);
-            this.buttonNomeBoard.Name = "buttonNomeBoard";
-            this.buttonNomeBoard.Size = new System.Drawing.Size(291, 29);
-            this.buttonNomeBoard.TabIndex = 1;
-            this.buttonNomeBoard.Text = "inserisci";
-            this.buttonNomeBoard.UseVisualStyleBackColor = true;
-            this.buttonNomeBoard.Click += new System.EventHandler(this.buttonNomeBoard_Click);
+            this.buttonInserisci.Location = new System.Drawing.Point(238, 264);
+            this.buttonInserisci.Name = "buttonInserisci";
+            this.buttonInserisci.Size = new System.Drawing.Size(291, 29);
+            this.buttonInserisci.TabIndex = 1;
+            this.buttonInserisci.Text = "Inserisci";
+            this.buttonInserisci.UseVisualStyleBackColor = true;
+            this.buttonInserisci.Click += new System.EventHandler(this.buttonInserisci_Click);
             // 
             // textBoxNomeBoard
             // 
@@ -75,9 +75,9 @@
             this.labelTeamBoard.Name = "labelTeamBoard";
             this.labelTeamBoard.Size = new System.Drawing.Size(291, 20);
             this.labelTeamBoard.TabIndex = 5;
-            this.labelTeamBoard.Text = "inserisci codice team a cui associare board";
+            this.labelTeamBoard.Text = "Inserisci codice team a cui associare board";
             // 
-            // CreasBoard
+            // CreaBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,8 +86,8 @@
             this.Controls.Add(this.textBoxTeamBoard);
             this.Controls.Add(this.labelNomeBoard);
             this.Controls.Add(this.textBoxNomeBoard);
-            this.Controls.Add(this.buttonNomeBoard);
-            this.Name = "CreasBoard";
+            this.Controls.Add(this.buttonInserisci);
+            this.Name = "CreaBoard";
             this.Text = "CreasBoard";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -95,7 +95,7 @@
         }
 
         #endregion
-        private Button buttonNomeBoard;
+        private Button buttonInserisci;
         private TextBox textBoxNomeBoard;
         private Label labelNomeBoard;
         private TextBox textBoxTeamBoard;

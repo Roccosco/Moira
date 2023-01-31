@@ -137,9 +137,9 @@ namespace Moira.Dominio.Controllers
             {
                 teamCorrente.confermaCreaBoard();
             }
-            catch (KeyNotFoundException e)
+            catch (Exception)
             {
-                throw e;
+                throw;
             }
         }
     }

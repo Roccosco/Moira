@@ -11,40 +11,44 @@ using System.Windows.Forms;
 
 namespace Moira.UI
 {
-    public partial class CreaBoard : Form
+    public partial class IntestazioniForm : Form
     {
         private TeamHandler controller;
-        public CreaBoard()
+
+        public IntestazioniForm(TeamHandler controller)
         {
+            this.controller = controller;
             InitializeComponent();
-            controller = new TeamHandler();
         }
 
         private void buttonInserisci_Click(object sender, EventArgs e)
         {
-            string nome = textBoxNomeBoard.Text;
-            string codice = textBoxTeamBoard.Text;
+            string nome = textBoxNomeColonna.Text;
+            bool daRivedere = checkBoxDaRivedere.Checked;
 
-            if(string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(codice))
+            if (string.IsNullOrEmpty(nome))
             {
                 MessageBox.Show("Nessun campo deve essere vuoto!");
                 return;
             }
 
+            controller.CreaColonna(nome, daRivedere);
+            MessageBox.Show("Colonna creata correttamente!");
+
+            buttonTermina.Enabled = true;
+        }
+
+        private void buttonTermina_Click(object sender, EventArgs e)
+        {
             try
             {
-                controller.CreaBoard(nome, codice);
-                new IntestazioniForm(controller).Show();
+                controller.ConfermaCreaBoard();
+                Dispose();
             }
-            catch (KeyNotFoundException ex)
-            {
-                MessageBox.Show("Il team con il codice: " + codice + " non esiste nel Sistema!");
-            }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
     }
 }
