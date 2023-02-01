@@ -214,7 +214,7 @@ namespace MoiraTests1.Dominio.Controllers
                 th.CreaColonna("Town", false);
                 th.ConfermaCreaBoard();
                 Assert.Fail();
-                //non so come verificarlo
+                //non è ancora ben definita questa parte
             }
             catch
             {
