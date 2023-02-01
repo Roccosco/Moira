@@ -14,7 +14,7 @@ namespace Moira.UI
     {
         public MoiraForm()
         {
-            InitializeComponent();
+             InitializeComponent();
         }
 
         private void buttonInserisciProgetti_Click(object sender, EventArgs e)
