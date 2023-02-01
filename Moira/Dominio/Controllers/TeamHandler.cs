@@ -11,7 +11,9 @@ namespace Moira.Dominio.Controllers
         private MoiraClass moira;
         private Team teamCorrente;
         private Impiegato impiegatoCorrente;
-
+        private Cerimonia cerimoniaCorrente;
+        
+        
         public TeamHandler()
         {
             moira = MoiraClass.Instance;
@@ -143,6 +145,32 @@ namespace Moira.Dominio.Controllers
             {
                 throw;
             }
+        }
+
+        public void CreaCerimonia(string nome, string descrizione, DateTime data, TipoCerimonia tipo, string codiceTeam)
+        {
+            
+
+            try
+            {
+                teamCorrente = moira.GetTeamSpecifico(codiceTeam);
+                teamCorrente.CreaCerimonia(nome, descrizione, tipo, data);
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+        public void InvitoCerimonia(string codiceCliente)
+        {
+            Cliente cliente = moira.GetClienteSpecifico(codiceCliente);
+            cerimoniaCorrente.AggiungiCliente(cliente);
+        }
+
+        public void ConfermaCreaCerimonia()
+        {
+            teamCorrente.confermaCreaCerimonia();
         }
     }
 }

@@ -9,8 +9,12 @@
         private HashSet<Impiegato> impiegati;
         private Progetto progetto;
 
+        private MoiraClass moira;
         private Board boardCorrente;
         private Board board;
+        private Cliente cliente;
+        private Cerimonia cerimoniaCorrente;
+        private Cerimonia cerimonia;
 
         public Team(string nome)
         {
@@ -50,6 +54,13 @@
             boardCorrente = new Board(nome);
         }
 
+        public void CreaCerimonia(string nome, string descrizione, TipoCerimonia tipo, DateTime data)
+        {
+
+            cerimoniaCorrente = new Cerimonia(nome, descrizione, tipo, data);            
+        }
+
+
         public void creaColonna(string nome, bool daRivedere) => boardCorrente.creaColonna(nome, daRivedere);
 
         public void confermaCreaBoard()
@@ -58,6 +69,12 @@
                 throw new Exception("Il team ha già una board!");
 
             board = boardCorrente;
+        }
+
+        
+        public void confermaCreaCerimonia()
+        {
+            cerimonia = cerimoniaCorrente;
         }
 
         private bool isLibero() => progetto == null;
