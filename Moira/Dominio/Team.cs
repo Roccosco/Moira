@@ -24,6 +24,12 @@
             get => codiceUnivoco;
         }
 
+        public string Nome
+        {
+            get => nome;
+        }
+
+
         public Progetto Progetto
         {
             get => progetto;

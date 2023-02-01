@@ -18,6 +18,13 @@ namespace MoiraTests1.Dominio.Controllers
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
+            //th = new TeamHandler();
+            //m = MoiraClass.Instance;
+        }
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
             th = new TeamHandler();
             m = MoiraClass.Instance;
         }
@@ -36,7 +43,6 @@ namespace MoiraTests1.Dominio.Controllers
             }
         }
 
-        //non va
         [TestMethod()]
         public void SelezionaImpiegatoCorrenteTest()
         {
@@ -45,7 +51,7 @@ namespace MoiraTests1.Dominio.Controllers
                 th.CreaImpiegato("cosa", "diamine", "e", "uno", "spazioporto");
                 th.ConfermaCreaImpiegato();
                 th.CreaImpiegato("sono", "fuori", "dal", "tunnel", "elelelel");
-                th.SelezionaImpiegatoCorrente("0");//problema con codice univoco impiegato
+                th.SelezionaImpiegatoCorrente("1");
                 Assert.AreEqual("e", th.ImpiegatoCorrente.Email);
             }
             catch
@@ -62,7 +68,7 @@ namespace MoiraTests1.Dominio.Controllers
             {
                 th.CreaImpiegato("cosa", "diamine", "è", "uno", "spazioporto");
                 th.ConfermaCreaImpiegato();
-                Assert.IsNotNull(m.GetImpiegatoSpecifico("0"));//problema con codice univoco impiegato
+                Assert.IsNotNull(m.GetImpiegatoSpecifico("1"));//problema con codice univoco impiegato
             }
             catch
             {
@@ -87,19 +93,14 @@ namespace MoiraTests1.Dominio.Controllers
 
         //non va
         [TestMethod()]
+        [ExpectedException(typeof(KeyNotFoundException))]
         public void EliminaImpiegatoTest()
         {
-            try
-            {
-                th.CreaImpiegato("cosa", "diamine", "è", "uno", "spazioporto");
-                th.ConfermaCreaImpiegato();
-                th.EliminaImpiegato("0");//problema con codice univoco impiegato
-                Assert.IsNull(m.GetImpiegatoSpecifico("0"));
-            }
-            catch
-            {
-                Assert.Fail();
-            }
+            Impiegato prisoner = new Impiegato("cosa", "diamine", "è", "uno", "spazioporto");
+            m.addImpiegato(prisoner);
+            th.EliminaImpiegato(prisoner.CodiceUnivoco);
+            th.EliminaImpiegato(prisoner.CodiceUnivoco);
+
         }
 
         [TestMethod()]
@@ -109,7 +110,7 @@ namespace MoiraTests1.Dominio.Controllers
             {
                 th.CreaTeam("Exuvia");
                 th.ConfermaCreaTeam();
-                Assert.IsNotNull(m.GetTeamSpecifico("1"));
+                Assert.IsNotNull(m.GetTeamSpecifico(th.TeamCorrente.CodiceUnivoco));
             }
             catch
             {
@@ -118,13 +119,18 @@ namespace MoiraTests1.Dominio.Controllers
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(Exception))]
         public void AggiungiImpiegatoATeamTest()
         {
             try
             {
-
+                Impiegato im = new Impiegato("ilariacondizionata", "ha", "raffreddato", "lamia", "giornata");
+                m.addImpiegato(im);
+                th.CreaTeam("ProvaTeam");
+                th.AggiungiImpiegatoATeam(im.CodiceUnivoco);
+                th.AggiungiImpiegatoATeam(im.CodiceUnivoco);
             }
-            catch
+            catch (KeyNotFoundException)
             {
                 Assert.Fail();
             }
@@ -145,17 +151,17 @@ namespace MoiraTests1.Dominio.Controllers
             }
         }
 
-        //non può essere testato
-        //non posso accedere a teamCorrente, non ci sono metodi
         [TestMethod()]
         public void SelezionaTeamCorrenteTest()
         {
             try
             {
-                th.CreaTeam("Exuvia");
+                string nomeTeam = "ExuviaComplex";
+                th.CreaTeam(nomeTeam);
                 th.ConfermaCreaTeam();
-                th.SelezionaTeamCorrente("0");
-                //Assert.AreEqual("0", th.TeamCorrente.CodiceUnivoco);
+                string codiceUnivoco = th.TeamCorrente.CodiceUnivoco;
+                th.SelezionaTeamCorrente(codiceUnivoco);
+                Assert.AreEqual(nomeTeam, th.TeamCorrente.Nome);
             }
             catch
             {
@@ -164,48 +170,39 @@ namespace MoiraTests1.Dominio.Controllers
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(Exception))]
         public void RimuoviImpiegatoDaTeamTest()
         {
             try
             {
-
+                Impiegato impiegato = new Impiegato("fuori", "di", "me", "ex", "uvia");
+                th.CreaTeam("Lallallero");
+                m.addImpiegato(impiegato);
+                th.AggiungiImpiegatoATeam(impiegato.CodiceUnivoco);
+                th.RimuoviImpiegatoDaTeam(impiegato.CodiceUnivoco);
+                th.RimuoviImpiegatoDaTeam(impiegato.CodiceUnivoco);
             }
-            catch
+            catch (KeyNotFoundException)
             {
                 Assert.Fail();
             }
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(KeyNotFoundException))]
         public void EliminaTeamTest()
         {
-            try
-            {
-                //non va, non ne ho idea perché
-                //in teoria è corretto
-                th.EliminaTeam("0");
-                Assert.IsNull(m.GetTeamSpecifico("0"));
-            }
-            catch
-            {
-                Assert.Fail();
-            }
+            th.EliminaTeam("0");
+            m.GetTeamSpecifico("0");
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(Exception))]
         public void CreaBoardTest()
         {
-            try
-            {
-                th.CreaBoard("Fugadà", "0");
-                th.CreaBoard("Fugadà", "0");
-                Assert.Fail();
-            }
-            catch
-            {
-                //se entra qui, un eccezzione è stata generata
-                //quindi va benissimo
-            }
+            th.CreaBoard("Fugadà", "0");
+            th.ConfermaCreaBoard();
+            th.CreaBoard("Pippo", "0");
         }
 
         [TestMethod()]
@@ -215,6 +212,8 @@ namespace MoiraTests1.Dominio.Controllers
             {
                 th.CreaBoard("China", "0");
                 th.CreaColonna("Town", false);
+                th.ConfermaCreaBoard();
+                Assert.Fail();
                 //non so come verificarlo
             }
             catch

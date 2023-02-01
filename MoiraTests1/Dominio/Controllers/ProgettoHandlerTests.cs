@@ -76,7 +76,7 @@ namespace MoiraTests1.Dominio.Controllers
                 ph.ConfermaInserimentoProgetto();
                 ph.InserisciNuovoProgetto("agagagaga", "ciao");
                 ph.SelezionaProgetto("progetto");
-                Assert.AreEqual("progetto", ph.Corrente.Nome);
+                Assert.AreEqual("progetto", ph.ProgettoCorrente.Nome);
             }
             catch
             {
@@ -93,7 +93,7 @@ namespace MoiraTests1.Dominio.Controllers
                 ph.ConfermaInserimentoProgetto();
                 ph.InserisciNuovoProgetto("agagagaga", "ciao");
                 ph.SelezionaProgetto("progetto");
-                Assert.AreEqual("progetto", ph.Corrente.Nome);
+                Assert.AreEqual("progetto", ph.ProgettoCorrente.Nome);
             }
             catch
             {
@@ -150,7 +150,7 @@ namespace MoiraTests1.Dominio.Controllers
                 ph.InserisciPosizioneUserStory(0);
 
                 //verifichiamo che sia la prima user story
-                Assert.AreEqual(0, ph.Corrente.PosizioneUserStory);
+                Assert.AreEqual(0, ph.ProgettoCorrente.PosizioneUserStory);
             }
             catch
             {
@@ -167,7 +167,7 @@ namespace MoiraTests1.Dominio.Controllers
                 ph.InserisciNuovaUserStory("story", "la prima");
 
                 ph.ConfermaInserimentoUserStory();
-                Assert.IsTrue(ph.Corrente.CheckPosizionePossibile(0));
+                Assert.IsTrue(ph.ProgettoCorrente.CheckPosizionePossibile(0));
             }
             catch
             {

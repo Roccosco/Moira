@@ -6,7 +6,7 @@
         private MoiraClass moira;
         private Progetto progettoCorrente;
 
-        public Progetto Corrente { get => progettoCorrente; }
+        public Progetto ProgettoCorrente { get => progettoCorrente; }
 
         public ProgettoHandler()
         {

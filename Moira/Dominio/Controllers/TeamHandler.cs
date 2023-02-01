@@ -17,6 +17,8 @@ namespace Moira.Dominio.Controllers
             moira = MoiraClass.Instance;
         }
 
+        public Team TeamCorrente { get => teamCorrente; }
+
         public Impiegato ImpiegatoCorrente { get => impiegatoCorrente; }
 
         public void CreaImpiegato(string nome,string cognome, string email,string numeroTelefono, string indirizzo) => impiegatoCorrente = new Impiegato(nome, cognome, email, numeroTelefono, indirizzo);
@@ -61,7 +63,7 @@ namespace Moira.Dominio.Controllers
         }
 
         public void AggiungiImpiegatoATeam(string codiceImpiegato)
-        {
+        {       
             try
             {
                 Impiegato impiegato = moira.GetImpiegatoSpecifico(codiceImpiegato);

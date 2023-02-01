@@ -112,16 +112,15 @@ namespace Moira.Dominio.Tests
             m.GetTeamSpecifico("0");
         }
 
-        //????? non ho capito bene come funziona l'inserimento degli impiegati
         //soprattutto la gestione dei CodiciUnivoci
         [TestMethod()]
         public void addImpiegatoTest()
         {
             try
             {
-                m.addImpiegato(new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso"));
-                //Assert.IsNotNull(m.GetImpiegatoSpecifico("lello"));
-                Assert.IsNotNull(m.GetImpiegatoSpecifico("0"));
+                Impiegato impiegato = new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso");
+                m.addImpiegato(impiegato);
+                Assert.IsNotNull(m.GetImpiegatoSpecifico(impiegato.CodiceUnivoco));
             }
             catch
             {
@@ -129,14 +128,14 @@ namespace Moira.Dominio.Tests
             }
         }
 
-        //what? no idea
         [TestMethod()]
         public void GetImpiegatoSpecifico()
         {
             try
             {
-                m.addImpiegato(new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso"));
-                Assert.IsNotNull(m.GetImpiegatoSpecifico("0"));
+                Impiegato impiegato = new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso");
+                m.addImpiegato(impiegato);
+                Assert.IsNotNull(m.GetImpiegatoSpecifico(impiegato.CodiceUnivoco));
             }
             catch
             {
