@@ -9,17 +9,21 @@ namespace Moira.Dominio
     public class ColonnaBase : Colonna
     {
         private string nome;
-        private HashSet<Task> tasks;
+        private HashSet<MoiraTask> tasks;
 
         public ColonnaBase(string nome)
         {
             this.nome = nome;
-            tasks = new HashSet<Task>();
+            tasks = new HashSet<MoiraTask>();
         }
 
-        public string getNome() => nome;
+        public override int getNumTasks() => tasks.Count;
 
-        public Tuple<List<Task>, List<Task>> getTask() => new Tuple<List<Task>, List<Task>>(tasks.ToList(), new List<Task>());
+        public override string getNome() => nome;
+
+        public override Tuple<List<MoiraTask>, List<MoiraTask>> getTask() => new Tuple<List<MoiraTask>, List<MoiraTask>>(tasks.ToList(), new List<MoiraTask>());
+
+        public override void addTask(MoiraTask task) => tasks.Add(task);
 
     }
 }

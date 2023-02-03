@@ -15,9 +15,13 @@ namespace Moira.Dominio
             this.decorato = decorato;
         }
 
-        public string getNome() => decorato.getNome();
+        public override string getNome() => decorato.getNome();
 
-        public virtual Tuple<List<Task>, List<Task>> getTask() => decorato.getTask();
+        public override Tuple<List<MoiraTask>, List<MoiraTask>> getTask() => decorato.getTask();
+
+        public override int getNumTasks() => decorato.getNumTasks();
+
+        public override void addTask(MoiraTask task) => decorato.addTask(task);
 
     }
 }

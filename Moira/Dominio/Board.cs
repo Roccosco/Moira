@@ -12,6 +12,7 @@ namespace Moira.Dominio
         private string nome;
         private static int codiceProgressivo = 0;
         private List<Colonna> colonne;
+        private MoiraTask taskDaAggiungere;
 
         public Board(string nome)
         {

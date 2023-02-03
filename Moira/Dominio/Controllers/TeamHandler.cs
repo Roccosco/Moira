@@ -12,8 +12,8 @@ namespace Moira.Dominio.Controllers
         private Team teamCorrente;
         private Impiegato impiegatoCorrente;
         private Cerimonia cerimoniaCorrente;
-        
-        
+
+
         public TeamHandler()
         {
             moira = MoiraClass.Instance;
@@ -23,7 +23,7 @@ namespace Moira.Dominio.Controllers
 
         public Impiegato ImpiegatoCorrente { get => impiegatoCorrente; }
 
-        public void CreaImpiegato(string nome,string cognome, string email,string numeroTelefono, string indirizzo) => impiegatoCorrente = new Impiegato(nome, cognome, email, numeroTelefono, indirizzo);
+        public void CreaImpiegato(string nome, string cognome, string email, string numeroTelefono, string indirizzo) => impiegatoCorrente = new Impiegato(nome, cognome, email, numeroTelefono, indirizzo);
 
         public void SelezionaImpiegatoCorrente(string codiceImpiegato)
         {
@@ -65,7 +65,7 @@ namespace Moira.Dominio.Controllers
         }
 
         public void AggiungiImpiegatoATeam(string codiceImpiegato)
-        {       
+        {
             try
             {
                 Impiegato impiegato = moira.GetImpiegatoSpecifico(codiceImpiegato);
@@ -147,14 +147,14 @@ namespace Moira.Dominio.Controllers
             }
         }
 
-        public void CreaCerimonia(string nome, string descrizione, DateTime data, TipoCerimonia tipo, string codiceTeam)
+        public void CreaCerimonia(string nome, string descrizione, DateTime data, TimeSpan durata, TipoCerimonia tipo, string codiceTeam)
         {
-            
-
             try
             {
                 teamCorrente = moira.GetTeamSpecifico(codiceTeam);
-                teamCorrente.CreaCerimonia(nome, descrizione, tipo, data);
+                if (teamCorrente.HaGiaCerimonie(data, durata))
+                    throw new Exception("Il team è già impiegato in un'altra cerimonia quel giorno a quelle ore!");
+                teamCorrente.CreaCerimonia(nome, descrizione, tipo, data, durata);
             }
             catch (KeyNotFoundException e)
             {
@@ -164,13 +164,63 @@ namespace Moira.Dominio.Controllers
 
         public void InvitoCerimonia(string codiceCliente)
         {
-            Cliente cliente = moira.GetClienteSpecifico(codiceCliente);
-            cerimoniaCorrente.AggiungiCliente(cliente);
+            try
+            {
+                Cliente cliente = moira.GetClienteSpecifico(codiceCliente);
+                if (!teamCorrente.Progetto.IsClienteInterested(cliente))
+                    throw new Exception("Il cliente " + cliente.Nome + " non è interessato al progetto!");
+                cerimoniaCorrente.AggiungiCliente(cliente);
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public void ConfermaCreaCerimonia()
         {
             teamCorrente.confermaCreaCerimonia();
+        }
+
+        public void AvviaNuovoSprint(string codiceTeam)
+        {
+            try
+            {
+                teamCorrente = moira.GetTeamSpecifico(codiceTeam);
+                teamCorrente.AvviaNuovoSprint();
+
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+        public void AggiungiTaskASprint(string codiceTask, int storyPoints)
+        {
+            teamCorrente.AggiungiTaskASprint(codiceTask, storyPoints);
+        }
+
+        public void AssociaTaskSprintAImpiegato(string codiceImpiegato)
+        {
+            try
+            {
+                Impiegato impiegato = moira.GetImpiegatoSpecifico(codiceImpiegato);
+                teamCorrente.AssociaTaskSprintAImpiegato(impiegato);
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+        public void ConfermaAvvioSprint()
+        {
+            teamCorrente.confermaAvvioSprint();
         }
     }
 }

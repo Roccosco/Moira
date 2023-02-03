@@ -8,18 +8,20 @@ namespace Moira.Dominio
 {
     public class ColonnaConDaRivedere : ColonnaDecoratore
     {
-        private HashSet<Task> tasksDaRivedere;
+        private HashSet<MoiraTask> tasksDaRivedere;
 
         public ColonnaConDaRivedere(Colonna decorato) : base(decorato)
         {
-            tasksDaRivedere = new HashSet<Task>();
+            tasksDaRivedere = new HashSet<MoiraTask>();
         }
 
-        public override Tuple<List<Task>, List<Task>> getTask()
+        public override Tuple<List<MoiraTask>, List<MoiraTask>> getTask()
         {
-            Tuple<List<Task>, List<Task>> tupla = base.getTask();
+            Tuple<List<MoiraTask>, List<MoiraTask>> tupla = base.getTask();
             tupla.Item2.AddRange(tasksDaRivedere);
             return tupla;
         }
+
+        public override int getNumTasks() => tasksDaRivedere.Count + base.getNumTasks();
     }
 }

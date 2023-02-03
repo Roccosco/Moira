@@ -13,25 +13,30 @@ namespace Moira.Dominio
         private string descrizione;
         private int codiceProgressivo = 0;
         private DateTime data;
-        private List<Cliente> clienti;
+        private TimeSpan durata;
+        private HashSet<Cliente> clienti;
         private TipoCerimonia tipo;
         
        
 
-        public Cerimonia(string nome, string descrizione, TipoCerimonia tipo, DateTime data)
+        public Cerimonia(string nome, string descrizione, TipoCerimonia tipo, DateTime data, TimeSpan durata)
         {
             codiceUnivoco = (codiceProgressivo++).ToString();
             this.nome = nome;
             this.descrizione = descrizione;
             this.data = data;
-            clienti = new List<Cliente>();
+            this.durata = durata;
+            clienti = new HashSet<Cliente>();
             this.tipo= tipo;
-            
         }
 
-        
+        public DateTime Data { get => data; }
 
-        public void AggiungiCliente(Cliente cliente) => clienti.Add(cliente);
+        public void AggiungiCliente(Cliente cliente)
+        {
+            if (!clienti.Add(cliente))
+                throw new Exception("Cliente già invitato!");
+        }
     }
     public enum TipoCerimonia
     {

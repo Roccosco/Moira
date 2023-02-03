@@ -78,6 +78,17 @@ namespace Moira.Dominio
             return clienti.Any(x => x.CodiceUnivoco == codiceUnivocoCliente);
         }
 
+        public MoiraTask getTask(string codiceTask)
+        {
+            foreach(UserStory userStory in backlog)
+            {
+                MoiraTask task = userStory.getTask(codiceTask);
+                if (task != null)
+                    return task;
+            }
+            throw new Exception("Task con codice identificativo " + codiceTask + " non presente nel progetto!");
+        }
+
         public int PosizioneUserStory { get => posNuovaUserStory; }
 
         public UserStory Corrente { get => userStoryCorrente; }

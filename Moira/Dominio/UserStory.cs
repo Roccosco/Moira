@@ -5,10 +5,10 @@
         private string nome;
         private string descrizione;
         private string codiceIdentificativo;
-        private Dictionary<string, MoiraTask> tasks; 
+        private Dictionary<string, MoiraTask> tasks;
         private static int codiceProgressivo = 0;
 
-        
+
 
 
         public UserStory(string nome, string descrizione)
@@ -37,6 +37,14 @@
             tasks.Add(id, tsk);
 
             return id;
+        }
+
+        public MoiraTask getTask(string codiceTask)
+        {
+            if (tasks.TryGetValue(codiceTask, out MoiraTask task))
+                return task;
+            else
+                return null;
         }
 
         public string NomeUserStory { get => nome; }

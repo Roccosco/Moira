@@ -6,9 +6,24 @@ using System.Threading.Tasks;
 
 namespace Moira.Dominio
 {
-    public interface Colonna
+    public abstract class Colonna
     {
-        public Tuple<List<Task>, List<Task>> getTask();
-        public string getNome();
+        private string codiceIdentificativo;
+        private static int codiceProgressivo = 0;
+
+        public Colonna()
+        {
+            codiceIdentificativo = (codiceProgressivo++).ToString();
+        }
+
+        public string CodiceIdentificativo
+        {
+            get => codiceIdentificativo;
+        }
+
+        public abstract Tuple<List<MoiraTask>, List<MoiraTask>> getTask();
+        public abstract string getNome();
+        public abstract int getNumTasks();
+        public abstract void addTask(MoiraTask task);
     }
 }
