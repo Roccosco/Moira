@@ -8,7 +8,7 @@ namespace Moira.Dominio
 {
     public class AlgoTaskBoardSCRUM : AlgoritmoTaskBoard
     {
-        public MoiraTask getTask(int codiceIdentificativo, Team team)
+        public MoiraTask getTask(string codiceIdentificativo, Team team)
         {
             throw new NotImplementedException();
         }

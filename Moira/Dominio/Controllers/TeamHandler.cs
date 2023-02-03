@@ -222,5 +222,31 @@ namespace Moira.Dominio.Controllers
         {
             teamCorrente.confermaAvvioSprint();
         }
+
+        public void SelezionaTeamBoard(string codiceTeam)
+        {
+            try
+            {
+                Team team = moira.GetTeamSpecifico(codiceTeam);
+                Board board = team.Board;
+                if (board == null)
+                    throw new Exception("Il team selezionato non ha una board!");
+                teamCorrente = team;
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw e;
+            }
+        }
+
+        public void SelezionaTaskBacklogs(string codiceTask)
+        {
+            teamCorrente.selezionaTaskBacklogs(codiceTask);
+        }
+    
+        public void AggiungiTaskAColonna(string codiceColonna)
+        {
+            teamCorrente.AggiungiTaskAColonna(codiceColonna);
+        }
     }
 }

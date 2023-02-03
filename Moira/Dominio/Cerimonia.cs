@@ -15,9 +15,7 @@ namespace Moira.Dominio
         private DateTime data;
         private TimeSpan durata;
         private HashSet<Cliente> clienti;
-        private TipoCerimonia tipo;
-        
-       
+        private TipoCerimonia tipo;       
 
         public Cerimonia(string nome, string descrizione, TipoCerimonia tipo, DateTime data, TimeSpan durata)
         {

@@ -35,5 +35,24 @@ namespace Moira.Dominio
             else
                 colonne.Add(colonnaBase);
         }
+
+        public void addTask(MoiraTask task)
+        {
+            taskDaAggiungere = task;
+        }
+
+        public void addTaskColonna(string codiceColonna)
+        {
+            foreach(Colonna colonna in colonne)
+            {
+                if(colonna.CodiceIdentificativo==codiceColonna)
+                {
+                    colonna.addTask(taskDaAggiungere);
+                    return;
+                }     
+            }
+
+            throw new Exception("Colonna non trovata");
+        }
     }
 }

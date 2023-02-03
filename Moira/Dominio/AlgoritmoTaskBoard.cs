@@ -8,6 +8,6 @@ namespace Moira.Dominio
 {
     public interface AlgoritmoTaskBoard
     {
-        public MoiraTask getTask(int codiceIdentificativo, Team team);
+        public MoiraTask getTask(string codiceIdentificativo, Team team);
     }
 }

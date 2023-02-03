@@ -11,7 +11,7 @@ namespace Moira.Dominio
         private Dictionary<MoiraTask, Impiegato> taskImpiegati;
         private MoiraTask lastTask;
         //con storyPoints
-        private Dictionary<MoiraTask, int> taskStoryPoint;
+        private Dictionary<MoiraTask, int> taskStoryPoints;
 
         private DateTime dataAvvio;
         private DateTime dataFine;
@@ -19,13 +19,13 @@ namespace Moira.Dominio
         public Sprint()
         {
             taskImpiegati = new Dictionary<MoiraTask, Impiegato>();
-            taskStoryPoint = new Dictionary<MoiraTask, int>();
+            taskStoryPoints = new Dictionary<MoiraTask, int>();
             dataAvvio = DateTime.Now;
         }
 
         public void aggiungiTask(MoiraTask task, int storyPoints)
         {
-            taskStoryPoint.Add(task, storyPoints);
+            taskStoryPoints.Add(task, storyPoints);
             lastTask = task;
         }
 

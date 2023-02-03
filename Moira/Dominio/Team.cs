@@ -51,6 +51,11 @@
             }
         }
 
+        public Board Board
+        {
+            get => board;
+        }
+
         public void creaBoard(string nome)
         {
             if (board != null)
@@ -115,6 +120,24 @@
         public void confermaAvvioSprint()
         {
             sprintAttivo = sprintCorrente;
+        }
+
+        public void selezionaTaskBacklogs(string codiceTask)
+        {
+            AlgoritmoTaskBoard algoritmo;
+            if (haSprintAttivo())
+                algoritmo = new AlgoTaskBoardSCRUM();
+            else
+                algoritmo = new AlgoTaskBoardNoSCRUM();
+            MoiraTask task = algoritmo.getTask(codiceTask, this);
+            board.addTask(task);
+        }
+
+        public MoiraTask getTaskProgetto(string codiceIdentificativo) => progetto.getTask(codiceIdentificativo);
+
+        public void AggiungiTaskAColonna(string codiceColonna)
+        {
+            board.addTaskColonna(codiceColonna);
         }
     }
 }
