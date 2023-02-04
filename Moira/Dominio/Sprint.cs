@@ -33,5 +33,14 @@ namespace Moira.Dominio
         {
             taskImpiegati.Add(lastTask, impiegato);
         }
+
+        public MoiraTask getTask(string codiceTask)
+        {
+            foreach (MoiraTask task in taskStoryPoints)
+                if (task.CodiceIdentificativo == codiceTask)
+                    return task;
+
+            throw new Exception("Task non presente nello sprint backlog!");
+        }
     }
 }

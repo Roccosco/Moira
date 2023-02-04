@@ -10,7 +10,10 @@ namespace Moira.Dominio
     {
         public MoiraTask getTask(string codiceIdentificativo, Team team)
         {
-            throw new NotImplementedException();
+            if (!team.haSprintAttivo())
+                throw new Exception("Non si utilizza attualmente un framework SCRUM");
+
+            return team.SprintAttivo.getTask(codiceIdentificativo);
         }
     }
 }

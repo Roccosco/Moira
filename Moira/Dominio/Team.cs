@@ -56,6 +56,11 @@
             get => board;
         }
 
+        public Sprint SprintAttivo
+        {
+            get => sprintAttivo;
+        }
+
         public void creaBoard(string nome)
         {
             if (board != null)
