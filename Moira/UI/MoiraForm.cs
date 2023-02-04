@@ -51,5 +51,10 @@ namespace Moira.UI
         {
             new GestisciCerimonia().Show(); 
         }
+
+        private void buttonSprint_Click(object sender, EventArgs e)
+        {
+            new TeamSprintForm().Show();
+        }
     }
 }
