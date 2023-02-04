@@ -25,14 +25,26 @@ namespace Moira.UI
         {
             string nome = textBoxNomeColonna.Text;
             bool daRivedere = checkBoxDaRivedere.Checked;
-
+            int limiteTask = 0;
             if (string.IsNullOrEmpty(nome))
             {
                 MessageBox.Show("Nessun campo deve essere vuoto!");
                 return;
             }
 
-            controller.CreaColonna(nome, daRivedere);
+            if (checkBoxLimitata.Checked)
+            {
+                if (!int.TryParse(checkBoxLimitata.Text, out limiteTask) || limiteTask <= 0)
+                {
+                    MessageBox.Show("Il limite deve essere un numero valido");
+                    return;
+                }
+
+                controller.CreaColonna(nome, daRivedere, limiteTask);
+            }
+            else
+                controller.CreaColonna(nome, daRivedere);
+
             MessageBox.Show("Colonna creata correttamente!");
 
             buttonTermina.Enabled = true;
@@ -45,9 +57,23 @@ namespace Moira.UI
                 controller.ConfermaCreaBoard();
                 Dispose();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void checkBoxLimitata_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxLimitata.Checked)
+            {
+                textBoxLimiteTask.Visible = true;
+                labelLimite.Visible = true;
+            }
+            else
+            {
+                textBoxLimiteTask.Visible = false;
+                labelLimite.Visible = false;
             }
         }
     }

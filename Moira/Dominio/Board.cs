@@ -36,6 +36,20 @@ namespace Moira.Dominio
                 colonne.Add(colonnaBase);
         }
 
+        public void creaColonna(string nome, bool daRivedere, int limiteTask)
+        {
+            Colonna colonna;
+
+            ColonnaBase colonnaBase = new ColonnaBase(nome);
+            colonna = colonnaBase;
+            if (daRivedere)
+                colonna = new ColonnaConDaRivedere(colonna);
+
+            colonna = new ColonnaConLimite(colonna, limiteTask);
+
+            colonne.Add(colonna);
+        }
+
         public void addTask(MoiraTask task)
         {
             taskDaAggiungere = task;
@@ -43,13 +57,13 @@ namespace Moira.Dominio
 
         public void addTaskColonna(string codiceColonna)
         {
-            foreach(Colonna colonna in colonne)
+            foreach (Colonna colonna in colonne)
             {
-                if(colonna.CodiceIdentificativo==codiceColonna)
+                if (colonna.CodiceIdentificativo == codiceColonna)
                 {
                     colonna.addTask(taskDaAggiungere);
                     return;
-                }     
+                }
             }
 
             throw new Exception("Colonna non trovata");

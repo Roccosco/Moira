@@ -135,6 +135,8 @@ namespace Moira.Dominio.Controllers
 
         public void CreaColonna(string nome, bool daRivedere) => teamCorrente.creaColonna(nome, daRivedere);
 
+        public void CreaColonna(string nome, bool daRivedere, int limiteTask) => teamCorrente.creaColonna(nome, daRivedere, limiteTask);
+
         public void ConfermaCreaBoard()
         {
             try

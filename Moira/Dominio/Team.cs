@@ -72,6 +72,7 @@
 
 
         public void creaColonna(string nome, bool daRivedere) => boardCorrente.creaColonna(nome, daRivedere);
+        public void creaColonna(string nome, bool daRivedere, int limiteTask) => boardCorrente.creaColonna(nome, daRivedere, limiteTask);
 
         public void confermaCreaBoard()
         {
