@@ -8,10 +8,11 @@ namespace Moira.Dominio
 {
     public class Cerimonia 
     {
+        private static int codiceProgressivo = 0;
+
         private string codiceUnivoco;
         private string nome;
         private string descrizione;
-        private int codiceProgressivo = 0;
         private DateTime data;
         private TimeSpan durata;
         private HashSet<Cliente> clienti;
