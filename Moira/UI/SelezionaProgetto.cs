@@ -18,10 +18,10 @@ namespace Moira.UI
 
         private Form form;
 
-        public SelezionaProgetto(Form form)
+        public SelezionaProgetto(Form form, ProgettoHandler controller)
         {
             this.form = form;
-            controller = new ProgettoHandler();
+            this.controller = controller;
             InitializeComponent();
         }
 

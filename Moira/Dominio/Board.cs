@@ -59,7 +59,7 @@ namespace Moira.Dominio
         {
             foreach (Colonna colonna in colonne)
             {
-                if (colonna.CodiceIdentificativo == codiceColonna)
+                if (colonna.ContieneCodiceIdentificativo(codiceColonna))
                 {
                     colonna.addTask(taskDaAggiungere);
                     return;
@@ -67,6 +67,16 @@ namespace Moira.Dominio
             }
 
             throw new Exception("Colonna non trovata");
+        }
+
+        public void Draw(Panel panel)
+        {
+            int x = 0;
+            foreach(Colonna colonna in colonne)
+            {
+                colonna.Draw(panel, x);
+                x += 200;
+            }
         }
     }
 }

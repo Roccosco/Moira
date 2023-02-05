@@ -34,7 +34,7 @@ namespace Moira.UI
 
             if (checkBoxLimitata.Checked)
             {
-                if (!int.TryParse(checkBoxLimitata.Text, out limiteTask) || limiteTask <= 0)
+                if (!int.TryParse(textBoxLimiteTask.Text, out limiteTask) || limiteTask <= 0)
                 {
                     MessageBox.Show("Il limite deve essere un numero valido");
                     return;

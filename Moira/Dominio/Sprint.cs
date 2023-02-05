@@ -36,7 +36,7 @@ namespace Moira.Dominio
 
         public MoiraTask getTask(string codiceTask)
         {
-            foreach (MoiraTask task in taskStoryPoints)
+            foreach (MoiraTask task in taskStoryPoints.Keys)
                 if (task.CodiceIdentificativo == codiceTask)
                     return task;
 

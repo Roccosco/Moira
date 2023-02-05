@@ -15,6 +15,14 @@ namespace Moira.Dominio
             this.decorato = decorato;
         }
 
+        public override bool ContieneCodiceIdentificativo(string codiceIdentificativo)
+        {
+            if (CodiceIdentificativo == codiceIdentificativo)
+                return true;
+
+            return decorato.ContieneCodiceIdentificativo(codiceIdentificativo);
+        }
+
         public override string getNome() => decorato.getNome();
 
         public override Tuple<List<MoiraTask>, List<MoiraTask>> getTask() => decorato.getTask();
@@ -22,6 +30,8 @@ namespace Moira.Dominio
         public override int getNumTasks() => decorato.getNumTasks();
 
         public override void addTask(MoiraTask task) => decorato.addTask(task);
+
+        public override void Draw(Panel panel, int x) => decorato.Draw(panel, x);
 
     }
 }

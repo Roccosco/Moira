@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Moira.Dominio.Controllers;
 
 namespace Moira.UI
 {
@@ -24,7 +25,8 @@ namespace Moira.UI
 
         private void buttonGestisciBacklog_Click(object sender, EventArgs e)
         {
-            new SelezionaProgetto(new InserisciNuovaUserStory()).Show();
+            ProgettoHandler controller = new ProgettoHandler();
+            new SelezionaProgetto(new InserisciNuovaUserStory(controller), controller).Show();
         }
 
         private void buttonGestisciClienti_Click(object sender, EventArgs e)
@@ -55,6 +57,11 @@ namespace Moira.UI
         private void buttonSprint_Click(object sender, EventArgs e)
         {
             new TeamSprintForm().Show();
+        }
+
+        private void buttonVisualizzaBoard_Click(object sender, EventArgs e)
+        {
+            new SelezionaTeamBoard().Show();
         }
     }
 }

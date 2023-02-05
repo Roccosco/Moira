@@ -16,9 +16,9 @@ namespace Moira.UI
     {
         private ProgettoHandler controller;
 
-        public InserisciNuovaUserStory()
+        public InserisciNuovaUserStory(ProgettoHandler controller)
         {
-            controller = new ProgettoHandler();
+            this.controller = controller;
             InitializeComponent();
         }
 
@@ -56,7 +56,7 @@ namespace Moira.UI
 
         private void buttonInserisciNuovoTask_Click(object sender, EventArgs e)
         {
-            new InserisciNuovoTask().Show();
+            new InserisciNuovoTask(controller).Show();
         }
 
         private void buttonInserisciPosizioneUserStory_Click(object sender, EventArgs e)

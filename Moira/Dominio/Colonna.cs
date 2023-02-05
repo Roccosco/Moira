@@ -21,9 +21,14 @@ namespace Moira.Dominio
             get => codiceIdentificativo;
         }
 
+        public abstract bool ContieneCodiceIdentificativo(string codiceIdentificativo);
+
         public abstract Tuple<List<MoiraTask>, List<MoiraTask>> getTask();
         public abstract string getNome();
         public abstract int getNumTasks();
         public abstract void addTask(MoiraTask task);
+
+        public abstract void Draw(Panel panel, int x);
+
     }
 }

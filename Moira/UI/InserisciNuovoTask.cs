@@ -16,9 +16,9 @@ namespace Moira.UI
     {
         private ProgettoHandler controller;
 
-        public InserisciNuovoTask()
+        public InserisciNuovoTask(ProgettoHandler controller)
         {
-            controller = new ProgettoHandler();
+            this.controller = controller;
             InitializeComponent();
         }
 

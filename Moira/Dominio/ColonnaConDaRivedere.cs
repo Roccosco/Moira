@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace Moira.Dominio
 {
@@ -23,5 +24,41 @@ namespace Moira.Dominio
         }
 
         public override int getNumTasks() => tasksDaRivedere.Count + base.getNumTasks();
+
+        public override void Draw(Panel panel, int x)
+        {
+            base.Draw(panel, x);
+
+            Panel panelColonna = null;
+
+            //ottengo l'ultimo task
+            int posY = 0;
+            foreach (Control control in panel.Controls)
+            {
+                Colonna colonna = (Colonna)control.Tag;
+                if (ContieneCodiceIdentificativo(colonna.CodiceIdentificativo))
+                {
+                    posY = control.Controls[control.Controls.Count - 1].Location.Y + 100;
+                    panelColonna = (Panel)control;
+                }
+            }
+            if (panelColonna == null)
+                return;
+
+            Label label = new Label()
+            {
+                Text = "Sezione da rivedere",
+                Location = new Point(10, posY),
+                Width = 180,
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            panelColonna.Controls.Add(label);
+
+            foreach (MoiraTask task in tasksDaRivedere)
+            {
+                task.Draw(panelColonna, posY);
+                posY += 100;
+            }
+        }
     }
 }

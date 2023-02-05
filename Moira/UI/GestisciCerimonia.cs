@@ -29,17 +29,18 @@ namespace Moira.UI
             string descrizione = textBoxDescCerimonia.Text;
             TipoCerimonia tipo = (TipoCerimonia)comboBoxTipo.SelectedIndex;
             DateTime data = dateTimePickerCerimonia.Value;
+            int minutiDurata;
 
-
-
-            if (string.IsNullOrEmpty(team) || string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(descrizione))
+            if (string.IsNullOrEmpty(team) || string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(descrizione) || !int.TryParse(textBoxDurata.Text, out minutiDurata))
             {
                 MessageBox.Show("Inserire tutti i campi");
                 return;
             }
 
-            controller.CreaCerimonia(nome, descrizione, data, tipo, team);
-            controller.ConfermaCreaCerimonia(); 
+            TimeSpan durata = new TimeSpan(0, minutiDurata, 0);
+
+            controller.CreaCerimonia(nome, descrizione, data, durata, tipo, team);
+            controller.ConfermaCreaCerimonia();
 
             new InserisciClienteCerimonia().Show();
         }
