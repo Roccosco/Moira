@@ -16,6 +16,7 @@ namespace Moira.UI
     {
 
         private TeamHandler controller;
+        private Observer observer;
 
         public BoardForm(TeamHandler controller)
         {
@@ -23,7 +24,14 @@ namespace Moira.UI
 
             this.controller = controller;
 
+            observer = new ObserverBoard(panelBoard);
+            controller.TeamCorrente.Board.Register(observer);
             DrawBoard();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            controller.TeamCorrente.Board.Remove(observer); 
         }
 
         private void DrawBoard()

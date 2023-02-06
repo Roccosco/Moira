@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Moira.Dominio
 {
-    public class Board
+    public class Board : Subject
     {
         private string codiceUnivoco;
         private string nome;
@@ -14,6 +14,8 @@ namespace Moira.Dominio
         private List<Colonna> colonne;
         private MoiraTask taskCorrente;
         private Colonna colonnaCorrente;
+        private HashSet<Observer> observers;
+
         public Board(string nome)
         {
             codiceUnivoco = (codiceProgressivo++).ToString();
@@ -62,6 +64,7 @@ namespace Moira.Dominio
                 if (colonna.ContieneCodiceIdentificativo(codiceColonna))
                 {
                     colonna.addTask(taskCorrente);
+
                     return;
                 }
             }
@@ -71,6 +74,8 @@ namespace Moira.Dominio
 
         public void Draw(Panel panel)
         {
+            panel.Controls.Clear();
+
             int x = 0;
             foreach(Colonna colonna in colonne)
             {
@@ -103,5 +108,16 @@ namespace Moira.Dominio
 
             //Colonna colonnaDestinazione = colonne.Where(x=>x.CodiceIdentificativo )
         }
+
+        public void Register(Observer observer) => observers.Add(observer);
+
+        public void Remove(Observer observer) => observers.Remove(observer);
+
+        public void Notify()
+        {
+            foreach (Observer observer in observers)
+                observer.update();
+        }
+
     }
 }
