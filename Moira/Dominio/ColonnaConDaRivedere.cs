@@ -46,26 +46,39 @@ namespace Moira.Dominio
                 Colonna colonna = (Colonna)control.Tag;
                 if (ContieneCodiceIdentificativo(colonna.CodiceIdentificativo))
                 {
-                    posY = control.Controls[control.Controls.Count - 1].Location.Y + 100;
+                    posY = control.Controls[control.Controls.Count - 1].Location.Y + 110;
                     panelColonna = (Panel)control;
                 }
             }
             if (panelColonna == null)
                 return;
 
+            panelColonna.Height = posY;
+
+            Panel panelDaRivedere = new Panel()
+            {
+                Location = new Point(panelColonna.Location.X, posY),
+                Width = 200,
+                Height = panel.Height - posY - 10,
+                BorderStyle = BorderStyle.FixedSingle,
+                Tag = this
+            };
+            panel.Controls.Add(panelDaRivedere);
+
             Label label = new Label()
             {
                 Text = "Sezione da rivedere",
-                Location = new Point(10, posY),
+                Location = new Point(10, 10),
                 Width = 180,
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            panelColonna.Controls.Add(label);
+            panelDaRivedere.Controls.Add(label);
 
+            int y = 50;
             foreach (MoiraTask task in tasksDaRivedere)
             {
-                task.Draw(panelColonna, posY);
-                posY += 100;
+                task.Draw(panelDaRivedere, y);
+                y += 100;
             }
         }
 

@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace Moira.UI
 {
-    public partial class BoardForm : Form
+    public partial class BoardForm : Form, Observer
     {
 
         private TeamHandler controller;
-        private Observer observer;
+        private Board board;
 
         public BoardForm(TeamHandler controller)
         {
@@ -24,19 +24,19 @@ namespace Moira.UI
 
             this.controller = controller;
 
-            observer = new ObserverBoard(panelBoard);
-            controller.TeamCorrente.Board.Register(observer);
+            board = controller.TeamCorrente.Board;
+            board.Register(this);
             DrawBoard();
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            controller.TeamCorrente.Board.Remove(observer); 
+            board.Remove(this);
         }
 
         private void DrawBoard()
         {
-            controller.TeamCorrente.Board.Draw(panelBoard);
+            board.Draw(panelBoard);
 
             foreach (Control panelColonna in panelBoard.Controls)
             {
@@ -109,6 +109,11 @@ namespace Moira.UI
         {
             MoiraTask task = ((ContextMenuStrip)((ToolStripMenuItem)sender).Owner).SourceControl.Tag as MoiraTask;
 
+        }
+
+        public void update()
+        {
+            DrawBoard();
         }
     }
 }

@@ -23,6 +23,8 @@ namespace Moira.Dominio
 
             colonne = new List<Colonna>();
             colonne.Add(new ColonnaBase("Cestinato"));
+
+            observers = new HashSet<Observer>();
         }
 
         public void creaColonna(string nome, bool daRivedere)
@@ -64,7 +66,7 @@ namespace Moira.Dominio
                 if (colonna.ContieneCodiceIdentificativo(codiceColonna))
                 {
                     colonna.addTask(taskCorrente);
-
+                    Notify();
                     return;
                 }
             }
@@ -110,6 +112,7 @@ namespace Moira.Dominio
 
             colonnaCorrente.removeTask(taskCorrente);
             colonnaDestinazione.addTask(taskCorrente);
+            Notify();
         }
 
         public void Register(Observer observer) => observers.Add(observer);
