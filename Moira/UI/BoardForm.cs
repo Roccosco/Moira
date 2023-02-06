@@ -66,7 +66,8 @@ namespace Moira.UI
                         return;
 
                     //fare qui sposta
-                    
+                    controller.SelezionaTaskBoard(task.CodiceIdentificativo, colonnaDa.CodiceIdentificativo);
+                    controller.SpostaTaskTraColonne(colonnaA.CodiceIdentificativo);
                 };
 
                 foreach (Control panelTask in panelColonna.Controls)
