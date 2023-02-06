@@ -12,8 +12,8 @@ namespace Moira.Dominio
         private string nome;
         private static int codiceProgressivo = 0;
         private List<Colonna> colonne;
-        private MoiraTask taskDaAggiungere;
-
+        private MoiraTask taskCorrente;
+        private Colonna colonnaCorrente;
         public Board(string nome)
         {
             codiceUnivoco = (codiceProgressivo++).ToString();
@@ -50,9 +50,9 @@ namespace Moira.Dominio
             colonne.Add(colonna);
         }
 
-        public void addTask(MoiraTask task)
+        public void setTaskCorrente(MoiraTask task)
         {
-            taskDaAggiungere = task;
+            taskCorrente = task;
         }
 
         public void addTaskColonna(string codiceColonna)
@@ -61,7 +61,7 @@ namespace Moira.Dominio
             {
                 if (colonna.ContieneCodiceIdentificativo(codiceColonna))
                 {
-                    colonna.addTask(taskDaAggiungere);
+                    colonna.addTask(taskCorrente);
                     return;
                 }
             }
@@ -77,6 +77,31 @@ namespace Moira.Dominio
                 colonna.Draw(panel, x);
                 x += 200;
             }
+        }
+
+        public void SelezionaTask(string codiceTask, string codiceColonna)
+        {
+            Colonna colonna = null;
+            foreach(Colonna cln in colonne)
+            {
+                if(cln.ContieneCodiceIdentificativo(codiceColonna))
+                    colonna = cln;
+            }
+            
+            if (colonna == null)
+                throw new Exception("Non esiste una colonna con codice: " + codiceColonna);
+
+            MoiraTask task = colonna.getTask(codiceTask);
+
+            taskCorrente = task;
+            colonnaCorrente = colonna;
+        }
+
+        public void SpostaTaskTraColonne(string codiceColonnaDestinazione)
+        {
+            colonnaCorrente.removeTask(taskCorrente);
+
+            //Colonna colonnaDestinazione = colonne.Where(x=>x.CodiceIdentificativo )
         }
     }
 }

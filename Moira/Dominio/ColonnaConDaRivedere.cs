@@ -16,11 +16,19 @@ namespace Moira.Dominio
             tasksDaRivedere = new HashSet<MoiraTask>();
         }
 
-        public override Tuple<List<MoiraTask>, List<MoiraTask>> getTask()
+        public override Tuple<List<MoiraTask>, List<MoiraTask>> getTasks()
         {
-            Tuple<List<MoiraTask>, List<MoiraTask>> tupla = base.getTask();
+            Tuple<List<MoiraTask>, List<MoiraTask>> tupla = base.getTasks();
             tupla.Item2.AddRange(tasksDaRivedere);
             return tupla;
+        }
+
+        public override MoiraTask getTask(string codiceTask)
+        {
+            MoiraTask task = tasksDaRivedere.Where(x => x.CodiceIdentificativo == codiceTask).FirstOrDefault();
+            if (task == null)
+                return base.getTask(codiceTask);
+            return task;
         }
 
         public override int getNumTasks() => tasksDaRivedere.Count + base.getNumTasks();
@@ -60,5 +68,10 @@ namespace Moira.Dominio
                 posY += 100;
             }
         }
+
+        public void removeTaskDaRivedere(MoiraTask task) => tasksDaRivedere.Remove(task);
+
+        public void addTaskDaRivedere(MoiraTask task) => tasksDaRivedere.Add(task);
+
     }
 }

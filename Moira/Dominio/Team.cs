@@ -136,7 +136,7 @@
             else
                 algoritmo = new AlgoTaskBoardNoSCRUM();
             MoiraTask task = algoritmo.getTask(codiceTask, this);
-            board.addTask(task);
+            board.setTaskCorrente(task);
         }
 
         public MoiraTask getTaskProgetto(string codiceIdentificativo) => progetto.getTask(codiceIdentificativo);
@@ -145,5 +145,10 @@
         {
             board.addTaskColonna(codiceColonna);
         }
+
+        public void SelezionaTaskBoard(string codiceTask, string codiceColonna) => board.SelezionaTask(codiceTask, codiceColonna);
+
+        public void SpostaTaskTraColonne(string codiceColonnaDestinazione) => board.SpostaTaskTraColonne(codiceColonnaDestinazione);
+
     }
 }

@@ -23,7 +23,17 @@ namespace Moira.Dominio
 
         public override string getNome() => nome;
 
-        public override Tuple<List<MoiraTask>, List<MoiraTask>> getTask() => new Tuple<List<MoiraTask>, List<MoiraTask>>(tasks.ToList(), new List<MoiraTask>());
+        public override Tuple<List<MoiraTask>, List<MoiraTask>> getTasks() => new Tuple<List<MoiraTask>, List<MoiraTask>>(tasks.ToList(), new List<MoiraTask>());
+
+        public override MoiraTask getTask(string codiceTask)
+        {
+            MoiraTask task = tasks.Where(x => x.CodiceIdentificativo == codiceTask).FirstOrDefault();
+
+            if (task == null)
+                throw new Exception("Impossibile trovare il task nella colonna");
+
+            return task;
+        }
 
         public override void addTask(MoiraTask task) => tasks.Add(task);
 
@@ -64,5 +74,9 @@ namespace Moira.Dominio
             }
         }
 
+        public override void removeTask(MoiraTask task)
+        {
+            tasks.Remove(task);
+        }
     }
 }

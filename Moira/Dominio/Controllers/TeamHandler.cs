@@ -250,5 +250,10 @@ namespace Moira.Dominio.Controllers
         {
             teamCorrente.AggiungiTaskAColonna(codiceColonna);
         }
+
+        public void SelezionaTaskBoard(string codiceTask, string codiceColonna) => teamCorrente.SelezionaTaskBoard(codiceTask, codiceColonna);
+
+        public void SpostaTaskTraColonne(string codiceColonnaDestinazione) => teamCorrente.SpostaTaskTraColonne(codiceColonnaDestinazione);
+
     }
 }

@@ -23,6 +23,11 @@ namespace Moira.UI
 
             this.controller = controller;
 
+            DrawBoard();
+        }
+
+        private void DrawBoard()
+        {
             controller.TeamCorrente.Board.Draw(panelBoard);
 
             foreach (Control panelColonna in panelBoard.Controls)
@@ -43,7 +48,7 @@ namespace Moira.UI
                 panelColonna.DragDrop += (s, e) =>
                 {
                     Panel panelTask = (Panel)e.Data.GetData(typeof(Panel));
-                    Panel panelColonnaDa = ((Panel)e.Data.GetData(typeof(Panel))).Parent as Panel;
+                    Panel panelColonnaDa = panelTask.Parent as Panel;
                     Panel panelColonnaA = (Panel)s;
                     Colonna colonnaDa = (Colonna)panelColonnaDa.Tag;
                     Colonna colonnaA = (Colonna)panelColonnaA.Tag;
@@ -53,9 +58,9 @@ namespace Moira.UI
                         return;
 
                     //fare qui sposta
-
-                };
                     
+                };
+
                 foreach (Control panelTask in panelColonna.Controls)
                 {
                     if (panelTask is not Panel)
