@@ -245,7 +245,7 @@ namespace Moira.Dominio.Controllers
         {
             teamCorrente.selezionaTaskBacklogs(codiceTask);
         }
-    
+
         public void AggiungiTaskAColonna(string codiceColonna)
         {
             teamCorrente.AggiungiTaskAColonna(codiceColonna);
@@ -253,7 +253,9 @@ namespace Moira.Dominio.Controllers
 
         public void SelezionaTaskBoard(string codiceTask, string codiceColonna) => teamCorrente.SelezionaTaskBoard(codiceTask, codiceColonna);
 
-        public void SpostaTaskTraColonne(string codiceColonnaDestinazione) => teamCorrente.SpostaTaskTraColonne(codiceColonnaDestinazione);
+        public void SpostaTaskTraColonne(string codiceColonnaDestinazione, bool daRivedereDa, bool daRivedereA) => teamCorrente.SpostaTaskTraColonne(codiceColonnaDestinazione, daRivedereDa, daRivedereA);
+
+        public void SpostaTaskInDaRivedere(string codiceColonnaDaRivedere) => TeamCorrente.SpostaTaskInDaRivedere(codiceColonnaDaRivedere);
 
     }
 }

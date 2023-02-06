@@ -16,6 +16,8 @@ namespace Moira.Dominio
             this.decorato = decorato;
         }
 
+        public Colonna Decorato { get => decorato; }
+
         public override bool ContieneCodiceIdentificativo(string codiceIdentificativo)
         {
             if (CodiceIdentificativo == codiceIdentificativo)

@@ -12,11 +12,12 @@ using System.Windows.Forms;
 
 namespace Moira.UI
 {
-    public partial class BoardForm : Form, Observer
+    public partial class BoardForm : Form
     {
 
         private TeamHandler controller;
         private Board board;
+        private Observer observer;
 
         public BoardForm(TeamHandler controller)
         {
@@ -25,16 +26,17 @@ namespace Moira.UI
             this.controller = controller;
 
             board = controller.TeamCorrente.Board;
-            board.Register(this);
+            observer = new ObserverBoard(this);
+            board.Register(observer);
             DrawBoard();
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            board.Remove(this);
+            board.Remove(observer);
         }
 
-        private void DrawBoard()
+        public void DrawBoard()
         {
             board.Draw(panelBoard);
 
@@ -65,9 +67,16 @@ namespace Moira.UI
                     if (colonnaDa == colonnaA)
                         return;
 
-                    //fare qui sposta
+                    bool daRivedereDa = false;
+                    if (colonnaDa is ColonnaConDaRivedere)
+                        daRivedereDa = true;
+
+                    bool daRivedereA = false;
+                    if (colonnaA is ColonnaConDaRivedere)
+                        daRivedereA = true;
+
                     controller.SelezionaTaskBoard(task.CodiceIdentificativo, colonnaDa.CodiceIdentificativo);
-                    controller.SpostaTaskTraColonne(colonnaA.CodiceIdentificativo);
+                    controller.SpostaTaskTraColonne(colonnaA.CodiceIdentificativo, daRivedereDa, daRivedereA);
                 };
 
                 foreach (Control panelTask in panelColonna.Controls)
@@ -103,17 +112,6 @@ namespace Moira.UI
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void SpostaTaskDaColonna(object? sender, EventArgs e)
-        {
-            MoiraTask task = ((ContextMenuStrip)((ToolStripMenuItem)sender).Owner).SourceControl.Tag as MoiraTask;
-
-        }
-
-        public void update()
-        {
-            DrawBoard();
         }
     }
 }

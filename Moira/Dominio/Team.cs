@@ -148,7 +148,8 @@
 
         public void SelezionaTaskBoard(string codiceTask, string codiceColonna) => board.SelezionaTask(codiceTask, codiceColonna);
 
-        public void SpostaTaskTraColonne(string codiceColonnaDestinazione) => board.SpostaTaskTraColonne(codiceColonnaDestinazione);
+        public void SpostaTaskTraColonne(string codiceColonnaDestinazione, bool daRivedereDa, bool daRivedereA) => board.SpostaTaskTraColonne(codiceColonnaDestinazione, daRivedereDa, daRivedereA);
 
+        public void SpostaTaskInDaRivedere(string codiceColonnaDaRivedere) => board.SpostaTaskInDaRivedere(codiceColonnaDaRivedere);
     }
 }
