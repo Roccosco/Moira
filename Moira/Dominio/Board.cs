@@ -99,9 +99,12 @@ namespace Moira.Dominio
 
         public void SpostaTaskTraColonne(string codiceColonnaDestinazione)
         {
-            colonnaCorrente.removeTask(taskCorrente);
+            Colonna colonnaDestinazione = colonne.Where(x => x.ContieneCodiceIdentificativo(codiceColonnaDestinazione)).FirstOrDefault();
+            if (colonnaDestinazione == null)
+                throw new Exception("Non è possibile trovare la colonna di destinazione");
 
-            //Colonna colonnaDestinazione = colonne.Where(x=>x.CodiceIdentificativo )
+            colonnaCorrente.removeTask(taskCorrente);
+            colonnaDestinazione.addTask(taskCorrente);
         }
     }
 }
