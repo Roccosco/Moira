@@ -23,6 +23,7 @@ namespace Moira.UI
             this.form = form;
             this.controller = controller;
             InitializeComponent();
+            dataGridViewProgetti.DataSource = controller.GetProgetti();
         }
 
         private void buttonAvanti_Click(object sender, EventArgs e)

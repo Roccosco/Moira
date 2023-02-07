@@ -100,6 +100,8 @@ namespace Moira.Dominio
         }
 
         public List<Team> GetTeams() => new List<Team>(teams.Values);
-
+        public List<Cliente> GetClienti() => new List<Cliente>(clienti.Values);
+        public List<Progetto> GetProgetti() => new List<Progetto>(progetti.Values);
+        public List<Impiegato> GetImpiegati() => new List<Impiegato>(impiegati.Values);
     }
 }

@@ -44,6 +44,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCodiceUnivoco = new System.Windows.Forms.TextBox();
             this.buttonModifica = new System.Windows.Forms.Button();
+            this.dataGridViewImpiegati = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegati)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonInserisci
@@ -184,11 +186,22 @@
             this.buttonModifica.UseVisualStyleBackColor = true;
             this.buttonModifica.Click += new System.EventHandler(this.buttonModifica_Click);
             // 
+            // dataGridViewImpiegati
+            // 
+            this.dataGridViewImpiegati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewImpiegati.Location = new System.Drawing.Point(583, 254);
+            this.dataGridViewImpiegati.Name = "dataGridViewImpiegati";
+            this.dataGridViewImpiegati.RowHeadersWidth = 51;
+            this.dataGridViewImpiegati.RowTemplate.Height = 29;
+            this.dataGridViewImpiegati.Size = new System.Drawing.Size(364, 188);
+            this.dataGridViewImpiegati.TabIndex = 32;
+            // 
             // GestisciImpiegatoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 645);
+            this.Controls.Add(this.dataGridViewImpiegati);
             this.Controls.Add(this.buttonModifica);
             this.Controls.Add(this.buttonElimina);
             this.Controls.Add(this.buttonTrova);
@@ -207,6 +220,7 @@
             this.Controls.Add(this.textBoxNome);
             this.Name = "GestisciImpiegatoForm";
             this.Text = "GestisciImpiegatoForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegati)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +244,6 @@
         private Label label7;
         private TextBox textBoxCodiceUnivoco;
         private Button buttonModifica;
+        private DataGridView dataGridViewImpiegati;
     }
 }

@@ -19,6 +19,7 @@ namespace Moira.UI
         {
             InitializeComponent();
             controller = new ClienteHandler();
+            dataGridViewClienti.DataSource = controller.GetClienti();
         }
 
         private void buttonInserisci_Click(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace Moira.UI
         {
             InitializeComponent();
             controller = new TeamHandler();
+            dataGridViewTeams.DataSource = controller.GetTeams();   
         }
 
         private void buttonInserisci_Click(object sender, EventArgs e)
@@ -105,6 +106,11 @@ namespace Moira.UI
             {
                 MessageBox.Show("il team è già presente nel Sistema!");
             }
+        }
+
+        private void GestisciTeamForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

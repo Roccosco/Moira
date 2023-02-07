@@ -257,5 +257,9 @@ namespace Moira.Dominio.Controllers
 
         public void SpostaTaskInDaRivedere(string codiceColonnaDaRivedere) => TeamCorrente.SpostaTaskInDaRivedere(codiceColonnaDaRivedere);
 
+
+        public List<Impiegato> GetImpiegati() => moira.GetImpiegati();
+
+        public List<Team> GetTeams() => moira.GetTeams();
     }
 }

@@ -46,6 +46,8 @@
             this.buttonTrova = new System.Windows.Forms.Button();
             this.buttonModifica = new System.Windows.Forms.Button();
             this.buttonElimina = new System.Windows.Forms.Button();
+            this.dataGridViewClienti = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClienti)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxNome
@@ -202,11 +204,22 @@
             this.buttonElimina.UseVisualStyleBackColor = true;
             this.buttonElimina.Click += new System.EventHandler(this.buttonElimina_Click);
             // 
+            // dataGridViewClienti
+            // 
+            this.dataGridViewClienti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClienti.Location = new System.Drawing.Point(509, 269);
+            this.dataGridViewClienti.Name = "dataGridViewClienti";
+            this.dataGridViewClienti.RowHeadersWidth = 51;
+            this.dataGridViewClienti.RowTemplate.Height = 29;
+            this.dataGridViewClienti.Size = new System.Drawing.Size(394, 227);
+            this.dataGridViewClienti.TabIndex = 18;
+            // 
             // GestisciClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 591);
+            this.Controls.Add(this.dataGridViewClienti);
             this.Controls.Add(this.buttonElimina);
             this.Controls.Add(this.buttonModifica);
             this.Controls.Add(this.buttonTrova);
@@ -227,7 +240,7 @@
             this.Controls.Add(this.textBoxNome);
             this.Name = "GestisciClienteForm";
             this.Text = "GestisciClienteForm";
-            
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClienti)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,5 +266,6 @@
         private Button buttonTrova;
         private Button buttonModifica;
         private Button buttonElimina;
+        private DataGridView dataGridViewClienti;
     }
 }

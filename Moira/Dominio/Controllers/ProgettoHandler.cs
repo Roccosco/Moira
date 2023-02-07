@@ -80,5 +80,8 @@
 
         public List<Team> GetTeams() => moira.GetTeams();
 
+        public List<Cliente> GetClienti() => moira.GetClienti();
+
+        public List<Progetto> GetProgetti() => moira.GetProgetti();
     }
 }

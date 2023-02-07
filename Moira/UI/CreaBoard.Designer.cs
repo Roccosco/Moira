@@ -33,11 +33,13 @@
             this.labelNomeBoard = new System.Windows.Forms.Label();
             this.textBoxTeamBoard = new System.Windows.Forms.TextBox();
             this.labelTeamBoard = new System.Windows.Forms.Label();
+            this.dataGridViewTeams = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonInserisci
             // 
-            this.buttonInserisci.Location = new System.Drawing.Point(238, 264);
+            this.buttonInserisci.Location = new System.Drawing.Point(245, 452);
             this.buttonInserisci.Name = "buttonInserisci";
             this.buttonInserisci.Size = new System.Drawing.Size(291, 29);
             this.buttonInserisci.TabIndex = 1;
@@ -47,7 +49,7 @@
             // 
             // textBoxNomeBoard
             // 
-            this.textBoxNomeBoard.Location = new System.Drawing.Point(238, 110);
+            this.textBoxNomeBoard.Location = new System.Drawing.Point(245, 338);
             this.textBoxNomeBoard.Name = "textBoxNomeBoard";
             this.textBoxNomeBoard.Size = new System.Drawing.Size(291, 27);
             this.textBoxNomeBoard.TabIndex = 2;
@@ -55,7 +57,7 @@
             // labelNomeBoard
             // 
             this.labelNomeBoard.AutoSize = true;
-            this.labelNomeBoard.Location = new System.Drawing.Point(315, 87);
+            this.labelNomeBoard.Location = new System.Drawing.Point(322, 315);
             this.labelNomeBoard.Name = "labelNomeBoard";
             this.labelNomeBoard.Size = new System.Drawing.Size(147, 20);
             this.labelNomeBoard.TabIndex = 3;
@@ -63,7 +65,7 @@
             // 
             // textBoxTeamBoard
             // 
-            this.textBoxTeamBoard.Location = new System.Drawing.Point(238, 175);
+            this.textBoxTeamBoard.Location = new System.Drawing.Point(245, 403);
             this.textBoxTeamBoard.Name = "textBoxTeamBoard";
             this.textBoxTeamBoard.Size = new System.Drawing.Size(291, 27);
             this.textBoxTeamBoard.TabIndex = 4;
@@ -71,17 +73,28 @@
             // labelTeamBoard
             // 
             this.labelTeamBoard.AutoSize = true;
-            this.labelTeamBoard.Location = new System.Drawing.Point(238, 152);
+            this.labelTeamBoard.Location = new System.Drawing.Point(245, 380);
             this.labelTeamBoard.Name = "labelTeamBoard";
             this.labelTeamBoard.Size = new System.Drawing.Size(291, 20);
             this.labelTeamBoard.TabIndex = 5;
             this.labelTeamBoard.Text = "Inserisci codice team a cui associare board";
             // 
+            // dataGridViewTeams
+            // 
+            this.dataGridViewTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTeams.Location = new System.Drawing.Point(123, 40);
+            this.dataGridViewTeams.Name = "dataGridViewTeams";
+            this.dataGridViewTeams.RowHeadersWidth = 51;
+            this.dataGridViewTeams.RowTemplate.Height = 29;
+            this.dataGridViewTeams.Size = new System.Drawing.Size(544, 212);
+            this.dataGridViewTeams.TabIndex = 6;
+            // 
             // CreaBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(791, 524);
+            this.Controls.Add(this.dataGridViewTeams);
             this.Controls.Add(this.labelTeamBoard);
             this.Controls.Add(this.textBoxTeamBoard);
             this.Controls.Add(this.labelNomeBoard);
@@ -89,6 +102,7 @@
             this.Controls.Add(this.buttonInserisci);
             this.Name = "CreaBoard";
             this.Text = "CreasBoard";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,5 +114,6 @@
         private Label labelNomeBoard;
         private TextBox textBoxTeamBoard;
         private Label labelTeamBoard;
+        private DataGridView dataGridViewTeams;
     }
 }

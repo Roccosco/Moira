@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             this.panelAssociaClienti = new System.Windows.Forms.Panel();
+            this.dataGridViewCliente = new System.Windows.Forms.DataGridView();
             this.buttonFineClienti = new System.Windows.Forms.Button();
             this.buttonAggiungiCliente = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxCodiceCliente = new System.Windows.Forms.TextBox();
             this.panelAssociaClienti.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // panelAssociaClienti
             // 
+            this.panelAssociaClienti.Controls.Add(this.dataGridViewCliente);
             this.panelAssociaClienti.Controls.Add(this.buttonFineClienti);
             this.panelAssociaClienti.Controls.Add(this.buttonAggiungiCliente);
             this.panelAssociaClienti.Controls.Add(this.label5);
@@ -46,6 +49,16 @@
             this.panelAssociaClienti.Name = "panelAssociaClienti";
             this.panelAssociaClienti.Size = new System.Drawing.Size(941, 551);
             this.panelAssociaClienti.TabIndex = 8;
+            // 
+            // dataGridViewCliente
+            // 
+            this.dataGridViewCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCliente.Location = new System.Drawing.Point(201, 109);
+            this.dataGridViewCliente.Name = "dataGridViewCliente";
+            this.dataGridViewCliente.RowHeadersWidth = 51;
+            this.dataGridViewCliente.RowTemplate.Height = 29;
+            this.dataGridViewCliente.Size = new System.Drawing.Size(539, 204);
+            this.dataGridViewCliente.TabIndex = 4;
             // 
             // buttonFineClienti
             // 
@@ -93,6 +106,7 @@
             this.Text = "AssociaClienteANuovoProgetto";
             this.panelAssociaClienti.ResumeLayout(false);
             this.panelAssociaClienti.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCliente)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,5 +124,6 @@
         private Label label1;
         private TextBox textBox1;
         private Label label2;
+        private DataGridView dataGridViewCliente;
     }
 }

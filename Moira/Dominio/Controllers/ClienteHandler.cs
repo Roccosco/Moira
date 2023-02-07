@@ -81,5 +81,7 @@ namespace Moira.Dominio.Controllers
             }
         }
 
+        public List<Cliente> GetClienti() => moira.GetClienti();
+
     }
 }
