@@ -14,10 +14,10 @@ namespace Moira.UI
     public partial class InserisciClienteCerimonia : Form
     {
         private TeamHandler controller;
-        public InserisciClienteCerimonia()
+        public InserisciClienteCerimonia(TeamHandler controller)
         {
             InitializeComponent();
-            controller = new TeamHandler();
+            this.controller = controller;
         }
 
         private void buttonCliente_Click(object sender, EventArgs e)
@@ -35,6 +35,13 @@ namespace Moira.UI
             {
                 MessageBox.Show("l'impiegato con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
             }
+        }
+
+        private void buttonTermina_Click(object sender, EventArgs e)
+        {
+            controller.ConfermaCreaCerimonia();
+            MessageBox.Show("Cerimonia schedulata!");
+            Dispose();
         }
     }
 }

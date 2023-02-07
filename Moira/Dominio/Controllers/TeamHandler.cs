@@ -168,6 +168,9 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
+                if (teamCorrente.Progetto == null)
+                    throw new Exception("Il team non lavora ad alcun progetto e quindi il cliente non può essere aggiunto!");
+
                 Cliente cliente = moira.GetClienteSpecifico(codiceCliente);
                 if (!teamCorrente.Progetto.IsClienteInterested(cliente))
                     throw new Exception("Il cliente " + cliente.Nome + " non è interessato al progetto!");

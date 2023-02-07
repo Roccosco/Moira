@@ -28,7 +28,7 @@ namespace Moira.UI
             string nome = textBoxNomeCerimonia.Text;
             string descrizione = textBoxDescCerimonia.Text;
             TipoCerimonia tipo = (TipoCerimonia)comboBoxTipo.SelectedIndex;
-            DateTime data = dateTimePickerCerimonia.Value;
+            DateTime data = new DateTime(dateTimePickerCerimonia.Value.Year, dateTimePickerCerimonia.Value.Month, dateTimePickerCerimonia.Value.Day, dateTimePickerOra.Value.Hour, dateTimePickerOra.Value.Minute, 0);
             int minutiDurata;
 
             if (string.IsNullOrEmpty(team) || string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(descrizione) || !int.TryParse(textBoxDurata.Text, out minutiDurata))
@@ -39,10 +39,17 @@ namespace Moira.UI
 
             TimeSpan durata = new TimeSpan(0, minutiDurata, 0);
 
-            controller.CreaCerimonia(nome, descrizione, data, durata, tipo, team);
-            controller.ConfermaCreaCerimonia();
+            try
+            {
+                controller.CreaCerimonia(nome, descrizione, data, durata, tipo, team);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
 
-            new InserisciClienteCerimonia().Show();
+            new InserisciClienteCerimonia(controller).Show();
         }
     }
 }
