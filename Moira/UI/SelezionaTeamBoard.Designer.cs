@@ -32,11 +32,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCodice = new System.Windows.Forms.TextBox();
+            this.dataGridViewTeams = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAvanti
             // 
-            this.buttonAvanti.Location = new System.Drawing.Point(361, 335);
+            this.buttonAvanti.Location = new System.Drawing.Point(359, 422);
             this.buttonAvanti.Name = "buttonAvanti";
             this.buttonAvanti.Size = new System.Drawing.Size(94, 29);
             this.buttonAvanti.TabIndex = 11;
@@ -47,7 +49,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(359, 213);
+            this.label2.Location = new System.Drawing.Point(367, 366);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 10;
@@ -57,7 +59,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(336, 87);
+            this.label1.Location = new System.Drawing.Point(334, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 28);
             this.label1.TabIndex = 9;
@@ -65,22 +67,34 @@
             // 
             // textBoxCodice
             // 
-            this.textBoxCodice.Location = new System.Drawing.Point(270, 236);
+            this.textBoxCodice.Location = new System.Drawing.Point(278, 389);
             this.textBoxCodice.Name = "textBoxCodice";
             this.textBoxCodice.Size = new System.Drawing.Size(261, 27);
             this.textBoxCodice.TabIndex = 8;
+            // 
+            // dataGridViewTeams
+            // 
+            this.dataGridViewTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTeams.Location = new System.Drawing.Point(136, 109);
+            this.dataGridViewTeams.Name = "dataGridViewTeams";
+            this.dataGridViewTeams.RowHeadersWidth = 51;
+            this.dataGridViewTeams.RowTemplate.Height = 29;
+            this.dataGridViewTeams.Size = new System.Drawing.Size(554, 188);
+            this.dataGridViewTeams.TabIndex = 12;
             // 
             // SelezionaTeamBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 497);
+            this.Controls.Add(this.dataGridViewTeams);
             this.Controls.Add(this.buttonAvanti);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxCodice);
             this.Name = "SelezionaTeamBoard";
             this.Text = "SelezionaTeamBoard";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,5 +106,6 @@
         private Label label2;
         private Label label1;
         private TextBox textBoxCodice;
+        private DataGridView dataGridViewTeams;
     }
 }

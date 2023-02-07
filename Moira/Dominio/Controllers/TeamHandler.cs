@@ -277,7 +277,7 @@ namespace Moira.Dominio.Controllers
 
         public List<Cliente> GetClienti() => moira.GetClienti();
 
-        public List<MoiraTask> GetTaskPerSprint(string codiceTeam) => moira.GetTeamSpecifico(codiceTeam).getTasksProgetto();
+        public List<MoiraTask> GetTaskPerSprint() => teamCorrente.getTasksProgetto();
 
     }
 }

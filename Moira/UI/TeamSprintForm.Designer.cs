@@ -34,7 +34,9 @@
             this.textBoxTeam = new System.Windows.Forms.TextBox();
             this.buttonNuovoSprint = new System.Windows.Forms.Button();
             this.buttonTerminaSprint = new System.Windows.Forms.Button();
+            this.dataGridViewTeams = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -77,11 +79,22 @@
             this.buttonTerminaSprint.UseVisualStyleBackColor = true;
             this.buttonTerminaSprint.Click += new System.EventHandler(this.buttonTerminaSprint_Click);
             // 
+            // dataGridViewTeams
+            // 
+            this.dataGridViewTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTeams.Location = new System.Drawing.Point(119, 73);
+            this.dataGridViewTeams.Name = "dataGridViewTeams";
+            this.dataGridViewTeams.RowHeadersWidth = 51;
+            this.dataGridViewTeams.RowTemplate.Height = 29;
+            this.dataGridViewTeams.Size = new System.Drawing.Size(637, 233);
+            this.dataGridViewTeams.TabIndex = 5;
+            // 
             // TeamSprintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(842, 590);
+            this.Controls.Add(this.dataGridViewTeams);
             this.Controls.Add(this.buttonTerminaSprint);
             this.Controls.Add(this.buttonNuovoSprint);
             this.Controls.Add(this.textBoxTeam);
@@ -90,6 +103,7 @@
             this.Name = "TeamSprintForm";
             this.Text = "TeamSprintForm";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +116,6 @@
         private TextBox textBoxTeam;
         private Button buttonNuovoSprint;
         private Button buttonTerminaSprint;
+        private DataGridView dataGridViewTeams;
     }
 }
