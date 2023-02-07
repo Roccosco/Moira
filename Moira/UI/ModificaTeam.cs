@@ -19,6 +19,7 @@ namespace Moira.UI
         {
             InitializeComponent();
             this.controller = controller;
+            dataGridViewImpiegati.DataSource = controller.GetImpiegati();
         }
 
         private void buttonElimina_Click(object sender, EventArgs e)

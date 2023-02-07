@@ -264,5 +264,7 @@ namespace Moira.Dominio.Controllers
         public List<Impiegato> GetImpiegati() => moira.GetImpiegati();
 
         public List<Team> GetTeams() => moira.GetTeams();
+
+        public List<Cliente> GetClienti() => moira.GetClienti();
     }
 }

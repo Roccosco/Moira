@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,8 @@ namespace Moira.Dominio
         }
 
         public string Nome { get => nome; set => nome = value; }
+
+        public string Descrizione { get => descrizione; }
 
         public void SetCliente(Cliente cliente)
         {
@@ -88,9 +91,10 @@ namespace Moira.Dominio
             }
             throw new Exception("Task con codice identificativo " + codiceTask + " non presente nel progetto!");
         }
-
+        [Browsable(false)]
         public int PosizioneUserStory { get => posNuovaUserStory; }
 
+        [Browsable(false)]
         public UserStory Corrente { get => userStoryCorrente; }
     }
 }

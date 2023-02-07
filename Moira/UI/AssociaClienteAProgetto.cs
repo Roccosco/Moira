@@ -19,6 +19,7 @@ namespace Moira.UI
         {
             InitializeComponent();
             this.controller = controller;
+            dataGridViewProgetti.DataSource = controller.GetProgetti();
         }
 
         private void buttonAssocia_Click(object sender, EventArgs e)

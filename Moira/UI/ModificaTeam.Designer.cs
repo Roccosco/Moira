@@ -35,11 +35,13 @@
             this.labelElimina = new System.Windows.Forms.Label();
             this.labelAggiungi = new System.Windows.Forms.Label();
             this.buttonTermina = new System.Windows.Forms.Button();
+            this.dataGridViewImpiegati = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegati)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAggiungi
             // 
-            this.buttonAggiungi.Location = new System.Drawing.Point(365, 247);
+            this.buttonAggiungi.Location = new System.Drawing.Point(367, 459);
             this.buttonAggiungi.Name = "buttonAggiungi";
             this.buttonAggiungi.Size = new System.Drawing.Size(125, 29);
             this.buttonAggiungi.TabIndex = 0;
@@ -49,7 +51,7 @@
             // 
             // buttonElimina
             // 
-            this.buttonElimina.Location = new System.Drawing.Point(365, 123);
+            this.buttonElimina.Location = new System.Drawing.Point(367, 358);
             this.buttonElimina.Name = "buttonElimina";
             this.buttonElimina.Size = new System.Drawing.Size(125, 29);
             this.buttonElimina.TabIndex = 1;
@@ -59,14 +61,14 @@
             // 
             // textBoxAggiungi
             // 
-            this.textBoxAggiungi.Location = new System.Drawing.Point(301, 214);
+            this.textBoxAggiungi.Location = new System.Drawing.Point(303, 426);
             this.textBoxAggiungi.Name = "textBoxAggiungi";
             this.textBoxAggiungi.Size = new System.Drawing.Size(255, 27);
             this.textBoxAggiungi.TabIndex = 2;
             // 
             // textBoxElimina
             // 
-            this.textBoxElimina.Location = new System.Drawing.Point(301, 90);
+            this.textBoxElimina.Location = new System.Drawing.Point(303, 325);
             this.textBoxElimina.Name = "textBoxElimina";
             this.textBoxElimina.Size = new System.Drawing.Size(255, 27);
             this.textBoxElimina.TabIndex = 3;
@@ -74,7 +76,7 @@
             // labelElimina
             // 
             this.labelElimina.AutoSize = true;
-            this.labelElimina.Location = new System.Drawing.Point(368, 67);
+            this.labelElimina.Location = new System.Drawing.Point(370, 302);
             this.labelElimina.Name = "labelElimina";
             this.labelElimina.Size = new System.Drawing.Size(131, 20);
             this.labelElimina.TabIndex = 4;
@@ -83,7 +85,7 @@
             // labelAggiungi
             // 
             this.labelAggiungi.AutoSize = true;
-            this.labelAggiungi.Location = new System.Drawing.Point(356, 191);
+            this.labelAggiungi.Location = new System.Drawing.Point(358, 403);
             this.labelAggiungi.Name = "labelAggiungi";
             this.labelAggiungi.Size = new System.Drawing.Size(143, 20);
             this.labelAggiungi.TabIndex = 5;
@@ -91,7 +93,7 @@
             // 
             // buttonTermina
             // 
-            this.buttonTermina.Location = new System.Drawing.Point(301, 315);
+            this.buttonTermina.Location = new System.Drawing.Point(303, 507);
             this.buttonTermina.Name = "buttonTermina";
             this.buttonTermina.Size = new System.Drawing.Size(255, 37);
             this.buttonTermina.TabIndex = 6;
@@ -99,11 +101,22 @@
             this.buttonTermina.UseVisualStyleBackColor = true;
             this.buttonTermina.Click += new System.EventHandler(this.buttonTermina_Click);
             // 
+            // dataGridViewImpiegati
+            // 
+            this.dataGridViewImpiegati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewImpiegati.Location = new System.Drawing.Point(105, 72);
+            this.dataGridViewImpiegati.Name = "dataGridViewImpiegati";
+            this.dataGridViewImpiegati.RowHeadersWidth = 51;
+            this.dataGridViewImpiegati.RowTemplate.Height = 29;
+            this.dataGridViewImpiegati.Size = new System.Drawing.Size(671, 188);
+            this.dataGridViewImpiegati.TabIndex = 7;
+            // 
             // ModificaTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 406);
+            this.ClientSize = new System.Drawing.Size(864, 577);
+            this.Controls.Add(this.dataGridViewImpiegati);
             this.Controls.Add(this.buttonTermina);
             this.Controls.Add(this.labelAggiungi);
             this.Controls.Add(this.labelElimina);
@@ -113,6 +126,7 @@
             this.Controls.Add(this.buttonAggiungi);
             this.Name = "ModificaTeam";
             this.Text = "ModificaTeam";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegati)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +141,6 @@
         private Label labelElimina;
         private Label labelAggiungi;
         private Button buttonTermina;
+        private DataGridView dataGridViewImpiegati;
     }
 }

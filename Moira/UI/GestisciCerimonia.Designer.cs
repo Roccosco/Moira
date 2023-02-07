@@ -43,6 +43,8 @@
             this.textBoxDurata = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerOra = new System.Windows.Forms.DateTimePicker();
+            this.dataGridViewTeams = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePickerCerimonia
@@ -173,11 +175,22 @@
             this.dateTimePickerOra.Size = new System.Drawing.Size(250, 27);
             this.dateTimePickerOra.TabIndex = 15;
             // 
+            // dataGridViewTeams
+            // 
+            this.dataGridViewTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTeams.Location = new System.Drawing.Point(522, 47);
+            this.dataGridViewTeams.Name = "dataGridViewTeams";
+            this.dataGridViewTeams.RowHeadersWidth = 51;
+            this.dataGridViewTeams.RowTemplate.Height = 29;
+            this.dataGridViewTeams.Size = new System.Drawing.Size(381, 461);
+            this.dataGridViewTeams.TabIndex = 17;
+            // 
             // GestisciCerimonia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 556);
+            this.Controls.Add(this.dataGridViewTeams);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePickerOra);
             this.Controls.Add(this.textBoxDurata);
@@ -195,6 +208,7 @@
             this.Controls.Add(this.dateTimePickerCerimonia);
             this.Name = "GestisciCerimonia";
             this.Text = "GestisciCerimonia";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +231,6 @@
         private TextBox textBoxDurata;
         private Label label2;
         private DateTimePicker dateTimePickerOra;
+        private DataGridView dataGridViewTeams;
     }
 }

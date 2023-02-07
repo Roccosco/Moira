@@ -1,4 +1,6 @@
-﻿namespace Moira.Dominio
+﻿using System.ComponentModel;
+
+namespace Moira.Dominio
 {
     public class Team
     {
@@ -38,7 +40,7 @@
             get => nome;
         }
 
-
+        [Browsable(false)]
         public Progetto Progetto
         {
             get => progetto;
@@ -51,11 +53,13 @@
             }
         }
 
+        [Browsable(false)]
         public Board Board
         {
             get => board;
         }
 
+        [Browsable(false)]
         public Sprint SprintAttivo
         {
             get => sprintAttivo;
