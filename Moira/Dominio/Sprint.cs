@@ -42,5 +42,11 @@ namespace Moira.Dominio
 
             throw new Exception("Task non presente nello sprint backlog!");
         }
+
+        public void Termina()
+        {
+            foreach (MoiraTask task in taskStoryPoints.Keys)
+                task.Completato = true;
+        }
     }
 }

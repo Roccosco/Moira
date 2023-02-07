@@ -260,11 +260,24 @@ namespace Moira.Dominio.Controllers
 
         public void SpostaTaskInDaRivedere(string codiceColonnaDaRivedere) => TeamCorrente.SpostaTaskInDaRivedere(codiceColonnaDaRivedere);
 
+        public void SelezionaSprintAttivo(string codiceTeam)
+        {
+            Team team = moira.GetTeamSpecifico(codiceTeam);
+            if (!team.haSprintAttivo())
+                throw new Exception("Il team con codice: " + codiceTeam + " non ha uno sprint attivo!");
+
+            teamCorrente = team;
+        }
+
+        public void ConfermaTerminaSprint() => teamCorrente.TerminaSprint();
 
         public List<Impiegato> GetImpiegati() => moira.GetImpiegati();
 
         public List<Team> GetTeams() => moira.GetTeams();
 
         public List<Cliente> GetClienti() => moira.GetClienti();
+
+        public List<MoiraTask> GetTaskPerSprint(string codiceTeam) => moira.GetTeamSpecifico(codiceTeam).getTasksProgetto();
+
     }
 }

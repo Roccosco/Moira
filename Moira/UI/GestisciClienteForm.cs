@@ -41,7 +41,8 @@ namespace Moira.UI
             controller.CreaCliente(nome, cognome, email, partitaIVA, numeroTelefono, indirizzo);
             
             //aprire form per associare il cliente a un progetto
-            new AssociaClienteAProgetto(controller).Show();   
+            new AssociaClienteAProgetto(controller).Show();
+            Dispose();
         }
 
         private void buttonTrova_Click(object sender, EventArgs e)

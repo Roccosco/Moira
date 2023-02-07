@@ -32,14 +32,25 @@ namespace Moira.UI
                 return;
             }
 
-            MessageBox.Show("Task aggiunto");
+            try
+            {
+                controller.AggiungiTaskASprint(codiceTask, storyPoints);
+                MessageBox.Show("Task aggiunto");
 
-            controller.AggiungiTaskASprint(codiceTask, storyPoints);
+                buttonAddTask.Enabled = false;
+                textBoxTask.Enabled = false;
+                buttonImpiegato.Enabled = true;
+                textBoxImpiegato.Enabled = true;
+            }
+            catch (KeyNotFoundException)
+            {
+                MessageBox.Show("Codice task non valido");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-            buttonAddTask.Enabled = false;
-            textBoxTask.Enabled = false;
-            buttonImpiegato.Enabled = true;
-            textBoxImpiegato.Enabled = true;
         }
 
         private void buttonImpiegato_Click(object sender, EventArgs e)
@@ -51,15 +62,25 @@ namespace Moira.UI
                 return;
             }
 
-            MessageBox.Show("Impiegato associato");
+            try
+            {
+                controller.AssociaTaskSprintAImpiegato(codiceImpiegato);
+                MessageBox.Show("Impiegato associato");
 
-            controller.AssociaTaskSprintAImpiegato(codiceImpiegato);
-
-            buttonTermina.Enabled = true;
-            buttonAddTask.Enabled = true;
-            textBoxTask.Enabled = true;
-            buttonImpiegato.Enabled = false;
-            textBoxImpiegato.Enabled = false;
+                buttonTermina.Enabled = true;
+                buttonAddTask.Enabled = true;
+                textBoxTask.Enabled = true;
+                buttonImpiegato.Enabled = false;
+                textBoxImpiegato.Enabled = false;
+            }
+            catch (KeyNotFoundException)
+            {
+                MessageBox.Show("Codice impiegato non valido");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonTermina_Click(object sender, EventArgs e)

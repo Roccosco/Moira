@@ -44,13 +44,13 @@ namespace Moira.UI
             {
                 controller.AggiungiImpiegatoATeam(codiceUnivoco);
 
-                MessageBox.Show("l'impiegato è stato aggiunto correttamente");
+                MessageBox.Show("L'impiegato è stato aggiunto correttamente");
 
                 buttonConferma.Enabled = true;
             }
             catch (KeyNotFoundException ex)
             {
-                MessageBox.Show("l'impiegato con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
+                MessageBox.Show("L'impiegato con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
             }
             catch(Exception ex)
             {
@@ -82,35 +82,29 @@ namespace Moira.UI
             {
                 controller.EliminaTeam(codiceUnivoco);
 
-                MessageBox.Show("il team è stato eliminato correttamente");
+                MessageBox.Show("Il team è stato eliminato correttamente");
                 Dispose();
             }
             catch (KeyNotFoundException ex)
             {
-                MessageBox.Show("il team con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
+                MessageBox.Show("Il team con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
             }
         }
 
         private void buttonConferma_Click(object sender, EventArgs e)
         {
-            
-
             try
             {
                 controller.ConfermaCreaTeam();
 
-                MessageBox.Show(" team creato correttamente");
+                MessageBox.Show("Team creato correttamente");
                 Dispose();
             }
             catch (KeyNotFoundException ex)
             {
-                MessageBox.Show("il team è già presente nel Sistema!");
+                MessageBox.Show("Il team è già presente nel Sistema!");
             }
         }
 
-        private void GestisciTeamForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

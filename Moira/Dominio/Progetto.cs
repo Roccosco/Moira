@@ -91,6 +91,17 @@ namespace Moira.Dominio
             }
             throw new Exception("Task con codice identificativo " + codiceTask + " non presente nel progetto!");
         }
+
+        public List<MoiraTask> getTasks()
+        {
+            List<MoiraTask> moiraTasks = new List<MoiraTask>();
+
+            foreach (UserStory userStory in backlog)
+                moiraTasks.AddRange(userStory.getAllTasks());
+
+            return moiraTasks;
+        }
+
         [Browsable(false)]
         public int PosizioneUserStory { get => posNuovaUserStory; }
 

@@ -40,6 +40,8 @@ namespace Moira.UI
             controller.CreaImpiegato(nome, cognome, email, numeroTelefono, indirizzo);
             controller.ConfermaCreaImpiegato();
 
+            dataGridViewImpiegati.DataSource = controller.GetImpiegati();
+
             MessageBox.Show("Impiegato aggiunto con successo!");
         }
 

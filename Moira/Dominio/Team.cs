@@ -109,6 +109,8 @@ namespace Moira.Dominio
 
         public void AvviaNuovoSprint()
         {
+            if(progetto == null)
+                throw new Exception("Il team non lavora per alcun progetto!");
             if (haSprintAttivo())
                 throw new Exception("Il team ha già uno sprint attivo! Termina lo sprint per iniziarne uno nuovo!");
             sprintCorrente = new Sprint();
@@ -145,6 +147,8 @@ namespace Moira.Dominio
 
         public MoiraTask getTaskProgetto(string codiceIdentificativo) => progetto.getTask(codiceIdentificativo);
 
+        public List<MoiraTask> getTasksProgetto() => progetto.getTasks();
+
         public void AggiungiTaskAColonna(string codiceColonna)
         {
             board.addTaskColonna(codiceColonna);
@@ -155,5 +159,13 @@ namespace Moira.Dominio
         public void SpostaTaskTraColonne(string codiceColonnaDestinazione, bool daRivedereDa, bool daRivedereA) => board.SpostaTaskTraColonne(codiceColonnaDestinazione, daRivedereDa, daRivedereA);
 
         public void SpostaTaskInDaRivedere(string codiceColonnaDaRivedere) => board.SpostaTaskInDaRivedere(codiceColonnaDaRivedere);
+
+        public void TerminaSprint()
+        {
+            sprintAttivo.Termina();
+            sprints.Add(sprintAttivo);
+            sprintAttivo = null;
+        }
+        
     }
 }

@@ -191,7 +191,6 @@
             this.Controls.Add(this.textBoxTeam);
             this.Name = "GestisciTeamForm";
             this.Text = "GestisciTeamForm";
-            this.Load += new System.EventHandler(this.GestisciTeamForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

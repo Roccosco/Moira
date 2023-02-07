@@ -96,22 +96,7 @@ namespace Moira.UI
         {
             Colonna colonna = ((ContextMenuStrip)((ToolStripMenuItem)sender).Owner).SourceControl.Tag as Colonna;
 
-            string codiceTask = Microsoft.VisualBasic.Interaction.InputBox("Inserisci il codice identificativo di un task:", "Seleziona un task");
-            if (string.IsNullOrEmpty(codiceTask))
-            {
-                MessageBox.Show("Inserire un codice valido");
-                return;
-            }
-
-            try
-            {
-                controller.SelezionaTaskBacklogs(codiceTask);
-                controller.AggiungiTaskAColonna(colonna.CodiceIdentificativo);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            new AggiungiTaskABoardForm(colonna, controller).Show();
         }
     }
 }

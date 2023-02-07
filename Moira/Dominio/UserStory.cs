@@ -47,6 +47,8 @@
                 return null;
         }
 
+        public List<MoiraTask> getAllTasks() => tasks.Values.ToList();
+
         public string NomeUserStory { get => nome; }
     }
 }

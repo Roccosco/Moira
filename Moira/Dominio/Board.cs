@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moira.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace Moira.Dominio
         private MoiraTask taskCorrente;
         private Colonna colonnaCorrente;
         private HashSet<Observer> observers;
+
+        public List<Colonna> Colonne { get => new List<Colonna>(colonne); }
 
         public Board(string nome)
         {
@@ -76,14 +79,7 @@ namespace Moira.Dominio
 
         public void Draw(Panel panel)
         {
-            panel.Controls.Clear();
-
-            int x = 0;
-            foreach(Colonna colonna in colonne)
-            {
-                colonna.Draw(panel, x);
-                x += 200;
-            }
+            new BoardUI(this).Draw(panel);
         }
 
         public void SelezionaTask(string codiceTask, string codiceColonna)
