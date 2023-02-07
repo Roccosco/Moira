@@ -31,11 +31,12 @@
             this.textBoxCliente = new System.Windows.Forms.TextBox();
             this.labelCliente = new System.Windows.Forms.Label();
             this.buttonCliente = new System.Windows.Forms.Button();
+            this.buttonTermina = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxCliente
             // 
-            this.textBoxCliente.Location = new System.Drawing.Point(362, 231);
+            this.textBoxCliente.Location = new System.Drawing.Point(358, 183);
             this.textBoxCliente.Name = "textBoxCliente";
             this.textBoxCliente.Size = new System.Drawing.Size(124, 27);
             this.textBoxCliente.TabIndex = 0;
@@ -43,7 +44,7 @@
             // labelCliente
             // 
             this.labelCliente.AutoSize = true;
-            this.labelCliente.Location = new System.Drawing.Point(260, 197);
+            this.labelCliente.Location = new System.Drawing.Point(256, 149);
             this.labelCliente.Name = "labelCliente";
             this.labelCliente.Size = new System.Drawing.Size(341, 20);
             this.labelCliente.TabIndex = 1;
@@ -51,7 +52,7 @@
             // 
             // buttonCliente
             // 
-            this.buttonCliente.Location = new System.Drawing.Point(362, 297);
+            this.buttonCliente.Location = new System.Drawing.Point(358, 249);
             this.buttonCliente.Name = "buttonCliente";
             this.buttonCliente.Size = new System.Drawing.Size(124, 29);
             this.buttonCliente.TabIndex = 2;
@@ -59,11 +60,22 @@
             this.buttonCliente.UseVisualStyleBackColor = true;
             this.buttonCliente.Click += new System.EventHandler(this.buttonCliente_Click);
             // 
+            // buttonTermina
+            // 
+            this.buttonTermina.Location = new System.Drawing.Point(340, 304);
+            this.buttonTermina.Name = "buttonTermina";
+            this.buttonTermina.Size = new System.Drawing.Size(161, 45);
+            this.buttonTermina.TabIndex = 3;
+            this.buttonTermina.Text = "Termina";
+            this.buttonTermina.UseVisualStyleBackColor = true;
+            this.buttonTermina.Click += new System.EventHandler(this.buttonTermina_Click);
+            // 
             // InserisciClienteCerimonia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 499);
+            this.Controls.Add(this.buttonTermina);
             this.Controls.Add(this.buttonCliente);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.textBoxCliente);
@@ -79,5 +91,6 @@
         private TextBox textBoxCliente;
         private Label labelCliente;
         private Button buttonCliente;
+        private Button buttonTermina;
     }
 }
