@@ -166,6 +166,15 @@ namespace Moira.Dominio
             sprints.Add(sprintAttivo);
             sprintAttivo = null;
         }
-        
+
+        public List<MoiraTask> getTaskPerBoard()
+        {
+            AlgoritmoTaskBoard algoritmo;
+            if (haSprintAttivo())
+                algoritmo = new AlgoTaskBoardSCRUM();
+            else
+                algoritmo = new AlgoTaskBoardNoSCRUM();
+            return algoritmo.getTuttiTaskAggiungibili(this);
+        }
     }
 }

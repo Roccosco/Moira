@@ -279,5 +279,7 @@ namespace Moira.Dominio.Controllers
 
         public List<MoiraTask> GetTaskPerSprint(string codiceTeam) => moira.GetTeamSpecifico(codiceTeam).getTasksProgetto();
 
+        public List<MoiraTask> GetTaskPerBoard() => teamCorrente.getTaskPerBoard();
+
     }
 }

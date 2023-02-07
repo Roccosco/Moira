@@ -9,5 +9,7 @@ namespace Moira.Dominio
     public interface AlgoritmoTaskBoard
     {
         public MoiraTask getTask(string codiceIdentificativo, Team team);
+
+        public List<MoiraTask> getTuttiTaskAggiungibili(Team team);
     }
 }

@@ -48,5 +48,13 @@ namespace Moira.Dominio
             foreach (MoiraTask task in taskStoryPoints.Keys)
                 task.Completato = true;
         }
+
+        public List<MoiraTask> getTasks()
+        {
+            List<MoiraTask> tasks = new List<MoiraTask>();
+            foreach (MoiraTask task in taskStoryPoints.Keys)
+                tasks.Add(task);
+            return tasks;
+        }
     }
 }

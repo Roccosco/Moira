@@ -15,5 +15,13 @@ namespace Moira.Dominio
 
             return team.SprintAttivo.getTask(codiceIdentificativo);
         }
+
+        public List<MoiraTask> getTuttiTaskAggiungibili(Team team)
+        {
+            if (!team.haSprintAttivo())
+                throw new Exception("Non si utilizza attualmente un framework SCRUM");
+
+            return team.SprintAttivo.getTasks();
+        }
     }
 }
