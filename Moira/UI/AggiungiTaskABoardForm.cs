@@ -22,6 +22,7 @@ namespace Moira.UI
             this.colonna = colonna;
             this.controller = controller;
             InitializeComponent();
+            dataGridViewTask.DataSource = controller.GetTaskPerBoard();
         }
 
         private void buttonContinua_Click(object sender, EventArgs e)
