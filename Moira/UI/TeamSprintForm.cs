@@ -20,6 +20,7 @@ namespace Moira.UI
         {
             InitializeComponent();
             controller = new TeamHandler();
+            dataGridViewTeams.DataSource = controller.GetTeams();   
         }
 
         private void buttonNuovoSprint_Click(object sender, EventArgs e)

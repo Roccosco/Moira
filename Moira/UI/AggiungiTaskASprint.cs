@@ -20,6 +20,8 @@ namespace Moira.UI
             this.controller = controller;
 
             InitializeComponent();
+
+            dataGridViewTask.DataSource = controller.GetTaskPerSprint();
         }
 
         private void buttonAddTask_Click(object sender, EventArgs e)
