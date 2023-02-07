@@ -98,5 +98,8 @@ namespace Moira.Dominio
 
             clienti.Remove(codiceClente);
         }
+
+        public List<Team> GetTeams() => new List<Team>(teams.Values);
+
     }
 }

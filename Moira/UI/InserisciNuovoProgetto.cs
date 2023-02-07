@@ -41,80 +41,14 @@ namespace Moira.UI
             {
                 controller.InserisciNuovoProgetto(nome, descrizione);
 
-                panelAssociaTeam.Visible = true;
-                panelNome.Visible = false;
+                new AssociaTeamAProgetto(controller).Show();
+                Dispose();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Attenzione");
             }
 
-        }
-
-        private void buttonFineTeam_Click(object sender, EventArgs e)
-        {
-            panelAssociaClienti.Visible = true;
-            panelAssociaTeam.Visible = false;
-        }
-
-        private void buttonAggiungiTeam_Click(object sender, EventArgs e)
-        {
-            string codiceUnivoco = textBoxCodiceTeam.Text;
-
-            if (string.IsNullOrEmpty(codiceUnivoco))
-            {
-                MessageBox.Show("Inserire un codice univoco valido", "Attenzione");
-                return;
-            }
-
-            try
-            {
-                controller.AssociaTeamAProgetto(codiceUnivoco);
-                textBoxCodiceTeam.Text = "";
-                buttonFineTeam.Enabled = true;
-            }
-            catch (KeyNotFoundException)
-            {
-                MessageBox.Show("Il team con codice univoco " + codiceUnivoco + " non è presente nel sistema", "Attenzione");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Attenzione");
-            }
-        }
-
-        private void buttonFineClienti_Click(object sender, EventArgs e)
-        {
-            controller.ConfermaInserimentoProgetto();
-
-            MessageBox.Show("Progetto inserito con successo!", "Successo");
-
-            Dispose();
-        }
-
-        private void buttonAggiungiCliente_Click(object sender, EventArgs e)
-        {
-            string codiceUnivoco = textBoxCodiceCliente.Text;
-
-            if (string.IsNullOrEmpty(codiceUnivoco))
-            {
-                MessageBox.Show("Inserire un codice univoco valido", "Attenzione");
-                return;
-            }
-
-            try
-            {
-                controller.AssociaClienteAProgetto(codiceUnivoco);
-                textBoxCodiceCliente.Text = "";
-            }
-            catch (KeyNotFoundException)
-            {
-                MessageBox.Show("Il cliente con codice univoco " + codiceUnivoco + " non è presente nel sistema", "Attenzione");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
     }
 }

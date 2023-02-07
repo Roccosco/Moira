@@ -77,5 +77,8 @@
                 throw e;
             }
         }
+
+        public List<Team> GetTeams() => moira.GetTeams();
+
     }
 }
