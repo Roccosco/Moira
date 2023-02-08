@@ -36,6 +36,7 @@ namespace Moira.UI
             {
                 controller.CreaBoard(nome, codice);
                 new IntestazioniForm(controller).Show();
+                Dispose();
             }
             catch (KeyNotFoundException ex)
             {

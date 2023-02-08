@@ -106,24 +106,6 @@ namespace Moira.Dominio
             if (colonnaDestinazione == null)
                 throw new Exception("Non è possibile trovare la colonna di destinazione");
 
-            if (daRivedereDa)
-            {
-                while (colonnaCorrente is ColonnaDecoratore)
-                {
-                    ColonnaDecoratore colonnaDecoratore = colonnaCorrente as ColonnaDecoratore;
-                    if (colonnaCorrente is ColonnaConDaRivedere)
-                        break;
-                    colonnaCorrente = colonnaDecoratore.Decorato;
-                }
-                if (colonnaCorrente is not ColonnaConDaRivedere)
-                    throw new Exception("La colonna con codice: " + colonnaCorrente.CodiceIdentificativo + " non ammette una sezione da rivedere!");
-
-                ColonnaConDaRivedere colonnaConDaRivedere = colonnaCorrente as ColonnaConDaRivedere;
-                colonnaConDaRivedere.removeTaskDaRivedere(taskCorrente);
-            }
-            else
-                colonnaCorrente.removeTask(taskCorrente);
-
             if (daRivedereA)
             {
                 while (colonnaDestinazione.CodiceIdentificativo != codiceColonnaDestinazione && colonnaDestinazione is ColonnaDecoratore)
@@ -141,6 +123,24 @@ namespace Moira.Dominio
             }
             else
                 colonnaDestinazione.addTask(taskCorrente);
+
+            if (daRivedereDa)
+            {
+                while (colonnaCorrente is ColonnaDecoratore)
+                {
+                    ColonnaDecoratore colonnaDecoratore = colonnaCorrente as ColonnaDecoratore;
+                    if (colonnaCorrente is ColonnaConDaRivedere)
+                        break;
+                    colonnaCorrente = colonnaDecoratore.Decorato;
+                }
+                if (colonnaCorrente is not ColonnaConDaRivedere)
+                    throw new Exception("La colonna con codice: " + colonnaCorrente.CodiceIdentificativo + " non ammette una sezione da rivedere!");
+
+                ColonnaConDaRivedere colonnaConDaRivedere = colonnaCorrente as ColonnaConDaRivedere;
+                colonnaConDaRivedere.removeTaskDaRivedere(taskCorrente);
+            }
+            else
+                colonnaCorrente.removeTask(taskCorrente);
 
             Notify();
         }
@@ -180,6 +180,13 @@ namespace Moira.Dominio
 
             colonnaCorrente.removeTask(taskCorrente);
             colonnaConDaRivedere.addTaskDaRivedere(taskCorrente);
+            Notify();
+        }
+
+        public void EliminaTask(MoiraTask task)
+        {
+            foreach(Colonna colonna in colonne)
+                colonna.removeTask(task);
             Notify();
         }
     }

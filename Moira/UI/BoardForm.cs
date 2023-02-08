@@ -75,8 +75,15 @@ namespace Moira.UI
                     if (colonnaA is ColonnaConDaRivedere)
                         daRivedereA = true;
 
-                    controller.SelezionaTaskBoard(task.CodiceIdentificativo, colonnaDa.CodiceIdentificativo);
-                    controller.SpostaTaskTraColonne(colonnaA.CodiceIdentificativo, daRivedereDa, daRivedereA);
+                    try
+                    {
+                        controller.SelezionaTaskBoard(task.CodiceIdentificativo, colonnaDa.CodiceIdentificativo);
+                        controller.SpostaTaskTraColonne(colonnaA.CodiceIdentificativo, daRivedereDa, daRivedereA);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 };
 
                 foreach (Control panelTask in panelColonna.Controls)
@@ -97,6 +104,25 @@ namespace Moira.UI
             Colonna colonna = ((ContextMenuStrip)((ToolStripMenuItem)sender).Owner).SourceControl.Tag as Colonna;
 
             new AggiungiTaskABoardForm(colonna, controller).Show();
+        }
+
+        private void panelCancella_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void panelCancella_DragDrop(object sender, DragEventArgs e)
+        {
+            Panel panelTask = (Panel)e.Data.GetData(typeof(Panel));
+            Panel panelColonnaDa = panelTask.Parent as Panel;
+            Colonna colonnaDa = (Colonna)panelColonnaDa.Tag;
+            MoiraTask task = (MoiraTask)panelTask.Tag;
+
+            if (MessageBox.Show("Sei sicuro di voler terminare questo task? In automatico il task sarà eliminato dalla board.", "Attenzione", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            controller.EliminaTaskDaBoard(task);
+            task.Completato = true;
         }
     }
 }

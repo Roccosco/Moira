@@ -124,7 +124,11 @@ namespace Moira.Dominio.Controllers
         {
             try
             {
-                teamCorrente = moira.GetTeamSpecifico(codiceTeam);
+                Team team = moira.GetTeamSpecifico(codiceTeam);
+                if (team.Progetto == null)
+                    throw new Exception("Il team non lavora ad alcun progetto. Non può creare una board!");
+
+                teamCorrente = team;
                 teamCorrente.creaBoard(nome);
             }
             catch (KeyNotFoundException e)
@@ -258,7 +262,7 @@ namespace Moira.Dominio.Controllers
 
         public void SpostaTaskTraColonne(string codiceColonnaDestinazione, bool daRivedereDa, bool daRivedereA) => teamCorrente.SpostaTaskTraColonne(codiceColonnaDestinazione, daRivedereDa, daRivedereA);
 
-        public void SpostaTaskInDaRivedere(string codiceColonnaDaRivedere) => TeamCorrente.SpostaTaskInDaRivedere(codiceColonnaDaRivedere);
+        public void EliminaTaskDaBoard(MoiraTask task) => TeamCorrente.EliminaTaskDaBoard(task);
 
         public void SelezionaSprintAttivo(string codiceTeam)
         {
@@ -272,6 +276,8 @@ namespace Moira.Dominio.Controllers
         public void ConfermaTerminaSprint() => teamCorrente.TerminaSprint();
 
         public List<Impiegato> GetImpiegati() => moira.GetImpiegati();
+
+        public List<Impiegato> GetImpiegatiTeam() => TeamCorrente.getImpiegati();
 
         public List<Team> GetTeams() => moira.GetTeams();
 

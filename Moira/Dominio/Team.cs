@@ -176,5 +176,10 @@ namespace Moira.Dominio
                 algoritmo = new AlgoTaskBoardNoSCRUM();
             return algoritmo.getTuttiTaskAggiungibili(this);
         }
+
+        public void EliminaTaskDaBoard(MoiraTask task) => board.EliminaTask(task);
+
+        public List<Impiegato> getImpiegati() => new List<Impiegato>(impiegati);
+        
     }
 }

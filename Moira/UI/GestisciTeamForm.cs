@@ -33,6 +33,8 @@ namespace Moira.UI
 
             controller.CreaTeam(nome);
             buttonAggiungi.Enabled = true;
+            buttonInserisci.Enabled = false;
+            buttonModifica.Enabled = false;
         }
 
         private void buttonAggiungi_Click(object sender, EventArgs e)

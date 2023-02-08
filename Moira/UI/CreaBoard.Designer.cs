@@ -101,7 +101,7 @@
             this.Controls.Add(this.textBoxNomeBoard);
             this.Controls.Add(this.buttonInserisci);
             this.Name = "CreaBoard";
-            this.Text = "CreasBoard";
+            this.Text = "W";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

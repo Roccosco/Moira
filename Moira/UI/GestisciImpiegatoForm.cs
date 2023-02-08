@@ -43,6 +43,12 @@ namespace Moira.UI
             dataGridViewImpiegati.DataSource = controller.GetImpiegati();
 
             MessageBox.Show("Impiegato aggiunto con successo!");
+
+            textBoxNome.Text = "";
+            textBoxCognome.Text = "";
+            textBoxEmail.Text = "";
+            textBoxTelefono.Text = "";
+            textBoxIndirizzo.Text = "";
         }
 
 
@@ -94,6 +100,8 @@ namespace Moira.UI
             string indirizzo = textBoxIndirizzo.Text;
 
             controller.ResetInfoImpiegato(email, telefono, indirizzo);
+
+            dataGridViewImpiegati.DataSource = controller.GetImpiegati();
 
             MessageBox.Show("Informazioni dell'impiegato modificate con successo!");
         }

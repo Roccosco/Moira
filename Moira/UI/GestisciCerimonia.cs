@@ -44,7 +44,12 @@ namespace Moira.UI
             {
                 controller.CreaCerimonia(nome, descrizione, data, durata, tipo, team);
             }
-            catch(Exception ex)
+            catch (KeyNotFoundException)
+            {
+                MessageBox.Show("Non esiste alcun team con il codice specificato: " + team);
+                return;
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;

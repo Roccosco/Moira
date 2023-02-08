@@ -32,8 +32,6 @@ namespace Moira.Dominio
             return task;
         }
 
-        public override int getNumTasks() => tasksDaRivedere.Count + base.getNumTasks();
-
         public override void Draw(Panel panel, int x)
         {
             base.Draw(panel, x);

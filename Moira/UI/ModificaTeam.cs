@@ -31,10 +31,15 @@ namespace Moira.UI
                 controller.RimuoviImpiegatoDaTeam(codiceUnivoco);
 
                 MessageBox.Show("l'impiegato è stato eliminato correttamente");
+                textBoxElimina.Text = "";
             }
             catch (KeyNotFoundException ex)
             {
                 MessageBox.Show("l'impiegato con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -47,6 +52,7 @@ namespace Moira.UI
                 controller.AggiungiImpiegatoATeam(codiceUnivoco);
 
                 MessageBox.Show("l'impiegato è stato aggiunto correttamente");
+                textBoxAggiungi.Text = "";
             }
             catch (KeyNotFoundException ex)
             {

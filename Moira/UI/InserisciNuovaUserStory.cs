@@ -42,6 +42,8 @@ namespace Moira.UI
 
                 richTextBoxMessaggi.Text += Environment.NewLine + "User story con nome: " + nome + " inserita con successo;";
 
+                textBoxNome.Enabled = false;
+                textBoxDescrizione.Enabled = false;
                 buttonInserisciUserStory.Enabled = false;
                 buttonInserisciNuovoTask.Enabled = true;
                 buttonInserisciPosizioneUserStory.Enabled = true;

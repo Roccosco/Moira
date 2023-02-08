@@ -31,11 +31,12 @@ namespace Moira.UI
                 controller.AssociaClienteAProgetto(nome);
 
                 MessageBox.Show("Il cliente è stato stato associato al progetto");
+                textBoxAssocia.Text = "";
 
             }
             catch (KeyNotFoundException ex)
             {
-                MessageBox.Show("Il cliente non può essere associato al progetto: " + nome + " perchè già presente!");
+                MessageBox.Show("Il cliente non può essere associato al progetto: " + nome + " perchè non esiste un progetto con quel nome!");
             }
             catch (Exception ex)
             {
