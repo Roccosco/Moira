@@ -28,7 +28,10 @@ namespace Moira.Dominio
             this.nome = nome;
             impiegati = new HashSet<Impiegato>();
             cerimonie = new List<Cerimonia>();
+            sprints = new List<Sprint>();
         }
+
+        public Cerimonia CerimoniaCorrente { get => cerimoniaCorrente; }
 
         public string CodiceUnivoco
         {

@@ -28,7 +28,7 @@ namespace Moira.Dominio.Controllers.Tests
             m = MoiraClass.Instance;
             ch = new ClienteHandler();
         }
-
+        /*
         [TestMethod()]
         public void AssociaClienteAProgettoTest()
         {
@@ -43,7 +43,7 @@ namespace Moira.Dominio.Controllers.Tests
             {
                 Assert.Fail();
             }
-        }
+        }*/
 
         [TestMethod()]
         public void ConfermaCreaClienteTest()

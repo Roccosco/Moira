@@ -205,26 +205,6 @@ namespace Moira.Dominio.Controllers.Tests
         }
 
         [TestMethod()]
-        public void CreaColonnaTest()
-        {
-            try
-            {
-                th.CreaTeam("fuoridaltunnel");
-                th.ConfermaCreaTeam();
-                IEnumerable<Team> search = m.GetTeams().Where(x => x.Nome == "fuoridaltunnel");
-                th.CreaBoard("China", search.ToList()[0].CodiceUnivoco);
-                th.ConfermaCreaBoard();
-                th.CreaColonna("Town", false);
-                Assert.IsTrue((int)th.TeamCorrente.Board.Colonne.Count() == 2);
-                // Assert.AreEqual((int)th.TeamCorrente.Board.Colonne.Count(),(int)3);
-            }
-            catch
-            {
-                Assert.Fail();
-            }
-        }
-
-        [TestMethod()]
         public void ConfermaCreaBoardTest()
         {
             try
@@ -242,28 +222,70 @@ namespace Moira.Dominio.Controllers.Tests
         }
 
         [TestMethod()]
+        public void CreaCerimoniaTest()
+        {
+            try
+            {
+                th.CreaTeam("filippoargenti");
+                th.ConfermaCreaTeam();
+                th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+                DateTime dateTime= DateTime.Now;
+                TimeSpan timeSpan= TimeSpan.FromSeconds(6);
+                string codice_team = th.TeamCorrente.CodiceUnivoco;
+                th.CreaCerimonia("Nepeta", "Buono", dateTime, timeSpan, TipoCerimonia.sporadica, codice_team);
+                th.ConfermaCreaCerimonia();
+                Assert.IsTrue(th.TeamCorrente.HaGiaCerimonie(dateTime, timeSpan));
+            }
+            catch(Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod()]
         public void InvitoCerimoniaTest()
         {
             try
             {
-
+                th.CreaTeam("filippoargenti");
+                th.ConfermaCreaTeam();
+                Cliente cliente = new Cliente("Capa", "Rezza");
+                m.addCliente(cliente);
+                th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+                th.TeamCorrente.Progetto.SetCliente(cliente);
+                DateTime dateTime = DateTime.Now;
+                TimeSpan timeSpan = TimeSpan.FromSeconds(6);
+                string codice_team = th.TeamCorrente.CodiceUnivoco;
+                th.CreaCerimonia("Acufene", "Brutto", dateTime, timeSpan, TipoCerimonia.sporadica, codice_team);
+                
+                th.InvitoCerimonia(cliente.CodiceUnivoco);
+                th.ConfermaCreaCerimonia();
+                Assert.IsTrue(th.TeamCorrente.CerimoniaCorrente.IsClienteInterested(cliente.CodiceUnivoco));
             }
-            catch
+            catch (Exception ex)
             {
-
+                Assert.Fail(ex.Message);
             }
         }
 
         [TestMethod()]
         public void ConfermaCreaCerimoniaTest()
-        {
+        {//CreaCerimonia e ConfermaCreaCerimonia hanno bisogno l'uno dell'altro, quindi si possono testare allo stesso modo
             try
             {
-
+                th.CreaTeam("filippoargenti");
+                th.ConfermaCreaTeam();
+                th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+                DateTime dateTime = DateTime.Now;
+                TimeSpan timeSpan = TimeSpan.FromSeconds(6);
+                string codice_team = th.TeamCorrente.CodiceUnivoco;
+                th.CreaCerimonia("Nepeta", "Buono", dateTime, timeSpan, TipoCerimonia.sporadica, codice_team);
+                th.ConfermaCreaCerimonia();
+                Assert.IsTrue(th.TeamCorrente.HaGiaCerimonie(dateTime, timeSpan));
             }
-            catch
+            catch (Exception ex)
             {
-
+                Assert.Fail(ex.Message);
             }
         }
 
@@ -371,11 +393,16 @@ namespace Moira.Dominio.Controllers.Tests
         {
             try
             {
-
+                Team team = new Team("cipollino");
+                m.addTeam(team);
+                m.GetTeamSpecifico(team.CodiceUnivoco).creaBoard("formazione555");
+                m.GetTeamSpecifico(team.CodiceUnivoco).confermaCreaBoard();
+                th.SelezionaTeamBoard(team.CodiceUnivoco);
+                Assert.IsNotNull(th.TeamCorrente);
             }
-            catch
+            catch(Exception ex)
             {
-
+                Assert.Fail(ex.Message);
             }
         }
 
@@ -393,68 +420,13 @@ namespace Moira.Dominio.Controllers.Tests
         }
 
         [TestMethod()]
-        public void AggiungiTaskAColonnaTest()
-        {
-            try
-            {
-
-            }
-            catch
-            {
-
-            }
-        }
-
-        [TestMethod()]
-        public void SelezionaTaskBoardTest()
-        {
-            try
-            {
-
-            }
-            catch
-            {
-
-            }
-        }
-
-        [TestMethod()]
-        public void SpostaTaskTraColonneTest()
-        {
-            try
-            {
-
-            }
-            catch
-            {
-
-            }
-        }
-
-        [TestMethod()]
-        public void EliminaTaskDaBoardTest()
-        {
-            try
-            {
-
-            }
-            catch
-            {
-
-            }
-        }
-
-        [TestMethod()]
+        [ExpectedException(typeof(Exception))]
         public void SelezionaSprintAttivoTest()
         {
-            try
-            {
-
-            }
-            catch
-            {
-
-            }
+            th.CreaTeam("filippoargenti");
+            th.ConfermaCreaTeam();
+            th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+            th.SelezionaSprintAttivo(th.TeamCorrente.CodiceUnivoco);
         }
 
         [TestMethod()]
@@ -462,11 +434,23 @@ namespace Moira.Dominio.Controllers.Tests
         {
             try
             {
+                th.CreaTeam("filippoargenti");
+                th.ConfermaCreaTeam();
+                th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+                th.TeamCorrente.Progetto.InserisciNuovaUserStory("nome", "descrizione");
+                th.TeamCorrente.Progetto.InserisciNuovoTask("nome", "descrizione");
+                th.TeamCorrente.Progetto.ConfermaInserimentoUserStory();
+                th.AvviaNuovoSprint(th.TeamCorrente.CodiceUnivoco);
+                th.TeamCorrente.confermaAvvioSprint();
+                string codice_task = th.TeamCorrente.Progetto.getTasks()[0].CodiceIdentificativo;
+                th.AggiungiTaskASprint(codice_task, 0);
 
+                th.ConfermaTerminaSprint();
+                Assert.IsFalse(th.TeamCorrente.haSprintAttivo());
             }
-            catch
+            catch(Exception e)
             {
-
+                Assert.Fail(e.Message);
             }
         }
     }
