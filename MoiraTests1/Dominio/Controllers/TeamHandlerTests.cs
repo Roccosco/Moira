@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoiraTests1.Dominio.Controllers
+namespace Moira.Dominio.Controllers.Tests
 {
     [TestClass()]
     public class TeamHandlerTests
@@ -28,6 +28,7 @@ namespace MoiraTests1.Dominio.Controllers
             th = new TeamHandler();
             m = MoiraClass.Instance;
         }
+
 
         [TestMethod()]
         public void CreaImpiegatoTest()
@@ -60,7 +61,6 @@ namespace MoiraTests1.Dominio.Controllers
             }
         }
 
-        //non va
         [TestMethod()]
         public void ConfermaCreaImpiegatoTest()
         {
@@ -91,7 +91,6 @@ namespace MoiraTests1.Dominio.Controllers
             }
         }
 
-        //non va
         [TestMethod()]
         [ExpectedException(typeof(KeyNotFoundException))]
         public void EliminaImpiegatoTest()
@@ -143,7 +142,7 @@ namespace MoiraTests1.Dominio.Controllers
             {
                 th.CreaTeam("Exuvia");
                 th.ConfermaCreaTeam();
-                Assert.IsNotNull(m.GetTeamSpecifico("1")); //1 perchè esiste già un team
+                Assert.IsNotNull(m.GetTeamSpecifico(th.TeamCorrente.CodiceUnivoco));
             }
             catch
             {
@@ -210,11 +209,14 @@ namespace MoiraTests1.Dominio.Controllers
         {
             try
             {
-                th.CreaBoard("China", "0");
-                th.CreaColonna("Town", false);
+                th.CreaTeam("fuoridaltunnel");
+                th.ConfermaCreaTeam();
+                IEnumerable<Team> search = m.GetTeams().Where(x => x.Nome == "fuoridaltunnel");
+                th.CreaBoard("China", search.ToList()[0].CodiceUnivoco);
                 th.ConfermaCreaBoard();
-                Assert.Fail();
-                //non è ancora ben definita questa parte
+                th.CreaColonna("Town", false);
+                Assert.IsTrue((int)th.TeamCorrente.Board.Colonne.Count() == 2);
+                // Assert.AreEqual((int)th.TeamCorrente.Board.Colonne.Count(),(int)3);
             }
             catch
             {
@@ -236,6 +238,235 @@ namespace MoiraTests1.Dominio.Controllers
             {
                 //se entra qui, un eccezzione è stata generata
                 //quindi va benissimo
+            }
+        }
+
+        [TestMethod()]
+        public void InvitoCerimoniaTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void ConfermaCreaCerimoniaTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void AvviaNuovoSprintTest()
+        {
+            try
+            {
+                th.CreaTeam("filippoargenti");
+                th.ConfermaCreaTeam();
+                th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+                th.AvviaNuovoSprint(th.TeamCorrente.CodiceUnivoco);
+                th.TeamCorrente.confermaAvvioSprint();
+                Assert.IsTrue(th.TeamCorrente.haSprintAttivo());
+            }
+            catch (KeyNotFoundException)
+            {
+                Assert.Fail();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod()]
+        public void ConfermaAvvioSprintTest()
+        {//AvviaNuovoSprint e ConfermaAvvioSprint sono testati insieme. L'uno ha bisogno dell'altro
+            try
+            {
+                th.CreaTeam("filippoargenti");
+                th.ConfermaCreaTeam();
+                th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+                th.AvviaNuovoSprint(th.TeamCorrente.CodiceUnivoco);
+                th.TeamCorrente.confermaAvvioSprint();
+                Assert.IsTrue(th.TeamCorrente.haSprintAttivo());
+            }
+            catch (KeyNotFoundException)
+            {
+                Assert.Fail();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod()]
+        public void AggiungiTaskASprintTest()
+        {
+            try
+            {
+                th.CreaTeam("filippoargenti");
+                th.ConfermaCreaTeam();
+                th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+                th.TeamCorrente.Progetto.InserisciNuovaUserStory("nome", "descrizione");
+
+                th.TeamCorrente.Progetto.InserisciNuovoTask("nome", "descrizione");
+
+                th.TeamCorrente.Progetto.ConfermaInserimentoUserStory();
+                th.AvviaNuovoSprint(th.TeamCorrente.CodiceUnivoco);
+                th.TeamCorrente.confermaAvvioSprint();
+                string codice_task = th.TeamCorrente.Progetto.getTasks()[0].CodiceIdentificativo;
+                th.AggiungiTaskASprint(codice_task, 0);
+
+                Assert.IsNotNull(th.TeamCorrente.SprintAttivo.getTask(codice_task));
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod()]
+        public void AssociaTaskSprintAImpiegato()
+        {
+            try
+            {
+                th.CreaTeam("filippoargenti");
+                th.ConfermaCreaTeam();
+                th.TeamCorrente.Progetto = new Progetto("undos", "tres");
+                th.TeamCorrente.Progetto.InserisciNuovaUserStory("nome", "descrizione");
+
+                th.TeamCorrente.Progetto.InserisciNuovoTask("nome", "descrizione");
+
+                th.TeamCorrente.Progetto.ConfermaInserimentoUserStory();
+                th.AvviaNuovoSprint(th.TeamCorrente.CodiceUnivoco);
+                th.TeamCorrente.confermaAvvioSprint();
+                string codice_task = th.TeamCorrente.Progetto.getTasks()[0].CodiceIdentificativo;
+                th.AggiungiTaskASprint(codice_task, 0);
+
+                Impiegato impiegato = new Impiegato("gh", "fdh", "dfhs", "dsf", "fds");
+                th.TeamCorrente.addImpiegato(impiegato);
+                m.addImpiegato(impiegato);
+                th.AssociaTaskSprintAImpiegato(impiegato.CodiceUnivoco);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod()]
+        public void SelezionaTeamBoardTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void SelezionaTaskBacklogsTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void AggiungiTaskAColonnaTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void SelezionaTaskBoardTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void SpostaTaskTraColonneTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void EliminaTaskDaBoardTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void SelezionaSprintAttivoTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        [TestMethod()]
+        public void ConfermaTerminaSprintTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
             }
         }
     }

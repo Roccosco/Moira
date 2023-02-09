@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoiraTests1.Dominio.Controllers
+namespace Moira.Dominio.Controllers.Tests
 {
     [TestClass()]
     public class ProgettoHandlerTests
@@ -17,6 +17,13 @@ namespace MoiraTests1.Dominio.Controllers
 
         [ClassInitialize]
         public static void AssemblyInit(TestContext context)
+        {
+            ph = new ProgettoHandler();
+            m = MoiraClass.Instance;
+        }
+
+        [TestInitialize]
+        public void TestInitialize()
         {
             ph = new ProgettoHandler();
             m = MoiraClass.Instance;

@@ -26,5 +26,61 @@ namespace Moira.Dominio.Tests
             }
 
         }
+
+        [TestMethod()]
+        public void HaGiaCerimonieTest()
+        {
+            try
+            {
+                
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+
+        }
+
+        [TestMethod()]
+        public void TerminaSprintTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+
+        }
+
+        [TestMethod()]
+        public void getTaskPerBoardTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+
+        }
+
+        [TestMethod()]
+        public void EliminaTaskDaBoardTest()
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                Assert.Fail();
+            }
+
+        }
     }
 }
