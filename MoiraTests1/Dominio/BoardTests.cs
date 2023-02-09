@@ -42,12 +42,12 @@ namespace Moira.Dominio.Tests
                 //non deve essere generata eccezzione
                 //per avere successo nel test
                 Board board = new Board("maracaibo");
-                board.creaColonna("dsa", false);
+                board.creaColonna("dsa", true);
                 MoiraTask task = new MoiraTask("das", "da");
                 board.setTaskCorrente(task);
                 board.addTaskColonna(board.Colonne[0].CodiceIdentificativo); //colonna cestinato
                 board.SelezionaTask(task.CodiceIdentificativo, board.Colonne[0].CodiceIdentificativo);
-                board.SpostaTaskTraColonne(board.Colonne[1].CodiceIdentificativo, false, false);
+                board.SpostaTaskTraColonne(board.Colonne[1].CodiceIdentificativo, false, true);
             }
             catch
             {

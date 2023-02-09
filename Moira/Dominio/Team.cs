@@ -40,6 +40,7 @@ namespace Moira.Dominio
         {
             get => nome;
         }
+        public Cerimonia CerimoniaCorrente { get => cerimoniaCorrente; }
 
         [Browsable(false)]
         public Progetto Progetto

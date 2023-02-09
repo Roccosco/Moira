@@ -181,5 +181,46 @@ namespace Moira.Dominio.Controllers.Tests
                 Assert.Fail();
             }
         }
+
+        [TestMethod]
+        public void SelezionaTaskModificaTest()
+        {
+            Assert.Fail();
+            try
+            {
+
+            }catch(Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void ConfermaModificaTaskTest()
+        {
+            Assert.Fail();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void SpostaUserStoryTest()
+        {
+            Assert.Fail();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
     }
 }

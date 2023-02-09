@@ -78,11 +78,9 @@ namespace Moira.Dominio.Tests
         {
             try
             {
-                //di base esiste un team, quindi se aggiungo un nuovo team dovrei poterlo
-                //visualizzare nella posizione 1
                 Team t = new Team("oceanman");
                 m.addTeam(t);
-                Assert.IsNotNull(m.GetTeamSpecifico("1"));
+                Assert.IsNotNull(m.GetTeamSpecifico(t.CodiceUnivoco));
             }
             catch
             {
@@ -90,13 +88,14 @@ namespace Moira.Dominio.Tests
             }
         }
 
-        //di base esiste il "MoiraTeam" nella classe Moira, con codice "0"
         [TestMethod()]
         public void GetTeamSpecificoTest()
         {
             try
             {
-                Assert.IsNotNull(m.GetTeamSpecifico("0"));
+                Team t = new Team("oceanman");
+                m.addTeam(t);
+                Assert.IsNotNull(m.GetTeamSpecifico(t.CodiceUnivoco));
             }
             catch
             {
@@ -108,8 +107,10 @@ namespace Moira.Dominio.Tests
         [ExpectedException(typeof(KeyNotFoundException))]
         public void deleteTeamTest()
         {
-            m.deleteTeam("0");
-            m.GetTeamSpecifico("0");
+            Team t = new Team("oceanman");
+            m.addTeam(t);
+            m.deleteTeam(t.CodiceUnivoco);
+            m.deleteTeam(t.CodiceUnivoco);
         }
 
         //soprattutto la gestione dei CodiciUnivoci
@@ -147,9 +148,10 @@ namespace Moira.Dominio.Tests
         [ExpectedException(typeof(KeyNotFoundException))]
         public void deleteImpiegatoTest()
         {
-            m.addImpiegato(new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso"));
-            m.deleteImpiegato("0");
-            m.GetImpiegatoSpecifico("0");
+            Impiegato impiegato = new Impiegato("lello", "bello", "ciello@mello.com", "1240", "vialemanidalnaso");
+            m.addImpiegato(impiegato);
+            m.deleteImpiegato(impiegato.CodiceUnivoco);
+            m.GetImpiegatoSpecifico(impiegato.CodiceUnivoco);
         }
 
         [TestMethod()]
@@ -157,8 +159,9 @@ namespace Moira.Dominio.Tests
         {
             try
             {
-                m.addCliente(new Cliente("pane", "cunzato"));
-                Assert.IsNotNull(m.GetClienteSpecifico("1"));
+                Cliente cliente = new Cliente("pane", "cunzato");
+                m.addCliente(cliente);
+                Assert.IsNotNull(m.GetClienteSpecifico(cliente.CodiceUnivoco));
 
             }
             catch
@@ -167,13 +170,14 @@ namespace Moira.Dominio.Tests
             }
         }
 
-        //di base c'è un cliente nella lista di moira
         [TestMethod()]
         public void GetClienteSpecificoTest()
         {
             try
             {
-                Assert.IsNotNull(m.GetClienteSpecifico("0"));
+                Cliente cliente = new Cliente("pane", "cunzato");
+                m.addCliente(cliente);
+                Assert.IsNotNull(m.GetClienteSpecifico(cliente.CodiceUnivoco));
             }
             catch
             {
@@ -185,8 +189,10 @@ namespace Moira.Dominio.Tests
         [ExpectedException(typeof(KeyNotFoundException))]
         public void deleteClienteTest()
         {
-            m.deleteCliente("0");
-            m.GetClienteSpecifico("0");
+            Cliente cliente = new Cliente("pane", "cunzato");
+            m.addCliente(cliente);
+            m.deleteCliente(cliente.CodiceUnivoco);
+            m.GetClienteSpecifico(cliente.CodiceUnivoco);
         }
     }
 }

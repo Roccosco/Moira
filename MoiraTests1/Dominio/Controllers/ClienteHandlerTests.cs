@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moira.Dominio;
 using Moira.Dominio.Controllers;
+using Moira.Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,26 +9,19 @@ using System.Threading.Tasks;
 
 namespace Moira.Dominio.Controllers.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class ClienteHandlerTests
     {
         static ClienteHandler ch;
         static MoiraClass m;
 
-        [ClassInitialize]
-        public static void ClassInitialize(TestContext context)
+        [TestInitialize]
+        public void TestInitialize()
         {
-            //m = MoiraClass.Instance;
-            //ch = new ClienteHandler();
+            ch = new ClienteHandler();
+            m = MoiraClass.Instance;
         }
 
-        [TestInitialize]
-        public static void TestInitialize(TestContext context)
-        {
-            m = MoiraClass.Instance;
-            ch = new ClienteHandler();
-        }
-        /*
         [TestMethod()]
         public void AssociaClienteAProgettoTest()
         {
@@ -43,7 +36,7 @@ namespace Moira.Dominio.Controllers.Tests
             {
                 Assert.Fail();
             }
-        }*/
+        }
 
         [TestMethod()]
         public void ConfermaCreaClienteTest()
@@ -80,7 +73,6 @@ namespace Moira.Dominio.Controllers.Tests
         [TestMethod()]
         public void ResetInfoClienteTest()
         {
-            Assert.Fail();
             try
             {
                 ch.CreaCliente("tu", "sei", "pazzo", "mica", "Van", "Gogh");

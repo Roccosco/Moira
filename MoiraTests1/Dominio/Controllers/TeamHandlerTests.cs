@@ -29,7 +29,6 @@ namespace Moira.Dominio.Controllers.Tests
             m = MoiraClass.Instance;
         }
 
-
         [TestMethod()]
         public void CreaImpiegatoTest()
         {
@@ -257,7 +256,7 @@ namespace Moira.Dominio.Controllers.Tests
                 TimeSpan timeSpan = TimeSpan.FromSeconds(6);
                 string codice_team = th.TeamCorrente.CodiceUnivoco;
                 th.CreaCerimonia("Acufene", "Brutto", dateTime, timeSpan, TipoCerimonia.sporadica, codice_team);
-                
+
                 th.InvitoCerimonia(cliente.CodiceUnivoco);
                 th.ConfermaCreaCerimonia();
                 Assert.IsTrue(th.TeamCorrente.CerimoniaCorrente.IsClienteInterested(cliente.CodiceUnivoco));
@@ -409,9 +408,10 @@ namespace Moira.Dominio.Controllers.Tests
         [TestMethod()]
         public void SelezionaTaskBacklogsTest()
         {
+            Assert.Fail();
             try
             {
-
+                
             }
             catch
             {

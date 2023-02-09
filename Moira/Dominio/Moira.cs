@@ -35,9 +35,10 @@ namespace Moira.Dominio
             teams = new Dictionary<string, Team>();
             impiegati = new Dictionary<string, Impiegato>();
 
-            Avviamento();
+            //Avviamento();
         }
 
+        /*
         private void Avviamento()
         {
             Team team = new Team("MoiraTeam");
@@ -46,6 +47,7 @@ namespace Moira.Dominio
             Cliente cliente = new Cliente("peppino", "impanato");
             clienti.Add(cliente.CodiceUnivoco, cliente);
         }
+        */
 
         //metodo public per ottenere un team dal dizionario tramite suo codiceUnivoco
         public Team GetTeamSpecifico(string codiceUnivoco)
