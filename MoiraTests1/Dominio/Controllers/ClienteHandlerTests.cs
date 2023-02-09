@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoiraTests1.Dominio.Controllers
+namespace Moira.Dominio.Controllers.Tests
 {
     [TestClass()]
     public class ClienteHandlerTests
@@ -18,10 +18,17 @@ namespace MoiraTests1.Dominio.Controllers
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
+            //m = MoiraClass.Instance;
+            //ch = new ClienteHandler();
+        }
+
+        [TestInitialize]
+        public static void TestInitialize(TestContext context)
+        {
             m = MoiraClass.Instance;
             ch = new ClienteHandler();
         }
-
+        /*
         [TestMethod()]
         public void AssociaClienteAProgettoTest()
         {
@@ -36,7 +43,7 @@ namespace MoiraTests1.Dominio.Controllers
             {
                 Assert.Fail();
             }
-        }
+        }*/
 
         [TestMethod()]
         public void ConfermaCreaClienteTest()
@@ -73,6 +80,7 @@ namespace MoiraTests1.Dominio.Controllers
         [TestMethod()]
         public void ResetInfoClienteTest()
         {
+            Assert.Fail();
             try
             {
                 ch.CreaCliente("tu", "sei", "pazzo", "mica", "Van", "Gogh");

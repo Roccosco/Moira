@@ -36,6 +36,16 @@ namespace Moira.Dominio
             if (!clienti.Add(cliente))
                 throw new Exception("Cliente già invitato!");
         }
+        public bool IsClienteInterested(Cliente cl)
+        {
+            return clienti.Contains(cl);
+        }
+
+        public bool IsClienteInterested(string codiceUnivocoCliente)
+        {
+            return clienti.Any(x => x.CodiceUnivoco == codiceUnivocoCliente);
+        }
+
     }
     public enum TipoCerimonia
     {

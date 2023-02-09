@@ -31,6 +31,8 @@ namespace Moira.Dominio
             sprints = new List<Sprint>();
         }
 
+        public Cerimonia CerimoniaCorrente { get => cerimoniaCorrente; }
+
         public string CodiceUnivoco
         {
             get => codiceUnivoco;
