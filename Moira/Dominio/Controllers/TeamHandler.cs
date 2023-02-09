@@ -11,8 +11,6 @@ namespace Moira.Dominio.Controllers
         private MoiraClass moira;
         private Team teamCorrente;
         private Impiegato impiegatoCorrente;
-        private Cerimonia cerimoniaCorrente;
-
 
         public TeamHandler()
         {
@@ -178,7 +176,8 @@ namespace Moira.Dominio.Controllers
                 Cliente cliente = moira.GetClienteSpecifico(codiceCliente);
                 if (!teamCorrente.Progetto.IsClienteInterested(cliente))
                     throw new Exception("Il cliente " + cliente.Nome + " non è interessato al progetto!");
-                cerimoniaCorrente.AggiungiCliente(cliente);
+
+                teamCorrente.AggiungiClienteCerimonia(cliente);
             }
             catch (KeyNotFoundException e)
             {

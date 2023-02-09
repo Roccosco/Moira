@@ -31,8 +31,6 @@ namespace Moira.Dominio
             sprints = new List<Sprint>();
         }
 
-        public Cerimonia CerimoniaCorrente { get => cerimoniaCorrente; }
-
         public string CodiceUnivoco
         {
             get => codiceUnivoco;
@@ -183,6 +181,8 @@ namespace Moira.Dominio
         public void EliminaTaskDaBoard(MoiraTask task) => board.EliminaTask(task);
 
         public List<Impiegato> getImpiegati() => new List<Impiegato>(impiegati);
-        
+
+        public void AggiungiClienteCerimonia(Cliente cliente) => cerimoniaCorrente.AggiungiCliente(cliente);
+
     }
 }
