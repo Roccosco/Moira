@@ -83,5 +83,27 @@
         public List<Cliente> GetClienti() => moira.GetClienti();
 
         public List<Progetto> GetProgetti() => moira.GetProgetti();
+
+        public void SelezionaTaskModifica(string codiceTask)
+        {
+            try
+            {
+                progettoCorrente.SelezionaTaskModifica(codiceTask);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ConfermaModificaTask(string nome, string descrizione)
+        {
+            progettoCorrente.ConfermaModificaTask(nome, descrizione);
+        }
+
+        public void SpostaUserStory(string codiceUserStory, int posizione)
+        {
+            progettoCorrente.SpostaUserStory(codiceUserStory, posizione);
+        }
     }
 }

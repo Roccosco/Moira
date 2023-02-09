@@ -22,6 +22,7 @@ namespace Moira.UI
             InitializeComponent();
 
             dataGridViewTask.DataSource = controller.GetTaskPerSprint();
+            dataGridViewTeamImpiegati.DataSource = controller.GetImpiegatiTeam();
         }
 
         private void buttonAddTask_Click(object sender, EventArgs e)
@@ -41,12 +42,17 @@ namespace Moira.UI
 
                 buttonAddTask.Enabled = false;
                 textBoxTask.Enabled = false;
+                buttonTermina.Enabled = false;
                 buttonImpiegato.Enabled = true;
                 textBoxImpiegato.Enabled = true;
             }
             catch (KeyNotFoundException)
             {
                 MessageBox.Show("Codice task non valido");
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Il task con codice: " + codiceTask + " è stato già inserito!");
             }
             catch (Exception ex)
             {

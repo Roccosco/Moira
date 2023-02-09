@@ -31,13 +31,17 @@ namespace Moira.UI
             Label labelNome = new Label()
             {
                 Text = task.Nome,
-                Location = new Point(10, 10)
+                Location = new Point(10, 10),
+                Width = 160,
+                TextAlign = ContentAlignment.MiddleCenter
             };
             panelTask.Controls.Add(labelNome);
             Label labelDescrizione = new Label()
             {
                 Text = task.Descrizione,
-                Location = new Point(10, 50)
+                Location = new Point(10, 50),
+                Width = 160,
+                TextAlign = ContentAlignment.TopLeft
             };
             panelTask.Controls.Add(labelDescrizione);
         }

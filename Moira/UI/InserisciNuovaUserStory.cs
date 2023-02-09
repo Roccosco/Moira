@@ -15,11 +15,81 @@ namespace Moira.UI
     public partial class InserisciNuovaUserStory : Form
     {
         private ProgettoHandler controller;
+        private Progetto progetto;
+        private Observer observer;
 
         public InserisciNuovaUserStory(ProgettoHandler controller)
         {
             this.controller = controller;
             InitializeComponent();
+
+            progetto = controller.ProgettoCorrente;
+            observer = new ObserverAction(DrawBacklog);
+            progetto.Register(observer);
+            DrawBacklog();
+        }
+
+        public void DrawBacklog()
+        {
+            progetto.DrawBacklog(panelBacklog);
+
+            foreach (Control panelUS in panelBacklog.Controls)
+            {
+                if (panelUS is not Panel)
+                    continue;
+
+                if (panelUS.Tag is int)
+                {
+                    //panelSpostamento
+                    panelUS.AllowDrop = true;
+                    panelUS.DragEnter += (s, e) =>
+                    {
+                        e.Effect = DragDropEffects.Move;
+                    };
+
+                    panelUS.DragDrop += (s, e) =>
+                    {
+                        Panel panelUserStory = (Panel)e.Data.GetData(typeof(Panel));
+                        Panel panelSpostamento = s as Panel;
+                        UserStory userStory = (UserStory)panelUserStory.Tag;
+                        int posizione = (int)panelSpostamento.Tag;
+
+                        controller.SpostaUserStory(userStory.CodiceIdentificativo, posizione);
+                    };
+                }
+                else
+                {
+                    panelUS.MouseDown += (s, e) =>
+                    {
+                        panelUS.DoDragDrop(s, DragDropEffects.Move);
+                    };
+                }
+
+
+                foreach (Control panelTask in panelUS.Controls)
+                {
+                    if (panelTask is not Panel)
+                        continue;
+
+                    ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+                    contextMenuStrip.Items.Add(new ToolStripMenuItem("ModificaTask", null, ModificaTask));
+                    panelTask.ContextMenuStrip = contextMenuStrip;
+                }
+            }
+        }
+
+        private void ModificaTask(object? sender, EventArgs e)
+        {
+            MoiraTask task = (((ToolStripMenuItem)sender).Owner as ContextMenuStrip).SourceControl.Tag as MoiraTask;
+            try
+            {
+                controller.SelezionaTaskModifica(task.CodiceIdentificativo);
+                new ModificaTaskForm(controller).Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonInserisciUserStory_Click(object sender, EventArgs e)
@@ -64,7 +134,7 @@ namespace Moira.UI
         private void buttonInserisciPosizioneUserStory_Click(object sender, EventArgs e)
         {
             int posizione;
-            if(!int.TryParse(textBoxPosizione.Text, out posizione))
+            if (!int.TryParse(textBoxPosizione.Text, out posizione))
             {
                 MessageBox.Show("La posizione deve essere un valore intero!", "Attenzione");
                 return;
@@ -80,7 +150,7 @@ namespace Moira.UI
                 buttonInserisciPosizioneUserStory.Enabled = false;
                 buttonConferma.Visible = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Attenzione");
             }
@@ -92,7 +162,14 @@ namespace Moira.UI
 
             MessageBox.Show("Userstory inserita con successo!", "Successo");
 
-            Dispose();
+            textBoxNome.Enabled = true;
+            textBoxNome.Text = "";
+            textBoxDescrizione.Enabled = true;
+            textBoxDescrizione.Text = "";
+            buttonInserisciUserStory.Enabled = true;
+            buttonInserisciNuovoTask.Enabled = false;
+            buttonInserisciPosizioneUserStory.Enabled = false;
+            buttonConferma.Visible = false;
         }
     }
 }

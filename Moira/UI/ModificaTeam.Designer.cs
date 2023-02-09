@@ -36,7 +36,11 @@
             this.labelAggiungi = new System.Windows.Forms.Label();
             this.buttonTermina = new System.Windows.Forms.Button();
             this.dataGridViewImpiegati = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridViewImpiegatiTeam = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegati)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegatiTeam)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAggiungi
@@ -104,18 +108,49 @@
             // dataGridViewImpiegati
             // 
             this.dataGridViewImpiegati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewImpiegati.Location = new System.Drawing.Point(105, 72);
+            this.dataGridViewImpiegati.Location = new System.Drawing.Point(443, 74);
             this.dataGridViewImpiegati.Name = "dataGridViewImpiegati";
             this.dataGridViewImpiegati.RowHeadersWidth = 51;
             this.dataGridViewImpiegati.RowTemplate.Height = 29;
-            this.dataGridViewImpiegati.Size = new System.Drawing.Size(671, 188);
+            this.dataGridViewImpiegati.Size = new System.Drawing.Size(409, 207);
             this.dataGridViewImpiegati.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(611, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "IMPIEGATI:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(158, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(153, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "IMPIEGATI NEL TEAM:";
+            // 
+            // dataGridViewImpiegatiTeam
+            // 
+            this.dataGridViewImpiegatiTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewImpiegatiTeam.Location = new System.Drawing.Point(12, 74);
+            this.dataGridViewImpiegatiTeam.Name = "dataGridViewImpiegatiTeam";
+            this.dataGridViewImpiegatiTeam.RowHeadersWidth = 51;
+            this.dataGridViewImpiegatiTeam.RowTemplate.Height = 29;
+            this.dataGridViewImpiegatiTeam.Size = new System.Drawing.Size(425, 207);
+            this.dataGridViewImpiegatiTeam.TabIndex = 9;
             // 
             // ModificaTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 577);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dataGridViewImpiegatiTeam);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewImpiegati);
             this.Controls.Add(this.buttonTermina);
             this.Controls.Add(this.labelAggiungi);
@@ -127,6 +162,7 @@
             this.Name = "ModificaTeam";
             this.Text = "ModificaTeam";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegati)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegatiTeam)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,5 +178,8 @@
         private Label labelAggiungi;
         private Button buttonTermina;
         private DataGridView dataGridViewImpiegati;
+        private Label label1;
+        private Label label2;
+        private DataGridView dataGridViewImpiegatiTeam;
     }
 }

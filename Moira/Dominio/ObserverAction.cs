@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Moira.Dominio
 {
-    public class ObserverBoard : Observer
+    public class ObserverAction : Observer
     {
-        private BoardForm boardForm;
-        public ObserverBoard(BoardForm boardForm)
+        private Action funzione;
+        public ObserverAction(Action funzione)
         {
-            this.boardForm = boardForm;
+            this.funzione = funzione;
         }
         public void update()
         {
-            boardForm.DrawBoard();
+            funzione.Invoke();
         }
     }
 }

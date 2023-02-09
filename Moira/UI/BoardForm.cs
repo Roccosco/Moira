@@ -26,7 +26,7 @@ namespace Moira.UI
             this.controller = controller;
 
             board = controller.TeamCorrente.Board;
-            observer = new ObserverBoard(this);
+            observer = new ObserverAction(DrawBoard);
             board.Register(observer);
             DrawBoard();
         }

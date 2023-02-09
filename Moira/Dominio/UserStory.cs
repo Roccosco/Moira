@@ -1,4 +1,6 @@
-﻿namespace Moira.Dominio
+﻿using Moira.UI;
+
+namespace Moira.Dominio
 {
     public class UserStory
     {
@@ -49,6 +51,10 @@
 
         public List<MoiraTask> getAllTasks() => tasks.Values.ToList();
 
+        public int Draw(Panel panelBacklog, int y, int pos) => new UserStoryUI(this).Draw(panelBacklog, y, pos);
+
         public string NomeUserStory { get => nome; }
+
+        public string Descrizione { get => descrizione; }
     }
 }

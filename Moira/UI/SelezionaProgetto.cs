@@ -16,11 +16,8 @@ namespace Moira.UI
     {
         private ProgettoHandler controller;
 
-        private Form form;
-
-        public SelezionaProgetto(Form form, ProgettoHandler controller)
+        public SelezionaProgetto(ProgettoHandler controller)
         {
-            this.form = form;
             this.controller = controller;
             InitializeComponent();
             dataGridViewProgetti.DataSource = controller.GetProgetti();
@@ -39,7 +36,7 @@ namespace Moira.UI
             try
             {
                 controller.SelezionaProgetto(nome);
-                form.Show();
+                new InserisciNuovaUserStory(controller).Show();
                 Dispose();
             }
             catch (KeyNotFoundException)

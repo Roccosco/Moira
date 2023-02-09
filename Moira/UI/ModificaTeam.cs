@@ -20,6 +20,7 @@ namespace Moira.UI
             InitializeComponent();
             this.controller = controller;
             dataGridViewImpiegati.DataSource = controller.GetImpiegati();
+            dataGridViewImpiegatiTeam.DataSource = controller.GetImpiegatiTeam();
         }
 
         private void buttonElimina_Click(object sender, EventArgs e)
@@ -32,6 +33,7 @@ namespace Moira.UI
 
                 MessageBox.Show("l'impiegato è stato eliminato correttamente");
                 textBoxElimina.Text = "";
+                dataGridViewImpiegatiTeam.DataSource = controller.GetImpiegatiTeam();
             }
             catch (KeyNotFoundException ex)
             {
@@ -53,6 +55,7 @@ namespace Moira.UI
 
                 MessageBox.Show("l'impiegato è stato aggiunto correttamente");
                 textBoxAggiungi.Text = "";
+                dataGridViewImpiegatiTeam.DataSource = controller.GetImpiegatiTeam();
             }
             catch (KeyNotFoundException ex)
             {

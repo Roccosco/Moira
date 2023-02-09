@@ -26,7 +26,7 @@ namespace Moira.UI
         private void buttonGestisciBacklog_Click(object sender, EventArgs e)
         {
             ProgettoHandler controller = new ProgettoHandler();
-            new SelezionaProgetto(new InserisciNuovaUserStory(controller), controller).Show();
+            new SelezionaProgetto(controller).Show();
         }
 
         private void buttonGestisciClienti_Click(object sender, EventArgs e)

@@ -19,6 +19,7 @@ namespace Moira.UI
             InitializeComponent();
             controller = new TeamHandler();
             dataGridViewTeams.DataSource = controller.GetTeams();   
+            dataGridViewImpiegati.DataSource = controller.GetImpiegati();   
         }
 
         private void buttonInserisci_Click(object sender, EventArgs e)

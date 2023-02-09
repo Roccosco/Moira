@@ -42,7 +42,11 @@
             this.textBoxEliminaTeam = new System.Windows.Forms.TextBox();
             this.labelEliminaTeam = new System.Windows.Forms.Label();
             this.dataGridViewTeams = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridViewImpiegati = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegati)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonInserisci
@@ -110,7 +114,7 @@
             // 
             // buttonModifica
             // 
-            this.buttonModifica.Location = new System.Drawing.Point(442, 108);
+            this.buttonModifica.Location = new System.Drawing.Point(436, 413);
             this.buttonModifica.Name = "buttonModifica";
             this.buttonModifica.Size = new System.Drawing.Size(264, 45);
             this.buttonModifica.TabIndex = 34;
@@ -120,7 +124,7 @@
             // 
             // textBoxModifica
             // 
-            this.textBoxModifica.Location = new System.Drawing.Point(442, 47);
+            this.textBoxModifica.Location = new System.Drawing.Point(436, 352);
             this.textBoxModifica.Name = "textBoxModifica";
             this.textBoxModifica.Size = new System.Drawing.Size(264, 27);
             this.textBoxModifica.TabIndex = 35;
@@ -128,7 +132,7 @@
             // labelModifica
             // 
             this.labelModifica.AutoSize = true;
-            this.labelModifica.Location = new System.Drawing.Point(442, 24);
+            this.labelModifica.Location = new System.Drawing.Point(436, 329);
             this.labelModifica.Name = "labelModifica";
             this.labelModifica.Size = new System.Drawing.Size(106, 20);
             this.labelModifica.TabIndex = 36;
@@ -136,7 +140,7 @@
             // 
             // buttonEliminaTeam
             // 
-            this.buttonEliminaTeam.Location = new System.Drawing.Point(442, 269);
+            this.buttonEliminaTeam.Location = new System.Drawing.Point(436, 574);
             this.buttonEliminaTeam.Name = "buttonEliminaTeam";
             this.buttonEliminaTeam.Size = new System.Drawing.Size(264, 45);
             this.buttonEliminaTeam.TabIndex = 37;
@@ -146,7 +150,7 @@
             // 
             // textBoxEliminaTeam
             // 
-            this.textBoxEliminaTeam.Location = new System.Drawing.Point(442, 208);
+            this.textBoxEliminaTeam.Location = new System.Drawing.Point(436, 513);
             this.textBoxEliminaTeam.Name = "textBoxEliminaTeam";
             this.textBoxEliminaTeam.Size = new System.Drawing.Size(264, 27);
             this.textBoxEliminaTeam.TabIndex = 38;
@@ -154,7 +158,7 @@
             // labelEliminaTeam
             // 
             this.labelEliminaTeam.AutoSize = true;
-            this.labelEliminaTeam.Location = new System.Drawing.Point(442, 185);
+            this.labelEliminaTeam.Location = new System.Drawing.Point(436, 490);
             this.labelEliminaTeam.Name = "labelEliminaTeam";
             this.labelEliminaTeam.Size = new System.Drawing.Size(96, 20);
             this.labelEliminaTeam.TabIndex = 39;
@@ -163,18 +167,49 @@
             // dataGridViewTeams
             // 
             this.dataGridViewTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTeams.Location = new System.Drawing.Point(95, 428);
+            this.dataGridViewTeams.Location = new System.Drawing.Point(402, 47);
             this.dataGridViewTeams.Name = "dataGridViewTeams";
             this.dataGridViewTeams.RowHeadersWidth = 51;
             this.dataGridViewTeams.RowTemplate.Height = 29;
-            this.dataGridViewTeams.Size = new System.Drawing.Size(611, 188);
+            this.dataGridViewTeams.Size = new System.Drawing.Size(368, 252);
             this.dataGridViewTeams.TabIndex = 40;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(569, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "TEAM:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(175, 387);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 20);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "IMPIEGATI:";
+            // 
+            // dataGridViewImpiegati
+            // 
+            this.dataGridViewImpiegati.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewImpiegati.Location = new System.Drawing.Point(36, 410);
+            this.dataGridViewImpiegati.Name = "dataGridViewImpiegati";
+            this.dataGridViewImpiegati.RowHeadersWidth = 51;
+            this.dataGridViewImpiegati.RowTemplate.Height = 29;
+            this.dataGridViewImpiegati.Size = new System.Drawing.Size(355, 227);
+            this.dataGridViewImpiegati.TabIndex = 42;
             // 
             // GestisciTeamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(863, 674);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dataGridViewImpiegati);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewTeams);
             this.Controls.Add(this.labelEliminaTeam);
             this.Controls.Add(this.textBoxEliminaTeam);
@@ -192,6 +227,7 @@
             this.Name = "GestisciTeamForm";
             this.Text = "GestisciTeamForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewImpiegati)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,5 +249,8 @@
         private TextBox textBoxEliminaTeam;
         private Label labelEliminaTeam;
         private DataGridView dataGridViewTeams;
+        private Label label1;
+        private Label label2;
+        private DataGridView dataGridViewImpiegati;
     }
 }

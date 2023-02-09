@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moira.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Moira.Dominio
 {
-    public class Progetto
+    public class Progetto : Subject
     {
         private string nome;
         private string descrizione;
@@ -17,6 +18,9 @@ namespace Moira.Dominio
         private HashSet<Cliente> clienti;
         private List<UserStory> backlog;
         private UserStory userStoryCorrente;
+        private MoiraTask taskModifica;
+
+        private HashSet<Observer> observers;
 
         public Progetto(string nome, string descrizione)
         {
@@ -25,15 +29,19 @@ namespace Moira.Dominio
 
             clienti = new HashSet<Cliente>();
             backlog = new List<UserStory>();
+
+            observers = new HashSet<Observer>();
         }
 
         public string Nome { get => nome; set => nome = value; }
 
         public string Descrizione { get => descrizione; }
 
+        public MoiraTask TaskModifica { get => taskModifica; }
+
         public void SetCliente(Cliente cliente)
         {
-            if(!clienti.Add(cliente))
+            if (!clienti.Add(cliente))
                 throw new Exception("Cliente già presente");
         }
 
@@ -67,6 +75,7 @@ namespace Moira.Dominio
         public void ConfermaInserimentoUserStory()
         {
             backlog.Insert(posNuovaUserStory, userStoryCorrente);
+            Notify();
         }
 
         //vado a verificare se il cliente che viene passato è presente nella hashset
@@ -83,7 +92,7 @@ namespace Moira.Dominio
 
         public MoiraTask getTask(string codiceTask)
         {
-            foreach(UserStory userStory in backlog)
+            foreach (UserStory userStory in backlog)
             {
                 MoiraTask task = userStory.getTask(codiceTask);
                 if (task != null)
@@ -107,5 +116,54 @@ namespace Moira.Dominio
 
         [Browsable(false)]
         public UserStory Corrente { get => userStoryCorrente; }
+
+        public void DrawBacklog(Panel panelBacklog) => new BacklogUI(new List<UserStory>(backlog)).Draw(panelBacklog);
+
+        public void Register(Observer observer) => observers.Add(observer);
+
+        public void Remove(Observer observer) => observers.Remove(observer);
+
+        public void Notify()
+        {
+            foreach (Observer observer in observers)
+                observer.update();
+        }
+
+        public void SelezionaTaskModifica(string codiceTask)
+        {
+            taskModifica = getTask(codiceTask);
+        }
+
+        public void ConfermaModificaTask(string nome, string descrizione)
+        {
+            taskModifica.Nome = nome;
+            taskModifica.Descrizione = descrizione;
+            Notify();
+        }
+
+        public void SpostaUserStory(string codiceUserStory, int posizione)
+        {
+            if (posizione < 0 || posizione >= backlog.Count)
+                throw new Exception("Posizione fuori dal range");
+
+            List<UserStory> newBacklog = new List<UserStory>();
+
+            UserStory userStory = backlog.Where(x => x.CodiceIdentificativo == codiceUserStory).FirstOrDefault();
+            if (userStory == null)
+                throw new Exception("User story non presente nel backlog!");
+
+            int i;
+            for (i = 0; i < backlog.Count; i++)
+            {
+                if (i == posizione)
+                    newBacklog.Add(userStory);
+                
+                if (backlog[i] != userStory)
+                    newBacklog.Add(backlog[i]);
+            }
+
+            backlog = newBacklog;
+            Notify();
+        }
     }
 }

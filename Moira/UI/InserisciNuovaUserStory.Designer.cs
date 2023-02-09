@@ -40,6 +40,7 @@
             this.buttonInserisciPosizioneUserStory = new System.Windows.Forms.Button();
             this.buttonConferma = new System.Windows.Forms.Button();
             this.richTextBoxMessaggi = new System.Windows.Forms.RichTextBox();
+            this.panelBacklog = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +55,7 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(31, 96);
+            this.textBoxNome.Location = new System.Drawing.Point(31, 143);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(263, 27);
             this.textBoxNome.TabIndex = 1;
@@ -62,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 73);
+            this.label2.Location = new System.Drawing.Point(31, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 20);
             this.label2.TabIndex = 2;
@@ -71,7 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 166);
+            this.label3.Location = new System.Drawing.Point(31, 232);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 4;
@@ -79,7 +80,7 @@
             // 
             // textBoxDescrizione
             // 
-            this.textBoxDescrizione.Location = new System.Drawing.Point(31, 189);
+            this.textBoxDescrizione.Location = new System.Drawing.Point(31, 255);
             this.textBoxDescrizione.Name = "textBoxDescrizione";
             this.textBoxDescrizione.Size = new System.Drawing.Size(263, 27);
             this.textBoxDescrizione.TabIndex = 3;
@@ -87,7 +88,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(629, 73);
+            this.label4.Location = new System.Drawing.Point(351, 177);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(155, 20);
             this.label4.TabIndex = 6;
@@ -95,14 +96,15 @@
             // 
             // textBoxPosizione
             // 
-            this.textBoxPosizione.Location = new System.Drawing.Point(629, 96);
+            this.textBoxPosizione.Location = new System.Drawing.Point(351, 200);
             this.textBoxPosizione.Name = "textBoxPosizione";
-            this.textBoxPosizione.Size = new System.Drawing.Size(263, 27);
+            this.textBoxPosizione.Size = new System.Drawing.Size(245, 27);
             this.textBoxPosizione.TabIndex = 5;
+            this.textBoxPosizione.Text = "0";
             // 
             // buttonInserisciUserStory
             // 
-            this.buttonInserisciUserStory.Location = new System.Drawing.Point(351, 94);
+            this.buttonInserisciUserStory.Location = new System.Drawing.Point(31, 344);
             this.buttonInserisciUserStory.Name = "buttonInserisciUserStory";
             this.buttonInserisciUserStory.Size = new System.Drawing.Size(245, 29);
             this.buttonInserisciUserStory.TabIndex = 7;
@@ -113,7 +115,7 @@
             // buttonInserisciNuovoTask
             // 
             this.buttonInserisciNuovoTask.Enabled = false;
-            this.buttonInserisciNuovoTask.Location = new System.Drawing.Point(351, 157);
+            this.buttonInserisciNuovoTask.Location = new System.Drawing.Point(351, 111);
             this.buttonInserisciNuovoTask.Name = "buttonInserisciNuovoTask";
             this.buttonInserisciNuovoTask.Size = new System.Drawing.Size(245, 29);
             this.buttonInserisciNuovoTask.TabIndex = 8;
@@ -124,7 +126,7 @@
             // buttonInserisciPosizioneUserStory
             // 
             this.buttonInserisciPosizioneUserStory.Enabled = false;
-            this.buttonInserisciPosizioneUserStory.Location = new System.Drawing.Point(351, 218);
+            this.buttonInserisciPosizioneUserStory.Location = new System.Drawing.Point(351, 285);
             this.buttonInserisciPosizioneUserStory.Name = "buttonInserisciPosizioneUserStory";
             this.buttonInserisciPosizioneUserStory.Size = new System.Drawing.Size(245, 29);
             this.buttonInserisciPosizioneUserStory.TabIndex = 9;
@@ -134,29 +136,39 @@
             // 
             // buttonConferma
             // 
-            this.buttonConferma.Location = new System.Drawing.Point(351, 423);
+            this.buttonConferma.Location = new System.Drawing.Point(351, 364);
             this.buttonConferma.Name = "buttonConferma";
             this.buttonConferma.Size = new System.Drawing.Size(245, 29);
             this.buttonConferma.TabIndex = 10;
-            this.buttonConferma.Text = "Conferma";
+            this.buttonConferma.Text = "Conferma inserimento";
             this.buttonConferma.UseVisualStyleBackColor = true;
             this.buttonConferma.Visible = false;
             this.buttonConferma.Click += new System.EventHandler(this.buttonConferma_Click);
             // 
             // richTextBoxMessaggi
             // 
-            this.richTextBoxMessaggi.Location = new System.Drawing.Point(31, 293);
+            this.richTextBoxMessaggi.Location = new System.Drawing.Point(31, 460);
             this.richTextBoxMessaggi.Name = "richTextBoxMessaggi";
             this.richTextBoxMessaggi.ReadOnly = true;
-            this.richTextBoxMessaggi.Size = new System.Drawing.Size(861, 124);
+            this.richTextBoxMessaggi.Size = new System.Drawing.Size(565, 271);
             this.richTextBoxMessaggi.TabIndex = 11;
             this.richTextBoxMessaggi.Text = "";
+            // 
+            // panelBacklog
+            // 
+            this.panelBacklog.AutoScroll = true;
+            this.panelBacklog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBacklog.Location = new System.Drawing.Point(629, 25);
+            this.panelBacklog.Name = "panelBacklog";
+            this.panelBacklog.Size = new System.Drawing.Size(250, 706);
+            this.panelBacklog.TabIndex = 12;
             // 
             // InserisciNuovaUserStory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 471);
+            this.ClientSize = new System.Drawing.Size(885, 743);
+            this.Controls.Add(this.panelBacklog);
             this.Controls.Add(this.richTextBoxMessaggi);
             this.Controls.Add(this.buttonConferma);
             this.Controls.Add(this.buttonInserisciPosizioneUserStory);
@@ -190,5 +202,6 @@
         private Button buttonInserisciPosizioneUserStory;
         private Button buttonConferma;
         private RichTextBox richTextBoxMessaggi;
+        private Panel panelBacklog;
     }
 }

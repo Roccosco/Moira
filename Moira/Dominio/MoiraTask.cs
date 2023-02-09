@@ -27,8 +27,8 @@ namespace Moira.Dominio
             }
         }
 
-        public string Nome { get => nome; }
-        public string Descrizione { get => descrizione; }
+        public string Nome { get => nome; set => nome = value; }
+        public string Descrizione { get => descrizione; set => descrizione = value; }
 
         public bool Completato { get => completato; set => completato = value; }
 
