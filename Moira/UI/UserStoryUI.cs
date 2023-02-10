@@ -19,22 +19,12 @@ namespace Moira.UI
 
         public int Draw(Panel panelBacklog, int y, int pos)
         {
-            Panel panelSpostamento = new Panel()
+            Panel panelUS = new Panel()
             {
                 Location = new Point(25, y),
                 Width = 200,
-                Height = 5,
                 BorderStyle = BorderStyle.FixedSingle,
-                Tag = pos
-            };
-            panelBacklog.Controls.Add(panelSpostamento);
-
-            Panel panelUS = new Panel()
-            {
-                Location = new Point(25, y+10),
-                Width = 200,
-                BorderStyle = BorderStyle.FixedSingle,
-                Tag = userStory
+                Tag = new Tuple<UserStory, int>(userStory, pos)
             };
             panelBacklog.Controls.Add(panelUS);
 
@@ -68,8 +58,7 @@ namespace Moira.UI
 
             panelUS.Height = height;
 
-            
-            return height+15;
+            return height + 5;
         }
     }
 }

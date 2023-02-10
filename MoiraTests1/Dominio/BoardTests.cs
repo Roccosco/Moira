@@ -122,27 +122,6 @@ namespace Moira.Dominio.Tests
         }
 
         [TestMethod()]
-        public void SpostaTaskInDaRivedereTest()
-        {
-            try
-            {
-                Board board = new Board("maracaibo");
-                board.creaColonna("dsa", true);
-                MoiraTask task = new MoiraTask("das", "da");
-                board.setTaskCorrente(task);
-                board.addTaskColonna(board.Colonne[1].CodiceIdentificativo);
-                board.SelezionaTask(task.CodiceIdentificativo, board.Colonne[1].CodiceIdentificativo);
-                board.SpostaTaskInDaRivedere(board.Colonne[1].CodiceIdentificativo);
-                Assert.IsTrue(board.Colonne[1].getTasks().Item2.Count() == 1);
-            }
-            catch
-            {
-                Assert.Fail();
-            }
-            
-        }
-
-        [TestMethod()]
         [ExpectedException(typeof(Exception))]
         public void EliminaTaskTest()
         {

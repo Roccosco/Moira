@@ -155,34 +155,6 @@ namespace Moira.Dominio
                 observer.update();
         }
 
-        public void SpostaTaskInDaRivedere(string codiceColonnaDaRivedere)
-        {
-            Colonna colonna = null;
-            foreach (Colonna cln in colonne)
-            {
-                if (cln.ContieneCodiceIdentificativo(codiceColonnaDaRivedere))
-                    colonna = cln;
-            }
-
-            if (colonna == null)
-                throw new Exception("Non esiste una colonna con codice: " + codiceColonnaDaRivedere);
-
-            while (colonna.CodiceIdentificativo != codiceColonnaDaRivedere && colonna is ColonnaDecoratore)
-            {
-                ColonnaDecoratore colonnaDecoratore = colonna as ColonnaDecoratore;
-                colonna = colonnaDecoratore.Decorato;
-            }
-
-            if(colonna is not ColonnaConDaRivedere)
-                throw new Exception("La colonna con codice: " + codiceColonnaDaRivedere + " non ammette una sezione da rivedere!");
-
-            ColonnaConDaRivedere colonnaConDaRivedere = colonna as ColonnaConDaRivedere;
-
-            colonnaCorrente.removeTask(taskCorrente);
-            colonnaConDaRivedere.addTaskDaRivedere(taskCorrente);
-            Notify();
-        }
-
         public void EliminaTask(MoiraTask task)
         {
             foreach(Colonna colonna in colonne)

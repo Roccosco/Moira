@@ -146,18 +146,12 @@ namespace Moira.Dominio
             if (posizione < 0 || posizione >= backlog.Count)
                 throw new Exception("Posizione fuori dal range");
 
-            List<UserStory> newBacklog = new List<UserStory>();
-
             UserStory userStory = backlog.Where(x => x.CodiceIdentificativo == codiceUserStory).FirstOrDefault();
             if (userStory == null)
                 throw new Exception("User story non presente nel backlog!");
 
-            newBacklog = backlog;
-            newBacklog.Remove(userStory);
-            newBacklog.Insert(posizione, userStory);
-            backlog = newBacklog;
-
-
+            backlog.Remove(userStory);
+            backlog.Insert(posizione, userStory);
 
             Notify();
         }

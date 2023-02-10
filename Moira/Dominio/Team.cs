@@ -160,8 +160,6 @@ namespace Moira.Dominio
 
         public void SpostaTaskTraColonne(string codiceColonnaDestinazione, bool daRivedereDa, bool daRivedereA) => board.SpostaTaskTraColonne(codiceColonnaDestinazione, daRivedereDa, daRivedereA);
 
-        public void SpostaTaskInDaRivedere(string codiceColonnaDaRivedere) => board.SpostaTaskInDaRivedere(codiceColonnaDaRivedere);
-
         public void TerminaSprint()
         {
             sprintAttivo.Termina();

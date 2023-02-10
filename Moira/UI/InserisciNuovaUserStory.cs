@@ -38,33 +38,25 @@ namespace Moira.UI
                 if (panelUS is not Panel)
                     continue;
 
-                if (panelUS.Tag is int)
+                panelUS.AllowDrop = true;
+                panelUS.DragEnter += (s, e) =>
                 {
-                    //panelSpostamento
-                    panelUS.AllowDrop = true;
-                    panelUS.DragEnter += (s, e) =>
-                    {
-                        e.Effect = DragDropEffects.Move;
-                    };
-
-                    panelUS.DragDrop += (s, e) =>
-                    {
-                        Panel panelUserStory = (Panel)e.Data.GetData(typeof(Panel));
-                        Panel panelSpostamento = s as Panel;
-                        UserStory userStory = (UserStory)panelUserStory.Tag;
-                        int posizione = (int)panelSpostamento.Tag;
-
-                        controller.SpostaUserStory(userStory.CodiceIdentificativo, posizione);
-                    };
-                }
-                else
+                    e.Effect = DragDropEffects.Move;
+                };
+                panelUS.DragDrop += (s, e) =>
                 {
-                    panelUS.MouseDown += (s, e) =>
-                    {
-                        panelUS.DoDragDrop(s, DragDropEffects.Move);
-                    };
-                }
+                    Panel panelUserStory = (Panel)e.Data.GetData(typeof(Panel));
+                    Panel panelSpostamento = s as Panel;
+                    UserStory userStory = ((Tuple<UserStory, int>)panelUserStory.Tag).Item1;
+                    int posizione = ((Tuple<UserStory, int>)panelSpostamento.Tag).Item2;
 
+                    controller.SpostaUserStory(userStory.CodiceIdentificativo, posizione);
+                };
+
+                panelUS.MouseDown += (s, e) =>
+                {
+                    panelUS.DoDragDrop(s, DragDropEffects.Move);
+                };
 
                 foreach (Control panelTask in panelUS.Controls)
                 {
@@ -86,7 +78,7 @@ namespace Moira.UI
                 controller.SelezionaTaskModifica(task.CodiceIdentificativo);
                 new ModificaTaskForm(controller).Show();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
