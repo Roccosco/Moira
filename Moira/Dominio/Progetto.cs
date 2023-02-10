@@ -152,17 +152,13 @@ namespace Moira.Dominio
             if (userStory == null)
                 throw new Exception("User story non presente nel backlog!");
 
-            int i;
-            for (i = 0; i < backlog.Count; i++)
-            {
-                if (i == posizione)
-                    newBacklog.Add(userStory);
-                
-                if (backlog[i] != userStory)
-                    newBacklog.Add(backlog[i]);
-            }
-
+            newBacklog = backlog;
+            newBacklog.Remove(userStory);
+            newBacklog.Insert(posizione, userStory);
             backlog = newBacklog;
+
+
+
             Notify();
         }
     }

@@ -185,11 +185,20 @@ namespace Moira.Dominio.Controllers.Tests
         [TestMethod]
         public void SelezionaTaskModificaTest()
         {
-            Assert.Fail();
             try
             {
-
-            }catch(Exception ex)
+                Team team = new Team("nonloso");
+                m.addTeam(team);
+                Progetto progetto = new Progetto("ilaria", "condizionata");
+                m.addProgetto(progetto);
+                ph.SelezionaProgetto("ilaria");
+                ph.InserisciNuovaUserStory("prisoner", "709");
+                ph.InserisciNuovoTask("comunque", "dada");
+                ph.ConfermaInserimentoUserStory();
+                ph.SelezionaTaskModifica(ph.ProgettoCorrente.getTasks()[0].CodiceIdentificativo);
+                Assert.AreEqual(ph.ProgettoCorrente.TaskModifica.Nome, "comunque");
+            }
+            catch (Exception ex)
             {
                 Assert.Fail(ex.Message);
             }
@@ -198,10 +207,20 @@ namespace Moira.Dominio.Controllers.Tests
         [TestMethod]
         public void ConfermaModificaTaskTest()
         {
-            Assert.Fail();
             try
             {
-
+                Team team = new Team("nonloso");
+                m.addTeam(team);
+                Progetto progetto = new Progetto("ilaria", "condizionata");
+                m.addProgetto(progetto);
+                ph.SelezionaProgetto("ilaria");
+                ph.InserisciNuovaUserStory("prisoner", "709");
+                ph.InserisciNuovoTask("comunque", "dada");
+                ph.ConfermaInserimentoUserStory();
+                ph.SelezionaTaskModifica(ph.ProgettoCorrente.getTasks()[0].CodiceIdentificativo);
+                ph.ProgettoCorrente.TaskModifica.Nome = "cabaret";
+                ph.ConfermaModificaTask("cabaret", "voltaire");
+                Assert.AreEqual(ph.ProgettoCorrente.TaskModifica.Nome, "cabaret");
             }
             catch (Exception ex)
             {
@@ -212,10 +231,38 @@ namespace Moira.Dominio.Controllers.Tests
         [TestMethod]
         public void SpostaUserStoryTest()
         {
-            Assert.Fail();
             try
             {
+                Team team = new Team("nonloso");
+                m.addTeam(team);
+                Progetto progetto = new Progetto("ilaria", "condizionata");
+                m.addProgetto(progetto);
+                ph.SelezionaProgetto("ilaria");
+                ph.InserisciNuovaUserStory("se", "pensi");
+                ph.InserisciNuovoTask("che", "possa"); //0
+                ph.InserisciNuovoTask("cambiare", "il");//1
+                ph.InserisciNuovoTask("mondo", "ti");//2
+                ph.InserisciPosizioneUserStory(0);
+                ph.ConfermaInserimentoUserStory();
 
+                ph.InserisciNuovaUserStory("sbagli", "alla");
+                ph.InserisciNuovoTask("grande", "è");//3
+                ph.InserisciNuovoTask("già", "tanto");//4
+                ph.InserisciNuovoTask("se", "mi");//5
+                ph.InserisciPosizioneUserStory(1);
+                ph.ConfermaInserimentoUserStory();
+
+                string codice_userstory = ph.InserisciNuovaUserStory("cambio", "le");
+                ph.InserisciNuovoTask("mutande", "voglio");//6
+                ph.InserisciNuovoTask("solo", "darti");//7
+                ph.InserisciNuovoTask("un_emicrania", "lancinante");//8
+                ph.InserisciPosizioneUserStory(2);
+                ph.ConfermaInserimentoUserStory();
+
+                ph.SpostaUserStory(codice_userstory, 1);
+                string nome_effective = ph.ProgettoCorrente.getTasks()[3].Nome;
+
+                Assert.AreEqual("mutande", nome_effective);
             }
             catch (Exception ex)
             {

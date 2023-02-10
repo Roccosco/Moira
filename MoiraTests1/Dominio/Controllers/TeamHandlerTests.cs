@@ -228,14 +228,14 @@ namespace Moira.Dominio.Controllers.Tests
                 th.CreaTeam("filippoargenti");
                 th.ConfermaCreaTeam();
                 th.TeamCorrente.Progetto = new Progetto("undos", "tres");
-                DateTime dateTime= DateTime.Now;
-                TimeSpan timeSpan= TimeSpan.FromSeconds(6);
+                DateTime dateTime = DateTime.Now;
+                TimeSpan timeSpan = TimeSpan.FromSeconds(6);
                 string codice_team = th.TeamCorrente.CodiceUnivoco;
                 th.CreaCerimonia("Nepeta", "Buono", dateTime, timeSpan, TipoCerimonia.sporadica, codice_team);
                 th.ConfermaCreaCerimonia();
                 Assert.IsTrue(th.TeamCorrente.HaGiaCerimonie(dateTime, timeSpan));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Assert.Fail(ex.Message);
             }
@@ -399,7 +399,7 @@ namespace Moira.Dominio.Controllers.Tests
                 th.SelezionaTeamBoard(team.CodiceUnivoco);
                 Assert.IsNotNull(th.TeamCorrente);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Assert.Fail(ex.Message);
             }
@@ -408,14 +408,24 @@ namespace Moira.Dominio.Controllers.Tests
         [TestMethod()]
         public void SelezionaTaskBacklogsTest()
         {
-            Assert.Fail();
             try
             {
-                
+                th.CreaTeam("Larsen");
+                th.ConfermaCreaTeam();
+                th.TeamCorrente.creaBoard("ilariacondizionata");
+                th.TeamCorrente.confermaCreaBoard();
+                th.TeamCorrente.Progetto = new Progetto("Torna", "Catalessi");
+                th.TeamCorrente.Progetto.InserisciNuovaUserStory("el", "sendero");
+                th.TeamCorrente.Progetto.InserisciNuovoTask("come", "prypjat");
+                th.TeamCorrente.Progetto.ConfermaInserimentoUserStory();
+                MoiraTask task = th.TeamCorrente.Progetto.getTasks()[0];
+                th.SelezionaTaskBacklogs(task.CodiceIdentificativo);
+                th.TeamCorrente.Board.addTaskColonna("0");
+                Assert.IsNotNull(th.TeamCorrente.Board.Colonne[0].getTask(task.CodiceIdentificativo));
             }
-            catch
+            catch (Exception ex)
             {
-
+                Assert.Fail(ex.Message);
             }
         }
 
@@ -448,7 +458,7 @@ namespace Moira.Dominio.Controllers.Tests
                 th.ConfermaTerminaSprint();
                 Assert.IsFalse(th.TeamCorrente.haSprintAttivo());
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Assert.Fail(e.Message);
             }

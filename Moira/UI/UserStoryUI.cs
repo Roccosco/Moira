@@ -31,7 +31,7 @@ namespace Moira.UI
 
             Panel panelUS = new Panel()
             {
-                Location = new Point(25, y + 10),
+                Location = new Point(25, y+10),
                 Width = 200,
                 BorderStyle = BorderStyle.FixedSingle,
                 Tag = userStory
@@ -67,6 +67,8 @@ namespace Moira.UI
             height += 10;
 
             panelUS.Height = height;
+
+            
             return height+15;
         }
     }
