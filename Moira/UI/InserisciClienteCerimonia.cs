@@ -29,13 +29,13 @@ namespace Moira.UI
             {
                 controller.InvitoCerimonia(codiceUnivoco);
 
-                MessageBox.Show("l'impiegato è stato aggiunto correttamente");
+                MessageBox.Show("Il cliente è stato invitato correttamente");
 
                 textBoxCliente.Text = "";
             }
             catch (KeyNotFoundException ex)
             {
-                MessageBox.Show("l'impiegato con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
+                MessageBox.Show("Il cliente con il codice univoco: " + codiceUnivoco + " non è presente nel Sistema!");
             }
             catch(Exception ex)
             {

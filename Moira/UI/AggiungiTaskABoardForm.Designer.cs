@@ -83,7 +83,7 @@
             this.Controls.Add(this.textBoxTask);
             this.Controls.Add(this.label1);
             this.Name = "AggiungiTaskABoardForm";
-            this.Text = "AggiungiTaskABoardForm";
+            this.Text = "Aggiungi Task A Board";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTask)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
