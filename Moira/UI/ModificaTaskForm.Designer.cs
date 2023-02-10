@@ -39,24 +39,27 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(365, 229);
+            this.label3.Location = new System.Drawing.Point(456, 286);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 20);
+            this.label3.Size = new System.Drawing.Size(106, 25);
             this.label3.TabIndex = 15;
             this.label3.Text = "Descrizione:";
             // 
             // textBoxDescrizione
             // 
-            this.textBoxDescrizione.Location = new System.Drawing.Point(270, 252);
+            this.textBoxDescrizione.Location = new System.Drawing.Point(338, 315);
+            this.textBoxDescrizione.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDescrizione.Name = "textBoxDescrizione";
-            this.textBoxDescrizione.Size = new System.Drawing.Size(261, 27);
+            this.textBoxDescrizione.Size = new System.Drawing.Size(325, 31);
             this.textBoxDescrizione.TabIndex = 14;
             // 
             // buttonModifica
             // 
-            this.buttonModifica.Location = new System.Drawing.Point(365, 329);
+            this.buttonModifica.Location = new System.Drawing.Point(456, 411);
+            this.buttonModifica.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonModifica.Name = "buttonModifica";
-            this.buttonModifica.Size = new System.Drawing.Size(94, 29);
+            this.buttonModifica.Size = new System.Drawing.Size(118, 36);
             this.buttonModifica.TabIndex = 13;
             this.buttonModifica.Text = "Modifica";
             this.buttonModifica.UseVisualStyleBackColor = true;
@@ -65,9 +68,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(381, 156);
+            this.label2.Location = new System.Drawing.Point(476, 195);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 20);
+            this.label2.Size = new System.Drawing.Size(65, 25);
             this.label2.TabIndex = 12;
             this.label2.Text = "Nome:";
             // 
@@ -75,32 +79,35 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(350, 93);
+            this.label1.Location = new System.Drawing.Point(438, 116);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 28);
+            this.label1.Size = new System.Drawing.Size(156, 32);
             this.label1.TabIndex = 11;
             this.label1.Text = "Modifica task";
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(270, 179);
+            this.textBoxNome.Location = new System.Drawing.Point(338, 224);
+            this.textBoxNome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(261, 27);
+            this.textBoxNome.Size = new System.Drawing.Size(325, 31);
             this.textBoxNome.TabIndex = 10;
             // 
             // ModificaTaskForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1000, 562);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxDescrizione);
             this.Controls.Add(this.buttonModifica);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNome);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ModificaTaskForm";
-            this.Text = "ModificaTaskForm";
+            this.Text = "Modifica Task";
             this.ResumeLayout(false);
             this.PerformLayout();
 

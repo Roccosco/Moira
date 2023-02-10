@@ -38,9 +38,10 @@
             // 
             // buttonAssocia
             // 
-            this.buttonAssocia.Location = new System.Drawing.Point(381, 350);
+            this.buttonAssocia.Location = new System.Drawing.Point(476, 438);
+            this.buttonAssocia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAssocia.Name = "buttonAssocia";
-            this.buttonAssocia.Size = new System.Drawing.Size(94, 29);
+            this.buttonAssocia.Size = new System.Drawing.Size(118, 36);
             this.buttonAssocia.TabIndex = 0;
             this.buttonAssocia.Text = "Associa";
             this.buttonAssocia.UseVisualStyleBackColor = true;
@@ -48,25 +49,28 @@
             // 
             // textBoxAssocia
             // 
-            this.textBoxAssocia.Location = new System.Drawing.Point(271, 307);
+            this.textBoxAssocia.Location = new System.Drawing.Point(339, 384);
+            this.textBoxAssocia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAssocia.Name = "textBoxAssocia";
-            this.textBoxAssocia.Size = new System.Drawing.Size(326, 27);
+            this.textBoxAssocia.Size = new System.Drawing.Size(406, 31);
             this.textBoxAssocia.TabIndex = 1;
             // 
             // labelAssocia
             // 
             this.labelAssocia.AutoSize = true;
-            this.labelAssocia.Location = new System.Drawing.Point(271, 275);
+            this.labelAssocia.Location = new System.Drawing.Point(339, 344);
+            this.labelAssocia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAssocia.Name = "labelAssocia";
-            this.labelAssocia.Size = new System.Drawing.Size(326, 20);
+            this.labelAssocia.Size = new System.Drawing.Size(387, 25);
             this.labelAssocia.TabIndex = 2;
             this.labelAssocia.Text = "Inserisci nome progetto a cui associare il cliente";
             // 
             // buttonTermina
             // 
-            this.buttonTermina.Location = new System.Drawing.Point(271, 394);
+            this.buttonTermina.Location = new System.Drawing.Point(339, 492);
+            this.buttonTermina.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonTermina.Name = "buttonTermina";
-            this.buttonTermina.Size = new System.Drawing.Size(326, 52);
+            this.buttonTermina.Size = new System.Drawing.Size(408, 65);
             this.buttonTermina.TabIndex = 3;
             this.buttonTermina.Text = "Termina";
             this.buttonTermina.UseVisualStyleBackColor = true;
@@ -75,25 +79,27 @@
             // dataGridViewProgetti
             // 
             this.dataGridViewProgetti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProgetti.Location = new System.Drawing.Point(107, 50);
+            this.dataGridViewProgetti.Location = new System.Drawing.Point(134, 62);
+            this.dataGridViewProgetti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewProgetti.Name = "dataGridViewProgetti";
             this.dataGridViewProgetti.RowHeadersWidth = 51;
             this.dataGridViewProgetti.RowTemplate.Height = 29;
-            this.dataGridViewProgetti.Size = new System.Drawing.Size(667, 195);
+            this.dataGridViewProgetti.Size = new System.Drawing.Size(834, 244);
             this.dataGridViewProgetti.TabIndex = 4;
             // 
             // AssociaClienteAProgetto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 472);
+            this.ClientSize = new System.Drawing.Size(1111, 590);
             this.Controls.Add(this.dataGridViewProgetti);
             this.Controls.Add(this.buttonTermina);
             this.Controls.Add(this.labelAssocia);
             this.Controls.Add(this.textBoxAssocia);
             this.Controls.Add(this.buttonAssocia);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AssociaClienteAProgetto";
-            this.Text = "AssociaClienteAProgetto";
+            this.Text = "Associa Cliente A Progetto";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProgetti)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

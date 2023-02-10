@@ -45,26 +45,29 @@
             this.panelAssociaClienti.Controls.Add(this.buttonAggiungiCliente);
             this.panelAssociaClienti.Controls.Add(this.label5);
             this.panelAssociaClienti.Controls.Add(this.textBoxCodiceCliente);
-            this.panelAssociaClienti.Location = new System.Drawing.Point(3, 12);
+            this.panelAssociaClienti.Location = new System.Drawing.Point(4, 15);
+            this.panelAssociaClienti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelAssociaClienti.Name = "panelAssociaClienti";
-            this.panelAssociaClienti.Size = new System.Drawing.Size(941, 551);
+            this.panelAssociaClienti.Size = new System.Drawing.Size(1176, 689);
             this.panelAssociaClienti.TabIndex = 8;
             // 
             // dataGridViewCliente
             // 
             this.dataGridViewCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCliente.Location = new System.Drawing.Point(201, 109);
+            this.dataGridViewCliente.Location = new System.Drawing.Point(251, 136);
+            this.dataGridViewCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewCliente.Name = "dataGridViewCliente";
             this.dataGridViewCliente.RowHeadersWidth = 51;
             this.dataGridViewCliente.RowTemplate.Height = 29;
-            this.dataGridViewCliente.Size = new System.Drawing.Size(539, 204);
+            this.dataGridViewCliente.Size = new System.Drawing.Size(674, 255);
             this.dataGridViewCliente.TabIndex = 4;
             // 
             // buttonFineClienti
             // 
-            this.buttonFineClienti.Location = new System.Drawing.Point(324, 468);
+            this.buttonFineClienti.Location = new System.Drawing.Point(405, 585);
+            this.buttonFineClienti.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonFineClienti.Name = "buttonFineClienti";
-            this.buttonFineClienti.Size = new System.Drawing.Size(307, 68);
+            this.buttonFineClienti.Size = new System.Drawing.Size(384, 85);
             this.buttonFineClienti.TabIndex = 3;
             this.buttonFineClienti.Text = "Inserisci";
             this.buttonFineClienti.UseVisualStyleBackColor = true;
@@ -72,9 +75,10 @@
             // 
             // buttonAggiungiCliente
             // 
-            this.buttonAggiungiCliente.Location = new System.Drawing.Point(324, 434);
+            this.buttonAggiungiCliente.Location = new System.Drawing.Point(405, 542);
+            this.buttonAggiungiCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAggiungiCliente.Name = "buttonAggiungiCliente";
-            this.buttonAggiungiCliente.Size = new System.Drawing.Size(307, 29);
+            this.buttonAggiungiCliente.Size = new System.Drawing.Size(384, 36);
             this.buttonAggiungiCliente.TabIndex = 2;
             this.buttonAggiungiCliente.Text = "Aggiungi";
             this.buttonAggiungiCliente.UseVisualStyleBackColor = true;
@@ -83,27 +87,30 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(324, 369);
+            this.label5.Location = new System.Drawing.Point(405, 461);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 20);
+            this.label5.Size = new System.Drawing.Size(125, 25);
             this.label5.TabIndex = 1;
             this.label5.Text = "Codice cliente:";
             // 
             // textBoxCodiceCliente
             // 
-            this.textBoxCodiceCliente.Location = new System.Drawing.Point(324, 392);
+            this.textBoxCodiceCliente.Location = new System.Drawing.Point(405, 490);
+            this.textBoxCodiceCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxCodiceCliente.Name = "textBoxCodiceCliente";
-            this.textBoxCodiceCliente.Size = new System.Drawing.Size(307, 27);
+            this.textBoxCodiceCliente.Size = new System.Drawing.Size(383, 31);
             this.textBoxCodiceCliente.TabIndex = 0;
             // 
             // AssociaClienteANuovoProgetto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 583);
+            this.ClientSize = new System.Drawing.Size(1195, 729);
             this.Controls.Add(this.panelAssociaClienti);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AssociaClienteANuovoProgetto";
-            this.Text = "AssociaClienteANuovoProgetto";
+            this.Text = "Associa Cliente A Nuovo Progetto";
             this.panelAssociaClienti.ResumeLayout(false);
             this.panelAssociaClienti.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCliente)).EndInit();

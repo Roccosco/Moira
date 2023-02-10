@@ -39,9 +39,10 @@
             // 
             // buttonInserisci
             // 
-            this.buttonInserisci.Location = new System.Drawing.Point(245, 452);
+            this.buttonInserisci.Location = new System.Drawing.Point(306, 565);
+            this.buttonInserisci.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonInserisci.Name = "buttonInserisci";
-            this.buttonInserisci.Size = new System.Drawing.Size(291, 29);
+            this.buttonInserisci.Size = new System.Drawing.Size(364, 36);
             this.buttonInserisci.TabIndex = 1;
             this.buttonInserisci.Text = "Inserisci";
             this.buttonInserisci.UseVisualStyleBackColor = true;
@@ -49,59 +50,65 @@
             // 
             // textBoxNomeBoard
             // 
-            this.textBoxNomeBoard.Location = new System.Drawing.Point(245, 338);
+            this.textBoxNomeBoard.Location = new System.Drawing.Point(306, 422);
+            this.textBoxNomeBoard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNomeBoard.Name = "textBoxNomeBoard";
-            this.textBoxNomeBoard.Size = new System.Drawing.Size(291, 27);
+            this.textBoxNomeBoard.Size = new System.Drawing.Size(363, 31);
             this.textBoxNomeBoard.TabIndex = 2;
             // 
             // labelNomeBoard
             // 
             this.labelNomeBoard.AutoSize = true;
-            this.labelNomeBoard.Location = new System.Drawing.Point(322, 315);
+            this.labelNomeBoard.Location = new System.Drawing.Point(402, 394);
+            this.labelNomeBoard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNomeBoard.Name = "labelNomeBoard";
-            this.labelNomeBoard.Size = new System.Drawing.Size(147, 20);
+            this.labelNomeBoard.Size = new System.Drawing.Size(178, 25);
             this.labelNomeBoard.TabIndex = 3;
             this.labelNomeBoard.Text = "Inserisci nome board";
             // 
             // textBoxTeamBoard
             // 
-            this.textBoxTeamBoard.Location = new System.Drawing.Point(245, 403);
+            this.textBoxTeamBoard.Location = new System.Drawing.Point(306, 504);
+            this.textBoxTeamBoard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxTeamBoard.Name = "textBoxTeamBoard";
-            this.textBoxTeamBoard.Size = new System.Drawing.Size(291, 27);
+            this.textBoxTeamBoard.Size = new System.Drawing.Size(363, 31);
             this.textBoxTeamBoard.TabIndex = 4;
             // 
             // labelTeamBoard
             // 
             this.labelTeamBoard.AutoSize = true;
-            this.labelTeamBoard.Location = new System.Drawing.Point(245, 380);
+            this.labelTeamBoard.Location = new System.Drawing.Point(306, 475);
+            this.labelTeamBoard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTeamBoard.Name = "labelTeamBoard";
-            this.labelTeamBoard.Size = new System.Drawing.Size(291, 20);
+            this.labelTeamBoard.Size = new System.Drawing.Size(346, 25);
             this.labelTeamBoard.TabIndex = 5;
             this.labelTeamBoard.Text = "Inserisci codice team a cui associare board";
             // 
             // dataGridViewTeams
             // 
             this.dataGridViewTeams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTeams.Location = new System.Drawing.Point(123, 40);
+            this.dataGridViewTeams.Location = new System.Drawing.Point(154, 50);
+            this.dataGridViewTeams.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewTeams.Name = "dataGridViewTeams";
             this.dataGridViewTeams.RowHeadersWidth = 51;
             this.dataGridViewTeams.RowTemplate.Height = 29;
-            this.dataGridViewTeams.Size = new System.Drawing.Size(544, 212);
+            this.dataGridViewTeams.Size = new System.Drawing.Size(680, 265);
             this.dataGridViewTeams.TabIndex = 6;
             // 
             // CreaBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 524);
+            this.ClientSize = new System.Drawing.Size(989, 655);
             this.Controls.Add(this.dataGridViewTeams);
             this.Controls.Add(this.labelTeamBoard);
             this.Controls.Add(this.textBoxTeamBoard);
             this.Controls.Add(this.labelNomeBoard);
             this.Controls.Add(this.textBoxNomeBoard);
             this.Controls.Add(this.buttonInserisci);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CreaBoard";
-            this.Text = "W";
+            this.Text = "Crea Board";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTeams)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

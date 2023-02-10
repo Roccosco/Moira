@@ -37,9 +37,10 @@
             // 
             // buttonAssocia
             // 
-            this.buttonAssocia.Location = new System.Drawing.Point(336, 301);
+            this.buttonAssocia.Location = new System.Drawing.Point(420, 376);
+            this.buttonAssocia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAssocia.Name = "buttonAssocia";
-            this.buttonAssocia.Size = new System.Drawing.Size(94, 29);
+            this.buttonAssocia.Size = new System.Drawing.Size(118, 36);
             this.buttonAssocia.TabIndex = 0;
             this.buttonAssocia.Text = "Associa";
             this.buttonAssocia.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // 
             // buttonDissocia
             // 
-            this.buttonDissocia.Location = new System.Drawing.Point(566, 301);
+            this.buttonDissocia.Location = new System.Drawing.Point(708, 376);
+            this.buttonDissocia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonDissocia.Name = "buttonDissocia";
-            this.buttonDissocia.Size = new System.Drawing.Size(94, 29);
+            this.buttonDissocia.Size = new System.Drawing.Size(118, 36);
             this.buttonDissocia.TabIndex = 1;
             this.buttonDissocia.Text = "Dissocia";
             this.buttonDissocia.UseVisualStyleBackColor = true;
@@ -57,25 +59,28 @@
             // 
             // textBoxProgetto
             // 
-            this.textBoxProgetto.Location = new System.Drawing.Point(336, 268);
+            this.textBoxProgetto.Location = new System.Drawing.Point(420, 335);
+            this.textBoxProgetto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxProgetto.Name = "textBoxProgetto";
-            this.textBoxProgetto.Size = new System.Drawing.Size(324, 27);
+            this.textBoxProgetto.Size = new System.Drawing.Size(404, 31);
             this.textBoxProgetto.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(425, 245);
+            this.label1.Location = new System.Drawing.Point(531, 306);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 20);
+            this.label1.Size = new System.Drawing.Size(201, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Inserisci nome progetto";
             // 
             // buttonTermina
             // 
-            this.buttonTermina.Location = new System.Drawing.Point(336, 399);
+            this.buttonTermina.Location = new System.Drawing.Point(420, 499);
+            this.buttonTermina.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonTermina.Name = "buttonTermina";
-            this.buttonTermina.Size = new System.Drawing.Size(324, 44);
+            this.buttonTermina.Size = new System.Drawing.Size(405, 55);
             this.buttonTermina.TabIndex = 4;
             this.buttonTermina.Text = "Termina";
             this.buttonTermina.UseVisualStyleBackColor = true;
@@ -83,16 +88,17 @@
             // 
             // ModificaClienteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 630);
+            this.ClientSize = new System.Drawing.Size(1264, 788);
             this.Controls.Add(this.buttonTermina);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxProgetto);
             this.Controls.Add(this.buttonDissocia);
             this.Controls.Add(this.buttonAssocia);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ModificaClienteForm";
-            this.Text = "AssociaProgettoForm";
+            this.Text = "Associa Progetto";
             this.ResumeLayout(false);
             this.PerformLayout();
 
