@@ -51,7 +51,8 @@ namespace Moira.Dominio.Controllers.Tests
                 th.CreaImpiegato("cosa", "diamine", "e", "uno", "spazioporto");
                 th.ConfermaCreaImpiegato();
                 th.CreaImpiegato("sono", "fuori", "dal", "tunnel", "elelelel");
-                th.SelezionaImpiegatoCorrente("1");
+                th.ConfermaCreaImpiegato();
+                th.SelezionaImpiegatoCorrente("0");
                 Assert.AreEqual("e", th.ImpiegatoCorrente.Email);
             }
             catch
@@ -67,7 +68,7 @@ namespace Moira.Dominio.Controllers.Tests
             {
                 th.CreaImpiegato("cosa", "diamine", "è", "uno", "spazioporto");
                 th.ConfermaCreaImpiegato();
-                Assert.IsNotNull(m.GetImpiegatoSpecifico("1"));//problema con codice univoco impiegato
+                Assert.IsNotNull(m.GetImpiegatoSpecifico("0"));
             }
             catch
             {

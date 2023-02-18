@@ -28,7 +28,9 @@ namespace Moira.Dominio.Controllers.Tests
             try
             {
                 m.addProgetto(new Progetto("kilimangiaro", "batussi"));
-                ch.SelezionaClienteCorrente("0");
+                Cliente c = new Cliente("nome", "cognome");
+                m.addCliente(c);
+                ch.SelezionaClienteCorrente(c.CodiceUnivoco);
                 ch.AssociaClienteAProgetto("kilimangiaro");
                 Assert.IsTrue(m.GetProgettoSpecifico("kilimangiaro").IsClienteInterested(ch.ClienteCorrente));
             }
@@ -45,7 +47,7 @@ namespace Moira.Dominio.Controllers.Tests
             {
                 ch.CreaCliente("lello", "bello", "ciello@mello.com", "1240", "SuonaFischiaECanta", "vialemanidalnaso");
                 ch.ConfermaCreaCliente();
-                Assert.IsNotNull(m.GetClienteSpecifico("1"));
+                Assert.IsNotNull(m.GetClienteSpecifico("0"));
             }
             catch
             {
@@ -60,8 +62,12 @@ namespace Moira.Dominio.Controllers.Tests
             {
                 ch.CreaCliente("lello", "bello", "ciello@mello.com", "1240", "SuonaFischiaECanta", "vialemanidalnaso");
                 ch.ConfermaCreaCliente();
-                ch.SelezionaClienteCorrente("0");
+
+                ch.CreaCliente("nome", "cognome", "nome@gmail.com", "11", "3714524501", "vialemanidalnaso");
+                ch.ConfermaCreaCliente();
+                
                 ch.SelezionaClienteCorrente("1");
+                ch.SelezionaClienteCorrente("0");
                 Assert.AreEqual("1240", ch.ClienteCorrente.PartitaIVA);
             }
             catch

@@ -34,12 +34,15 @@ namespace Moira.Dominio.Controllers.Tests
         {
             try
             {
+                Team team = new Team("MoiraTeam");
+                m.addTeam(team);
+
                 Progetto p = new Progetto("progetto", "descrizione");
                 m.addProgetto(p);
                 // con il caso d'uso d'avviamento viene creato di default un team con codice univoco 0
                 ph.SelezionaProgetto("progetto");
-                ph.AssociaTeamAProgetto("0");
-                Assert.IsNotNull(m.GetTeamSpecifico("0").Progetto);
+                ph.AssociaTeamAProgetto(team.CodiceUnivoco);
+                Assert.IsNotNull(m.GetTeamSpecifico(team.CodiceUnivoco).Progetto);
             }
             catch
             {
@@ -59,7 +62,7 @@ namespace Moira.Dominio.Controllers.Tests
                 Cliente c = new Cliente("mario", "mario");
                 m.addCliente(c);
                 ph.SelezionaProgetto("progetto");
-                ph.AssociaClienteAProgetto("1");
+                ph.AssociaClienteAProgetto(c.CodiceUnivoco);
                 //verifichiamo che il cliente è inserito nel dizionario
                 Assert.IsTrue(m.GetProgettoSpecifico("progetto").IsClienteInterested(c));
             }
